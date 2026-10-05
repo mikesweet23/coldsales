@@ -53,7 +53,7 @@ export function filterItems(items, f) {
   return out.length ? out : items; // never leave a rep with nothing
 }
 
-export const BUILD_PLAN = ['opener', 'contract', 'reason', 'situation', 'situation', 'problem', 'problem', 'consequence', 'close'];
+export const BUILD_PLAN = ['opener', 'contract', 'reason', 'situation', 'situation', 'problem', 'problem', 'consequence', 'solution', 'qualify', 'close'];
 
 export function buildCall(filters) {
   const picked = [];

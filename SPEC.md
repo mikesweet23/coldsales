@@ -78,12 +78,12 @@ These are the "easy to deploy" skills that run across every call, email and mess
 4. **Curiosity over pitching** — ask questions that get them talking about their situation rather than explaining what we do.
 5. **Permission to say no** — make "no" a safe answer ("If it's not relevant, just say so and I'll leave you alone"). Paradoxically makes "yes" more likely and gets honest answers.
 
-### Influences (for the "Learn" section — paraphrased, not quoted)
-- **Benjamin Dennehy style** — brutally honest, upfront about the cold call, refuses to chase, prospects must qualify themselves, pattern-interrupt openers.
-- **Jeremy Miner / NEPQ style** — calm, curious, neutral tone; staged questions (situation → problem awareness → consequence → solution awareness → commitment) so the prospect talks themselves into change.
-- **Sandler style** — up-front contracts (agree the agenda, time and possible outcomes), the pain funnel (go from surface problem to business and personal impact), "no is OK".
+### The three conversation styles (for the "Learn" section)
+- **Direct** — honest, upfront about the cold call, refuses to chase, prospects must qualify themselves, pattern-interrupt openers.
+- **Curious** — calm, neutral tone; staged questions (situation → problem awareness → consequence → solution awareness → decision) so the prospect talks themselves into change.
+- **Structured** — up-front contracts (agree the agenda, time and possible outcomes), the pain funnel (go from surface problem to business and personal impact), "no is OK".
 
-The app presents these as three "voices" a rep can choose from for each script (Section 4.3 tagging).
+The app presents these as three "styles" a rep can choose from for each script (Section 4.3 tagging), under the umbrella of question-led selling.
 
 ---
 
@@ -114,9 +114,9 @@ All content lives in a single `content.json` (or `content.js`) so it can be edit
 The Cold Call page is a step-by-step flow. Each stage has 4–8 interchangeable lines. The rep swipes left/right (carousel) or taps **Shuffle** to change the line. Tapping a line marks it "used today".
 
 **Stage 1 — Opener (call out the elephant)**
-- "Hi [Name], it's [Rep] — I'll be honest, this is a cold call. Do you want to hang up now, or give me 30 seconds?" *(Dennehy)*
-- "Hi [Name], [Rep] here. We've never spoken before, so I know this is out of the blue — have I caught you at a terrible time?" *(NEPQ)*
-- "Hi [Name], this is [Rep]. You don't know me, and I'm interrupting your day — can I tell you why I called and then you can decide if we carry on?" *(Sandler)*
+- "Hi [Name], it's [Rep] — I'll be honest, this is a cold call. Do you want to hang up now, or give me 30 seconds?" *(Direct)*
+- "Hi [Name], [Rep] here. We've never spoken before, so I know this is out of the blue — have I caught you at a terrible time?" *(Curious)*
+- "Hi [Name], this is [Rep]. You don't know me, and I'm interrupting your day — can I tell you why I called and then you can decide if we carry on?" *(Structured)*
 - "Hi [Name], it's [Rep]. This is a sales call — I'll be quick and you can tell me to get lost if it's not relevant. Fair?"
 - "Hi [Name], [Rep] calling. I'm guessing you weren't sitting there hoping a contractor would ring today?"
 - "Hi [Name], it's [Rep]. Cold call, I'm afraid — is now a really bad time, or have you got a minute?"
@@ -304,8 +304,8 @@ Guidance page plus a checklist per account:
 - Use referral emails (4.4) and warm-call openers referencing colleagues.
 
 ### 4.7 Shuffle / Variety Logic
-- Every line can be tagged `voice: dennehy | nepq | sandler | neutral`.
-- Filter chips at the top of each Scripts page: Persona, Voice, Service theme.
+- Every line can be tagged `voice: direct | curious | structured | neutral`.
+- Filter chips at the top of each Scripts page: Persona, Style, Service theme.
 - **Shuffle** button picks a random line from the stage, avoiding any line used in the last 7 days.
 - **"Build me a call"** button generates a complete call path by picking one line from each stage (Opener → Micro-contract → Reason → 2 Situation → 2 Problem → 1 Consequence → Close), displayed as a single scrollable card. Tap **Reroll** on any single line.
 - Favourites (star) and "Used" tracking per line.
@@ -359,7 +359,7 @@ Each line card has: text, voice tag, ★ favourite, ✓ used, copy button (for e
 - The Outreach Ladder (interactive — tap each rung for explanation).
 - The 21-day Cadence.
 - The 5 Core Skills — each with: what it is, why it works, 5 example lines, a "try it out loud" practice prompt, and a common mistake.
-- The three "voices" (Dennehy / NEPQ / Sandler) summarised in plain English with when to use each.
+- The three conversation styles (Direct / Curious / Structured) summarised in plain English with when to use each.
 - Mushrooming guide.
 - Email rules & LinkedIn rules.
 - Training session notes (Section 9) for reference.
@@ -368,7 +368,7 @@ Each line card has: text, voice tag, ★ favourite, ✓ used, copy button (for e
 - Rep name, phone, email signature (used in placeholders).
 - Daily/weekly targets.
 - Planned calling days and times.
-- Default voice preference.
+- Default style preference.
 - Cadence editor (adjust day offsets).
 - Data: Export JSON backup / Import backup / Clear all data.
 - Theme: Dark (default) / Light.
@@ -508,7 +508,7 @@ Also included in the Learn tab so reps can revisit it.
 | 20–30 min | **Skill 1: Call out the elephant** | Why pretending it's not a cold call makes it worse. Example lines. Pairs say three openers out loud. |
 | 30–40 min | **Skill 2: Micro-contracting** | Small agreements, prospect in control. Example lines. Practice: opener + micro-contract back to back. |
 | 40–50 min | **Skill 3: Name the feeling** | Label scepticism, busyness, past bad experiences. Practice reacting to brush-offs with a label instead of a counter-argument. |
-| 50–60 min | **Skills 4 & 5: Curiosity & permission to say no** | Questions over pitching (situation → problem → consequence). Making "no" safe. Show the three voices briefly. |
+| 50–60 min | **Skills 4 & 5: Curiosity & permission to say no** | Questions over pitching (situation → problem → consequence). Making "no" safe. Introduce the three conversation styles briefly. |
 | 60–80 min | **Live practice** | Pairs/threes: caller, prospect, observer. Real persona cards (e.g. Engineering Director at a food factory, ageing chillers). Rotate. Observer ticks off: elephant / contract / label / question / close. |
 | 80–90 min | **Commit & launch the app** | Everyone installs the app, adds 5 real contacts, sets their call days. Agree team targets for the next two weeks and a review date. |
 

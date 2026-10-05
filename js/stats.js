@@ -1,10 +1,10 @@
 // Derived numbers for Today and Tracker
 import { addDays, today, ymd, isWeekend, tsToYmd, mondayOf, weekdayOf } from './util.js';
 
-export const OUTREACH = ['call', 'email', 'linkedin_connect', 'linkedin_engage', 'linkedin_message', 'mushroom'];
+export const OUTREACH = ['call', 'email', 'linkedin_connect', 'linkedin_engage', 'linkedin_comment', 'linkedin_message', 'linkedin_post', 'mushroom'];
 export const GROUP_OF = {
   call: 'calls', email: 'emails',
-  linkedin_connect: 'linkedin', linkedin_engage: 'linkedin', linkedin_message: 'linkedin',
+  linkedin_connect: 'linkedin', linkedin_engage: 'linkedin', linkedin_comment: 'linkedin', linkedin_message: 'linkedin', linkedin_post: 'linkedin',
   mushroom: 'mushroom',
 };
 export const CONVERSATION_OUTCOMES = ['spoke_not_now', 'spoke_follow_up', 'meeting', 'not_interested'];

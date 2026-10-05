@@ -1,8 +1,8 @@
 // Tiny IndexedDB wrapper (no dependencies). Falls back to memory if IndexedDB is unavailable.
 const DB_NAME = 'outbound';
-const DB_VERSION = 1;
-export const STORES = ['settings', 'contacts', 'tasks', 'activities', 'scriptUsage'];
-const KEYS = { settings: 'key', contacts: 'id', tasks: 'id', activities: 'id', scriptUsage: 'scriptId' };
+const DB_VERSION = 2;
+export const STORES = ['settings', 'activities', 'scriptUsage'];
+const KEYS = { settings: 'key', activities: 'id', scriptUsage: 'scriptId' };
 
 let dbPromise = null;
 let memory = null; // used when IndexedDB is not available
@@ -15,11 +15,12 @@ function open() {
     try { req = indexedDB.open(DB_NAME, DB_VERSION); } catch (e) { return reject(e); }
     req.onupgradeneeded = () => {
       const db = req.result;
+      // v2: contacts and tasks are gone (Pipedrive is the CRM)
+      for (const old of ['contacts', 'tasks']) if (db.objectStoreNames.contains(old)) db.deleteObjectStore(old);
       for (const s of STORES) {
         if (db.objectStoreNames.contains(s)) continue;
         const store = db.createObjectStore(s, { keyPath: KEYS[s] });
-        if (s === 'tasks') { store.createIndex('contactId', 'contactId'); store.createIndex('dueDate', 'dueDate'); }
-        if (s === 'activities') { store.createIndex('contactId', 'contactId'); store.createIndex('timestamp', 'timestamp'); }
+        if (s === 'activities') store.createIndex('timestamp', 'timestamp');
       }
     };
     req.onsuccess = () => resolve(req.result);

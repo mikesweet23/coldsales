@@ -1,11 +1,13 @@
 import { db } from '../db.js';
 import { state } from '../state.js';
-import { h, today, parseYmd, fmtDate, firstName, buzz, diffDays } from '../util.js';
-import { icon, sheet, toast, selectEl, emptyState } from '../ui.js';
-import { TASK_GROUPS, logCallOutcome } from '../cadence.js';
-import { todayCounts, computeStreak } from '../stats.js';
-import { taskRow } from '../taskui.js';
+import { h, today, parseYmd, fmtDate, firstName, fmtTime, tsToYmd, pref } from '../util.js';
+import { icon, toast, selectEl, confirmDialog } from '../ui.js';
+import { todayCounts, computeStreak, CONVERSATION_OUTCOMES } from '../stats.js';
 import { sectionLabel } from '../components.js';
+import { openLogSheet } from '../logsheet.js';
+import { TYPE_LABEL, TYPE_ICON, outcomeLabel, openPipedrive, deleteActivity } from '../activity.js';
+
+const refresh = () => window.dispatchEvent(new Event('outbound:refresh'));
 
 function greeting() {
   const hr = new Date().getHours();
@@ -25,53 +27,91 @@ function ring(done, target) {
   return h('div', { class: 'ring', html: svg });
 }
 
-export async function openLogCall(onDone) {
-  const contacts = (await db.all('contacts')).sort((a, b) => a.name.localeCompare(b.name));
-  sheet('Log a call', (close) => {
-    const sel = selectEl([{ value: '', label: 'No contact' }, ...contacts.map((c) => ({ value: c.id, label: `${c.name}${c.company ? ' — ' + c.company : ''}` }))], '');
-    const notes = h('textarea', { class: 'input', rows: '2', placeholder: 'Notes (optional)' });
-    const grid = h('div', { class: 'outcome-grid' });
-    for (const o of state.content.meta.outcomes.filter((x) => x.id !== 'wrong_person')) {
-      grid.append(h('button', {
-        class: 'btn ghost outcome' + (o.id === 'meeting' ? ' good' : ''), onclick: async () => {
-          const res = await logCallOutcome({ contactId: sel.value, outcome: o.id, notes: notes.value });
-          buzz();
-          close();
-          toast(res.followUp ? `Logged · ${res.followUp}` : 'Call logged');
-          onDone && onDone();
-        },
-      }, o.label));
-    }
-    return h('div', null,
-      h('label', { class: 'field' }, h('span', null, 'Who did you call?'), sel),
-      notes,
-      h('p', { class: 'muted small' }, 'Tap the outcome to log it.'),
-      grid);
-  });
+function readPower() { try { return JSON.parse(pref('power') || 'null'); } catch (e) { return null; } }
+
+function powerCard(acts, timers) {
+  const p = readPower();
+  const card = h('div', { class: 'card power' });
+  if (!p) {
+    let minutes = 60;
+    card.append(
+      h('div', { class: 'row between' }, h('div', null, h('strong', null, 'Power hour'), h('div', { class: 'muted small' }, 'A focused block. Phone down, dials only.')), icon('clock', 22, 'red')),
+      h('div', { class: 'row gap' },
+        selectEl([30, 45, 60, 90, 120].map((m) => ({ value: m, label: `${m} min` })), 60, (v) => { minutes = Number(v); }, { 'aria-label': 'Length' }),
+        h('button', { class: 'btn', onclick: () => { pref('power', JSON.stringify({ start: Date.now(), minutes })); refresh(); } }, 'Start')));
+    return card;
+  }
+  const end = p.start + p.minutes * 60000;
+  const dials = () => acts.filter((a) => a.type === 'call' && a.timestamp >= p.start);
+  const clock = h('div', { class: 'power-clock', 'aria-live': 'off' });
+  const stats = h('div', { class: 'muted small' });
+  const tick = () => {
+    const left = Math.max(0, end - Date.now());
+    const m = Math.floor(left / 60000);
+    const sec = Math.floor((left % 60000) / 1000);
+    clock.textContent = left ? `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}` : 'Time!';
+    const d = dials();
+    stats.textContent = `${d.length} ${d.length === 1 ? 'dial' : 'dials'} · ${d.filter((a) => CONVERSATION_OUTCOMES.includes(a.outcome)).length} conversations · ${d.filter((a) => a.outcome === 'meeting').length} meetings`;
+  };
+  tick();
+  timers.push(setInterval(tick, 1000));
+  card.append(
+    h('div', { class: 'row between' }, h('strong', null, 'Power hour'), h('span', { class: 'tag hot' }, 'Live')),
+    clock, stats,
+    h('div', { class: 'row gap' },
+      h('button', { class: 'btn', onclick: () => openLogSheet({ type: 'call', onDone: refresh }) }, icon('phone', 18), 'Log call'),
+      h('button', { class: 'btn ghost', onclick: () => { pref('power', null); refresh(); } }, 'End')));
+  return card;
+}
+
+function recentList(acts) {
+  const t0 = today();
+  const recent = [...acts].filter((a) => a.type !== 'research').sort((a, b) => b.timestamp - a.timestamp).slice(0, 6);
+  const card = h('div', { class: 'card list' });
+  if (!recent.length) {
+    card.append(h('p', { class: 'muted pad' }, 'Nothing logged yet. Tap Call, Email, LinkedIn or Mushroom above as you work.'));
+    return card;
+  }
+  for (const a of recent) {
+    const day = tsToYmd(a.timestamp);
+    card.append(h('div', { class: 'task' },
+      h('div', { class: 'task-main' },
+        h('span', { class: 'task-ic' }, icon(TYPE_ICON[a.type] || 'check', 20)),
+        h('span', { class: 'task-body' },
+          h('span', { class: 'task-title' }, `${TYPE_LABEL[a.type] || a.type} · ${outcomeLabel(a.outcome)}`),
+          h('span', { class: 'muted small' }, `${a.who ? a.who + ' · ' : ''}${day === t0 ? 'Today' : fmtDate(day)} ${fmtTime(a.timestamp)}`))),
+      h('div', { class: 'task-actions' },
+        h('button', {
+          class: 'icon-btn', 'aria-label': 'Delete this entry', onclick: async () => {
+            if (await confirmDialog('Remove this entry from your log?', 'Remove', true)) { await deleteActivity(a.id); toast('Removed'); refresh(); }
+          },
+        }, icon('trash', 18)))));
+  }
+  return card;
 }
 
 export async function render(root) {
-  const [tasks, contacts, acts] = await Promise.all([db.all('tasks'), db.all('contacts'), db.all('activities')]);
-  const cmap = new Map(contacts.map((c) => [c.id, c]));
-  const t0 = today();
-  const due = tasks
-    .filter((t) => t.status === 'open' && t.dueDate <= t0 && cmap.has(t.contactId))
-    .sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  const acts = await db.all('activities');
   const counts = todayCounts(acts);
   const s = state.settings;
   const tg = s.targets;
+  const t0 = today();
+  const timers = [];
   const sumTarget = tg.calls + tg.emails + tg.linkedin + tg.mushroom;
   const sumDone = Math.min(counts.calls, tg.calls) + Math.min(counts.emails, tg.emails) + Math.min(counts.linkedin, tg.linkedin) + Math.min(counts.mushroom, tg.mushroom);
   const streak = computeStreak(acts);
-  const refresh = () => window.dispatchEvent(new Event('outbound:refresh'));
-
   const nm = firstName(s.repName);
-  root.append(
-    h('div', { class: 'page-head col' },
-      h('h1', null, `${greeting()}${nm ? ', ' + nm : ''}`),
-      h('p', { class: 'muted' }, fmtDate(t0).replace(/^\w+/, (d) => d) + ' · ' + new Date().getFullYear())));
 
-  // Targets + streak
+  root.append(h('div', { class: 'page-head col' },
+    h('h1', null, `${greeting()}${nm ? ', ' + nm : ''}`),
+    h('p', { class: 'muted' }, `${fmtDate(t0)} · ${new Date().getFullYear()}`)));
+
+  root.append(h('div', { class: 'card pipedrive' },
+    h('div', { class: 'row gap' }, icon('refresh', 22, 'red'), h('div', null, h('strong', null, state.content.pipedrive.reminder), h('div', { class: 'muted small' }, 'This app tracks your activity. Pipedrive is the record of every prospect.'))),
+    h('div', { class: 'row gap' },
+      h('button', { class: 'btn sm', onclick: openPipedrive }, icon('external', 16), 'Open Pipedrive'),
+      h('a', { class: 'btn ghost sm', href: '#/learn/pipedrive' }, 'Checklist'))));
+
   const bars = h('div', { class: 'target-bars' });
   for (const [k, label] of [['calls', 'Calls'], ['emails', 'Emails'], ['linkedin', 'LinkedIn'], ['mushroom', 'Mushroom']]) {
     const pct = tg[k] ? Math.min(100, Math.round((counts[k] / tg[k]) * 100)) : 0;
@@ -81,33 +121,23 @@ export async function render(root) {
   }
   root.append(h('div', { class: 'card hero' }, ring(sumDone, sumTarget), bars));
   root.append(h('div', { class: 'row gap stat-row' },
-    h('div', { class: 'card stat' }, icon('flame', 22, 'red'), h('div', null, h('strong', { class: 'big-num' }, streak), h('div', { class: 'muted small' }, streak === 1 ? 'day streak' : 'day streak'))),
+    h('div', { class: 'card stat' }, icon('flame', 22, 'red'), h('div', null, h('strong', { class: 'big-num' }, streak), h('div', { class: 'muted small' }, 'day streak'))),
     h('div', { class: 'card stat' }, icon('target', 22, 'red'), h('div', null, h('strong', { class: 'big-num' }, counts.total), h('div', { class: 'muted small' }, 'touches today')))));
 
-  // Quick buttons
-  root.append(h('div', { class: 'quick' },
-    h('button', { class: 'btn', onclick: () => openLogCall(refresh) }, icon('phone', 18), 'Log a call'),
-    h('a', { class: 'btn ghost', href: '#/scripts/build' }, icon('shuffle', 18), 'Build me a call'),
-    h('a', { class: 'btn ghost', href: '#/pipeline/new' }, icon('plus', 18), 'Add contact')));
+  root.append(sectionLabel('Log a touch'));
+  root.append(h('div', { class: 'quick4' },
+    [['call', 'phone', 'Call'], ['email', 'mail', 'Email'], ['linkedin_comment', 'linkedin', 'LinkedIn'], ['mushroom', 'mushroom', 'Mushroom']].map(([type, ic, label]) =>
+      h('button', { class: 'btn ghost tile', onclick: () => openLogSheet({ type, onDone: refresh }) }, icon(ic, 22, 'red'), label))));
+  root.append(h('div', { class: 'quick two' },
+    h('a', { class: 'btn', href: '#/call' }, icon('play', 18), 'Call Mode'),
+    h('a', { class: 'btn ghost', href: '#/scripts/build' }, icon('shuffle', 18), 'Build me a call')));
 
-  // Tasks
-  const overdueCount = due.filter((t) => t.dueDate < t0).length;
-  root.append(sectionLabel(`Today’s tasks${due.length ? ' · ' + due.length : ''}`, overdueCount ? h('span', { class: 'overdue-tag' }, `${overdueCount} overdue`) : null));
-  if (!due.length) {
-    root.append(contacts.length
-      ? emptyState('All clear', 'No tasks due. Add more contacts or check the Pipeline for what’s coming up.', h('a', { class: 'btn ghost', href: '#/pipeline' }, 'Open pipeline'))
-      : emptyState('Add your first contact', 'Adding a contact builds their 21-day outreach cadence and fills this list.', h('a', { class: 'btn', href: '#/pipeline/new' }, icon('plus', 18), 'Add contact')));
-  }
-  for (const g of TASK_GROUPS) {
-    const list = due.filter((t) => g.types.includes(t.type));
-    if (!list.length) continue;
-    root.append(h('h3', { class: 'group-title' }, `${g.label} · ${list.length}`));
-    const card = h('div', { class: 'card list' });
-    for (const t of list) card.append(taskRow(t, cmap.get(t.contactId), { onChange: refresh }));
-    root.append(card);
-  }
+  root.append(sectionLabel('Power hour'));
+  root.append(powerCard(acts, timers));
 
-  // Skill of the day
+  root.append(sectionLabel('Recent activity'));
+  root.append(recentList(acts));
+
   const doy = Math.floor((parseYmd(t0) - new Date(parseYmd(t0).getFullYear(), 0, 0)) / 864e5);
   const skill = state.content.skills[doy % state.content.skills.length];
   const line = skill.examples[doy % skill.examples.length];
@@ -117,5 +147,5 @@ export async function render(root) {
     h('h3', null, skill.title),
     h('p', { class: 'quote' }, `“${line}”`),
     h('span', { class: 'muted small' }, 'Learn more', icon('right', 14))));
-  void diffDays;
+  return () => timers.forEach(clearInterval);
 }

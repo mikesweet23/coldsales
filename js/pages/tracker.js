@@ -2,7 +2,7 @@ import { db } from '../db.js';
 import { state } from '../state.js';
 import { h, today, addDays, mondayOf, fmtDate, fmtTime, tsToYmd, weekdayOf, dowName, download, csvEscape, diffDays, parseYmd } from '../util.js';
 import { icon, emptyState } from '../ui.js';
-import { TYPE_LABEL } from '../cadence.js';
+import { TYPE_LABEL, outcomeLabel } from '../activity.js';
 import { countsByDay, weekRange, totalsFor, outreachOnly, isPlannedDay, CONVERSATION_OUTCOMES } from '../stats.js';
 import { sectionLabel } from '../components.js';
 
@@ -16,11 +16,6 @@ const SERIES = [
   { k: 'linkedin', label: 'LinkedIn', color: 'var(--text-muted)' },
   { k: 'mushroom', label: 'Mushroom', color: 'var(--red-dark)' },
 ];
-
-function outcomeLabel(o) {
-  const f = state.content.meta.outcomes.find((x) => x.id === o);
-  return f ? f.label : o === 'done' ? 'Done' : o;
-}
 
 function level(n) { return n === 0 ? 0 : n <= 2 ? 1 : n <= 5 ? 2 : n <= 9 ? 3 : 4; }
 
@@ -97,48 +92,62 @@ function weeklyChart(byDay, days) {
   return h('div', { html: svg });
 }
 
-function funnel(contacts) {
-  const counts = new Array(11).fill(0);
-  contacts.forEach((c) => { counts[c.rung || 0] += 1; });
-  const max = Math.max(1, ...counts);
+function outcomesChart(acts) {
+  const calls = acts.filter((a) => a.type === 'call');
   const box = h('div', { class: 'funnel' });
-  const rows = [{ r: 0, name: 'Not started' }, ...state.content.ladder.map((l) => ({ r: l.rung, name: l.name }))];
-  for (const row of rows) {
+  if (!calls.length) { box.append(h('p', { class: 'muted' }, 'Log some calls and your outcomes show here.')); return box; }
+  const counts = state.content.meta.outcomes.map((o) => ({ o, n: calls.filter((a) => a.outcome === o.id).length }));
+  const max = Math.max(1, ...counts.map((c) => c.n));
+  for (const { o, n } of counts) {
     box.append(h('div', { class: 'f-row' },
-      h('span', { class: 'f-label small' }, row.r ? `${row.r}. ${row.name}` : row.name),
-      h('div', { class: 'bar f' }, h('span', { style: { width: Math.max(counts[row.r] ? 4 : 0, (counts[row.r] / max) * 100) + '%' } })),
-      h('span', { class: 'f-n small' }, counts[row.r])));
+      h('span', { class: 'f-label small' }, o.label),
+      h('div', { class: 'bar f' }, h('span', { style: { width: Math.max(n ? 4 : 0, (n / max) * 100) + '%' } })),
+      h('span', { class: 'f-n small' }, n)));
   }
+  return box;
+}
+
+function skillsChart(acts) {
+  const convo = acts.filter((a) => a.type === 'call' && Array.isArray(a.skills) && a.skills.length);
+  const box = h('div', { class: 'funnel' });
+  if (!convo.length) { box.append(h('p', { class: 'muted' }, 'When you log a conversation, tick the skills you used. Your habits show here.')); return box; }
+  const counts = state.content.skills.map((sk) => ({ sk, n: convo.filter((a) => a.skills.includes(sk.id)).length }));
+  for (const { sk, n } of counts) {
+    box.append(h('div', { class: 'f-row' },
+      h('span', { class: 'f-label small' }, sk.title),
+      h('div', { class: 'bar f' }, h('span', { style: { width: Math.round((n / convo.length) * 100) + '%' } })),
+      h('span', { class: 'f-n small' }, `${Math.round((n / convo.length) * 100)}%`)));
+  }
+  box.append(h('p', { class: 'muted small' }, `Based on ${convo.length} logged ${convo.length === 1 ? 'conversation' : 'conversations'}. Lowest bar = the skill to practise this week.`));
   return box;
 }
 
 const pct = (a, b) => (b ? Math.round((a / b) * 100) + '%' : '—');
 
-function exportCsv(acts, cmap) {
-  const head = ['Date', 'Time', 'Contact', 'Company', 'Type', 'Outcome', 'Variant', 'Notes'];
-  const rows = [...acts].sort((a, b) => a.timestamp - b.timestamp).map((a) => {
-    const c = cmap.get(a.contactId) || {};
-    return [tsToYmd(a.timestamp), fmtTime(a.timestamp), c.name || '', c.company || '', TYPE_LABEL[a.type] || a.type, outcomeLabel(a.outcome), a.variant || '', (a.notes || '').replace(/\n/g, ' ')];
-  });
+function exportCsv(acts) {
+  const head = ['Date', 'Time', 'Who', 'Type', 'Outcome', 'Variant', 'Skills used', 'Notes'];
+  const rows = [...acts].sort((a, b) => a.timestamp - b.timestamp).map((a) => [
+    tsToYmd(a.timestamp), fmtTime(a.timestamp), a.who || '', TYPE_LABEL[a.type] || a.type, outcomeLabel(a.outcome), a.variant || '',
+    (a.skills || []).join(' '), (a.notes || '').replace(/\n/g, ' '),
+  ]);
   download(`outbound-activities-${today()}.csv`, [head, ...rows].map((r) => r.map(csvEscape).join(',')).join('\n'), 'text/csv');
 }
 
 export async function render(root) {
-  const [acts, contacts] = await Promise.all([db.all('activities'), db.all('contacts')]);
-  const cmap = new Map(contacts.map((c) => [c.id, c]));
+  const acts = await db.all('activities');
   const s = state.settings;
   const byDay = countsByDay(acts);
   const t0 = today();
 
   root.append(h('div', { class: 'page-head' }, h('h1', null, 'Tracker'),
-    h('button', { class: 'btn ghost sm', onclick: () => exportCsv(outreachOnly(acts).concat(acts.filter((a) => a.type === 'research')), cmap) }, icon('download', 16), 'CSV')));
+    h('button', { class: 'btn ghost sm', onclick: () => exportCsv(acts) }, icon('download', 16), 'CSV')));
 
-  if (!acts.length && !contacts.length) {
-    root.append(emptyState('Nothing to track yet', 'Add contacts and log your first touches — the heatmap and charts fill in as you work.', h('a', { class: 'btn', href: '#/pipeline/new' }, 'Add contact')));
+  if (!acts.length) {
+    root.append(emptyState('Nothing to track yet', 'Log your first touches from Today. The heatmap and charts fill in as you work.', h('a', { class: 'btn', href: '#/today' }, 'Go to Today')));
   }
 
   // Only count a planned day as "missed" once the rep has actually started using the app
-  const starts = [...contacts.map((c) => c.createdAt), ...acts.map((a) => a.timestamp)].filter(Boolean);
+  const starts = acts.map((a) => a.timestamp).filter(Boolean);
   const since = starts.length ? tsToYmd(Math.min(...starts)) : addDays(t0, 1);
 
   // call-day nudge
@@ -169,9 +178,8 @@ export async function render(root) {
     const items = (acts.filter((a) => tsToYmd(a.timestamp) === d)).sort((a, b) => a.timestamp - b.timestamp);
     if (!items.length) detail.append(h('p', { class: 'muted' }, d > t0 ? 'Nothing logged yet.' : 'No activity.'));
     items.forEach((a) => {
-      const c = cmap.get(a.contactId);
       detail.append(h('div', { class: 'tl-item' }, h('span', { class: 'muted small' }, fmtTime(a.timestamp)),
-        h('div', null, h('strong', null, TYPE_LABEL[a.type] || a.type), ' · ', outcomeLabel(a.outcome), c ? h('div', { class: 'muted small' }, `${c.name}${c.company ? ' · ' + c.company : ''}`) : null)));
+        h('div', null, h('strong', null, TYPE_LABEL[a.type] || a.type), ' · ', outcomeLabel(a.outcome), a.who ? h('div', { class: 'muted small' }, a.who) : null)));
     });
     void row;
   };
@@ -193,9 +201,11 @@ export async function render(root) {
     weeklyChart(byDay, days),
     h('div', { class: 'legend small' }, SERIES.map((x) => h('span', { class: 'lg-item' }, h('i', { class: 'lg', style: { background: x.color } }), x.label)))));
 
-  // funnel
-  root.append(sectionLabel('Pipeline funnel'));
-  root.append(h('div', { class: 'card' }, funnel(contacts.filter((c) => c.status !== 'closed'))));
+  // outcomes + skills
+  root.append(sectionLabel('Call outcomes'));
+  root.append(h('div', { class: 'card' }, outcomesChart(acts)));
+  root.append(sectionLabel('Skills you use'));
+  root.append(h('div', { class: 'card' }, skillsChart(acts)));
 
   // ratios
   const all = totalsFor(acts, acts.map((a) => tsToYmd(a.timestamp)));

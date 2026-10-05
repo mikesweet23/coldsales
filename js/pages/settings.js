@@ -2,7 +2,6 @@ import { db } from '../db.js';
 import { state, saveSettings, defaultSettings, APP_NAME } from '../state.js';
 import { h, download, today } from '../util.js';
 import { icon, selectEl, toast, confirmDialog, segmented } from '../ui.js';
-import { TYPE_LABEL } from '../cadence.js';
 import { sectionLabel } from '../components.js';
 
 const refresh = () => window.dispatchEvent(new Event('outbound:refresh'));
@@ -74,35 +73,10 @@ export async function render(root) {
   // Preferences
   root.append(sectionLabel('Preferences'));
   root.append(h('div', { class: 'card form' },
-    field('Default voice', selectEl([{ value: 'any', label: 'Any (show all)' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral').map((v) => ({ value: v.id, label: v.label }))], s.defaultVoice, async (v) => { await saveSettings({ defaultVoice: v }); saved(); }), 'Pre-selects the voice filter on the Scripts page after a restart.'),
+    field('Default style', selectEl([{ value: 'any', label: 'Any (show all)' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral').map((v) => ({ value: v.id, label: v.label }))], s.defaultVoice, async (v) => { await saveSettings({ defaultVoice: v }); saved(); }), 'Pre-selects the style filter on the Scripts page.'),
     h('div', { class: 'field' }, h('span', null, 'Theme'), segmented([{ value: 'dark', label: 'Dark' }, { value: 'light', label: 'Light' }], s.theme, async (v) => { await saveSettings({ theme: v }); refresh(); }))));
-  const wk = h('label', { class: 'switch' }, h('input', { type: 'checkbox', checked: s.skipWeekends ? true : null }), h('span', null, 'Skip weekends when scheduling tasks'));
-  wk.querySelector('input').addEventListener('change', async (e) => { await saveSettings({ skipWeekends: e.target.checked }); saved(); });
-  root.append(h('div', { class: 'card' }, wk));
-
-  // Cadence
-  root.append(sectionLabel('Cadence'), h('p', { class: 'muted small tight' }, 'Applies to contacts you add from now on.'));
-  const cadCard = h('div', { class: 'card' });
-  const drawCad = () => {
-    cadCard.textContent = '';
-    const steps = state.settings.cadence;
-    steps.forEach((st, i) => {
-      const day = h('input', { class: 'input day', type: 'number', inputmode: 'numeric', min: '1', max: '120', value: st.day, 'aria-label': 'Day' });
-      day.addEventListener('change', async () => { st.day = Math.max(1, parseInt(day.value, 10) || 1); await saveSettings({ cadence: [...steps].sort((a, b) => a.day - b.day) }); drawCad(); });
-      const type = selectEl(Object.entries(TYPE_LABEL).map(([v, l]) => ({ value: v, label: l })), st.type, async (v) => { st.type = v; await saveSettings({ cadence: [...steps] }); saved(); }, { 'aria-label': 'Type' });
-      const label = h('input', { class: 'input', value: st.label, 'aria-label': 'Label' });
-      label.addEventListener('change', async () => { st.label = label.value; await saveSettings({ cadence: [...steps] }); saved(); });
-      cadCard.append(h('div', { class: 'cad-edit' },
-        h('div', { class: 'row gap-s' }, h('span', { class: 'muted small' }, 'Day'), day, type,
-          h('button', { class: 'icon-btn', 'aria-label': 'Remove step', onclick: async () => { steps.splice(i, 1); await saveSettings({ cadence: steps }); drawCad(); } }, icon('trash', 18))),
-        label));
-    });
-    cadCard.append(h('div', { class: 'row gap wrap' },
-      h('button', { class: 'btn ghost sm', onclick: async () => { const last = steps[steps.length - 1]; await saveSettings({ cadence: [...steps, { day: last ? last.day + 7 : 1, type: 'email', label: 'New step', templateHint: '' }] }); drawCad(); } }, icon('plus', 16), 'Add step'),
-      h('button', { class: 'btn ghost sm', onclick: async () => { if (await confirmDialog('Reset the cadence to the default 21-day sequence?', 'Reset')) { await saveSettings({ cadence: defaultSettings(state.content).cadence }); drawCad(); toast('Cadence reset'); } } }, icon('refresh', 16), 'Reset to default')));
-  };
-  drawCad();
-  root.append(cadCard);
+  root.append(sectionLabel('Pipedrive'), h('div', { class: 'card form' },
+    field('Pipedrive link', textInput('pipedriveUrl', { type: 'url', inputmode: 'url', placeholder: 'https://yourcompany.pipedrive.com' }), 'The “Open Pipedrive” buttons use this.')));
 
   // Data
   root.append(sectionLabel('Data'), h('p', { class: 'muted small tight' }, 'Everything is stored on this device only. Export a backup now and then.'));
@@ -115,7 +89,7 @@ export async function render(root) {
       if (!(await confirmDialog('Importing replaces everything currently on this device. Continue?', 'Import', true))) return;
       await db.importAll(data);
       const st = await db.get('settings', 'main');
-      if (st) { state.settings = { ...defaultSettings(state.content), ...st, targets: { ...defaultSettings(state.content).targets, ...st.targets } }; }
+      if (st) { state.settings = { ...defaultSettings(), ...st, targets: { ...defaultSettings().targets, ...st.targets } }; }
       state.usage = new Map((await db.all('scriptUsage')).map((u) => [u.scriptId, u]));
       await saveSettings({});
       toast('Backup imported');
@@ -129,9 +103,9 @@ export async function render(root) {
     file,
     h('button', {
       class: 'btn ghost danger-text', onclick: async () => {
-        if (await confirmDialog('This deletes all contacts, tasks, history and settings from this device. It cannot be undone.', 'Delete everything', true)) {
+        if (await confirmDialog('This deletes all your logged activity, favourites and settings from this device (Pipedrive is not affected). It cannot be undone.', 'Delete everything', true)) {
           await db.clearAll();
-          state.settings = defaultSettings(state.content);
+          state.settings = defaultSettings();
           state.usage = new Map();
           await saveSettings({});
           toast('All data cleared');

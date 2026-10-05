@@ -4,16 +4,14 @@ import { icon, toast } from './ui.js';
 import * as today from './pages/today.js';
 import * as scripts from './pages/scripts.js';
 import * as callmode from './pages/callmode.js';
-import * as pipeline from './pages/pipeline.js';
 import * as tracker from './pages/tracker.js';
 import * as learn from './pages/learn.js';
 import * as settings from './pages/settings.js';
 
-const PAGES = { today, scripts, call: callmode, pipeline, tracker, learn, settings };
+const PAGES = { today, scripts, call: callmode, tracker, learn, settings };
 const TABS = [
   { id: 'today', label: 'Today', icon: 'today' },
   { id: 'scripts', label: 'Scripts', icon: 'scripts' },
-  { id: 'pipeline', label: 'Pipeline', icon: 'pipeline' },
   { id: 'tracker', label: 'Tracker', icon: 'tracker' },
   { id: 'learn', label: 'Learn', icon: 'learn' },
 ];
