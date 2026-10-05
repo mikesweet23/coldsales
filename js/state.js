@@ -11,7 +11,7 @@ export const state = {
   overrides: {}, // session-only placeholder fills, e.g. { day: 'Tuesday' }
 };
 
-export function defaultSettings(content) {
+export function defaultSettings() {
   return {
     key: 'main',
     repName: '', repPhone: '', repEmail: '', signature: '',
@@ -22,8 +22,7 @@ export function defaultSettings(content) {
     ],
     defaultVoice: 'any',
     theme: 'dark',
-    skipWeekends: true,
-    cadence: content.cadence.map((c) => ({ ...c })),
+    pipedriveUrl: 'https://app.pipedrive.com',
   };
 }
 
@@ -45,8 +44,8 @@ export async function loadState() {
   await db.init();
   const content = await loadContent();
   const saved = await db.get('settings', 'main');
-  state.settings = { ...defaultSettings(content), ...(saved || {}) };
-  state.settings.targets = { ...defaultSettings(content).targets, ...(saved && saved.targets) };
+  state.settings = { ...defaultSettings(), ...(saved || {}) };
+  state.settings.targets = { ...defaultSettings().targets, ...(saved && saved.targets) };
   if (!saved) await db.put('settings', state.settings);
   const usage = await db.all('scriptUsage');
   state.usage = new Map(usage.map((u) => [u.scriptId, u]));
@@ -66,20 +65,21 @@ export function applyTheme(theme) {
   if (meta) meta.setAttribute('content', theme === 'light' ? '#FFFFFF' : '#0B0B0C');
 }
 
-// ---- selected contact (for placeholders) ----
-export function selectedContactId() { return pref('contact') || ''; }
-export function selectContact(id) { pref('contact', id || null); }
+// ---- prospect being worked (not a CRM: Pipedrive holds the records) ----
+export function getProspect() {
+  try { return JSON.parse(pref('prospect') || '{}') || {}; } catch (e) { return {}; }
+}
+export function setProspect(p) { pref('prospect', JSON.stringify(p || {})); }
 
 // ---- placeholders ----
-export function placeholderCtx(contact) {
+export function placeholderCtx(prospect = getProspect()) {
   const s = state.settings;
   return {
-    Name: firstName(contact && contact.name),
+    Name: firstName(prospect.name),
     Rep: s.repName,
     Number: s.repPhone,
-    site: (contact && (contact.site || contact.company)) || '',
-    company: (contact && contact.company) || '',
-    sector: (contact && contact.sector) || '',
+    site: prospect.site || prospect.company || '',
+    company: prospect.company || '',
   };
 }
 

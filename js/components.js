@@ -1,7 +1,7 @@
 // Shared UI pieces: placeholder text, line cards, carousels
 import { h } from './util.js';
 import { icon, sheet, toast } from './ui.js';
-import { state, resolveToken, plainText } from './state.js';
+import { state, resolveToken, plainText, getProspect, setProspect } from './state.js';
 import { isFavourite, markUsed, toggleFavourite, usageOf, usedToday, pickRandom } from './shuffle.js';
 
 export function filled(text, ctx, onEdit) {
@@ -164,4 +164,30 @@ export function pageHeader(title, { back, right } = {}) {
 
 export function sectionLabel(text, right) {
   return h('div', { class: 'section-label' }, h('span', null, text), right || null);
+}
+
+// Who you're calling right now. Not a CRM — it just fills [Name] and [site]. Pipedrive holds the records.
+export function prospectCard(onChange) {
+  const p = getProspect();
+  const name = h('input', { class: 'input', placeholder: 'First name', value: p.name || '', autocomplete: 'off', 'aria-label': 'Prospect name' });
+  const site = h('input', { class: 'input', placeholder: 'Company / site', value: p.company || '', autocomplete: 'off', 'aria-label': 'Prospect company or site' });
+  const save = () => { setProspect({ name: name.value.trim(), company: site.value.trim() }); onChange && onChange(); };
+  name.addEventListener('change', save);
+  site.addEventListener('change', save);
+  return h('div', { class: 'prospect' },
+    h('div', { class: 'row between' }, h('span', { class: 'muted small' }, 'Who are you calling? Fills [Name] and [site].'),
+      (p.name || p.company) ? h('button', { class: 'link small plain', onclick: () => { setProspect({}); onChange && onChange(); } }, 'Clear') : null),
+    h('div', { class: 'grid2' }, name, site));
+}
+
+export function skillsPicker(selected = new Set()) {
+  const wrap = h('div', { class: 'skills-pick' });
+  for (const sk of state.content.skills) {
+    const btn = h('button', {
+      type: 'button', class: 'chip' + (selected.has(sk.id) ? ' on' : ''), 'aria-pressed': String(selected.has(sk.id)),
+      onclick: () => { if (selected.has(sk.id)) selected.delete(sk.id); else selected.add(sk.id); btn.classList.toggle('on'); btn.setAttribute('aria-pressed', String(selected.has(sk.id))); },
+    }, sk.title.replace('Call out the elephant', 'Elephant').replace('Micro-contracting', 'Micro-contract').replace('Name the feeling', 'Label').replace('Curiosity over pitching', 'Curiosity').replace('Permission to say no', 'Safe “no”'));
+    wrap.append(btn);
+  }
+  return wrap;
 }

@@ -1,6 +1,6 @@
 // Outbound service worker — cache-first app shell, fully offline.
 // Bump CACHE when shipping changes so reps get the "New version available" toast.
-const CACHE = 'outbound-v1';
+const CACHE = 'outbound-v2';
 const SHELL = [
   './',
   './index.html',
@@ -12,15 +12,14 @@ const SHELL = [
   './js/util.js',
   './js/ui.js',
   './js/state.js',
-  './js/cadence.js',
+  './js/activity.js',
+  './js/logsheet.js',
   './js/shuffle.js',
   './js/stats.js',
   './js/components.js',
-  './js/taskui.js',
   './js/pages/today.js',
   './js/pages/scripts.js',
   './js/pages/callmode.js',
-  './js/pages/pipeline.js',
   './js/pages/tracker.js',
   './js/pages/learn.js',
   './js/pages/settings.js',
