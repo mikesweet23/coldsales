@@ -32,7 +32,7 @@ function filterBar() {
   const mk = (key, all, opts) => selectEl([{ value: '', label: all }, ...opts], f[key], (v) => { f[key] = v; refresh(); }, { 'aria-label': all });
   return h('div', { class: 'filters three' },
     mk('persona', 'Persona', m.personas.map((p) => ({ value: p.id, label: p.label }))),
-    mk('voice', 'Voice', m.voices.map((v) => ({ value: v.id, label: v.label }))),
+    mk('voice', 'Style', m.voices.map((v) => ({ value: v.id, label: v.label }))),
     mk('theme', 'Service', m.themes.map((t) => ({ value: t.id, label: t.label }))));
 }
 
@@ -93,7 +93,7 @@ function callPage(root, ctx, warm) {
     const cat = st.reuse || (warm ? 'warm_call' : 'cold_call');
     const items = filterItems(state.content.byCategory(cat, st.id), f);
     root.append(h('div', { class: 'stage' },
-      h('div', { class: 'stage-head' }, h('span', { class: 'stage-num' }, i + 1), h('div', null, h('h3', null, st.label), h('p', { class: 'muted small' }, st.hint))),
+      h('div', { class: 'stage-head' }, h('span', { class: 'stage-num' }, i + 1), h('div', null, h('h3', null, st.label), h('p', { class: 'muted small' }, st.hint), st.delivery ? h('p', { class: 'delivery' }, st.delivery) : null)),
       carousel({ key: `${warm ? 'w' : 'c'}:${st.id}`, items, ctx, onUsed: (id) => sessionUsed.add(id) })));
   });
   if (!warm) root.append(h('p', { class: 'muted small center' }, 'Gatekeeper, brush-off and voicemail lines have their own tabs above.'));
@@ -124,7 +124,6 @@ function linkedinPage(root, ctx, query) {
     root.append(sectionLabel('Principles'), h('div', { class: 'card' }, h('ul', { class: 'bullets' }, li.principles.map((p) => h('li', null, p)))));
     root.append(sectionLabel('A simple week'), h('div', { class: 'card list' }, li.weekly.map((w) => h('div', { class: 'cad-row' }, h('span', { class: 'cad-day' }, w.day), h('span', null, w.text)))));
     root.append(sectionLabel('Avoid'), h('div', { class: 'card warn-card' }, h('ul', { class: 'bullets' }, li.mistakes.map((m) => h('li', null, m)))));
-    root.append(h('p', { class: 'muted small' }, li.influence));
   } else if (sec === 'profile') {
     root.append(h('p', { class: 'lead' }, li.profile.intro));
     root.append(sectionLabel('Headline: who you help + what you do'));
@@ -166,10 +165,14 @@ function linkedinPage(root, ctx, query) {
 
 function brushoffPage(root, ctx) {
   const f = initFilters();
-  root.append(h('p', { class: 'muted' }, 'Respond, don’t fight. Label it, ask a question, make “no” safe.'));
+  const loop = state.content.tonality.objectionLoop;
+  root.append(h('div', { class: 'card accent' }, h('strong', null, 'The objection loop'), h('p', { class: 'small' }, loop.intro), h('ol', { class: 'recipe small' }, loop.steps.map((x) => h('li', null, x))),
+    h('a', { class: 'link small', href: '#/learn/tonality' }, 'Tonality and pacing guide')));
+  root.append(h('p', { class: 'muted small' }, `${state.content.brushoffs.length} common brush-offs. Respond, don’t fight. Label it, ask a question, make “no” safe.`));
   for (const b of state.content.brushoffs) {
     const resp = filterItems(b.responses.map((r) => ({ ...r, personas: [], themes: [] })), f);
     root.append(h('div', { class: 'objection' }, h('span', { class: 'quote-mark' }, '“'), b.objection, h('span', { class: 'quote-mark' }, '”')));
+    if (b.delivery) root.append(h('p', { class: 'delivery' }, b.delivery));
     for (const r of resp) root.append(lineCard(r, ctx, { onUsed: (id) => sessionUsed.add(id) }));
   }
   simpleSection(root, ctx, { title: 'Recover the call', hint: 'When it’s going wrong, say so and reset.', cat: 'recovery', stage: 'recovery', key: 'rc' });

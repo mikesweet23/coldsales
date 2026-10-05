@@ -1,7 +1,154 @@
 {
- "version": 2,
+ "version": 3,
+ "tonality": {
+  "intro": "How you say it matters as much as what you say. The goal of every call is to get the prospect to say the problem out loud, in their own words. Tone and pace make that feel safe.",
+  "tones": [
+   {
+    "name": "Curious",
+    "when": "Situation, problem and solution questions",
+    "how": "Relaxed, a little slower than normal, a gentle downward tone at the end. Sound like you honestly want the answer, not like you are reading a form.",
+    "example": "“How’s that working out for you?”"
+   },
+   {
+    "name": "Warm and reasonable",
+    "when": "Openers, micro-agreements, “fair enough”",
+    "how": "Smile as you speak. Steady pace. Land softly on “fair?” or “OK?” so it sounds like a reasonable person asking a reasonable thing.",
+    "example": "“Can I take 30 seconds, and you tell me if it’s not relevant? Fair enough?”"
+   },
+   {
+    "name": "Certain",
+    "when": "Saying who you are, confirming a next step",
+    "how": "Down-inflect at the end of statements. No up-tick, no “um”, no apology. Certainty is what makes you easy to trust.",
+    "example": "“It’s Sam from the projects team.”"
+   },
+   {
+    "name": "Concerned",
+    "when": "Consequence questions and labels",
+    "how": "Lower in pitch, slower, a little quieter. Sound sincerely interested in what the problem does to them.",
+    "example": "“What did that end up costing you?”"
+   },
+   {
+    "name": "Matter-of-fact, no pressure",
+    "when": "Permission to say no, closes, brush-offs",
+    "how": "Flat, unbothered and in no hurry. You have no attachment to the answer, so either answer is fine.",
+    "example": "“If it’s not for you, just say so and I’ll leave you alone.”"
+   },
+   {
+    "name": "Upbeat",
+    "when": "Greeting, thank-yous, wrapping up",
+    "how": "A little brighter and slightly quicker, then settle back down. Never stay high through the questions.",
+    "example": "“Brilliant, thanks for your time.”"
+   }
+  ],
+  "pacing": [
+   "Slow down on the first sentence. Most people rush the opener, and rushing sounds like a script.",
+   "After every question, count two to three seconds in your head. Silence is not your enemy.",
+   "Slow down and drop your voice on the important words: the problem, the cost, the consequence.",
+   "Go a little quicker on throwaway words (“it’s [Rep]”) and slower on the ask.",
+   "Match their pace first. If they’re brisk, be crisp. If they’re slow, don’t rush them.",
+   "End statements with a downward tone. A rising tone turns a statement into a question and signals doubt.",
+   "After “fair enough?” or “sound fair?”, stop talking and let them answer.",
+   "Swap “um”, “just” and “sort of” for a pause. Pauses sound confident; fillers sound unsure.",
+   "Stand up and smile when you dial. Your voice changes, and so does your confidence."
+  ],
+  "microAgreements": {
+   "intro": "A micro-agreement is a tiny, easy “yes” that keeps the prospect in control and builds momentum. Get three small yeses before you ask for anything bigger.",
+   "lines": [
+    "Fair enough?",
+    "Sound fair?",
+    "Does that make sense?",
+    "Is that OK?",
+    "Is that about right?",
+    "Am I on the right track?",
+    "Would that be alright?",
+    "Is it fair to say…?"
+   ],
+   "sequence": [
+    "“I’ll be honest, this is a cold call. Is it OK if I tell you why I rang?” (yes)",
+    "“I’m guessing you get a lot of these. Is that fair?” (yes)",
+    "“If it’s not relevant, you tell me and I’ll go. Sound fair?” (yes)",
+    "“Then can I ask two quick questions?”"
+   ]
+  },
+  "stageMap": [
+   {
+    "stage": "Opener",
+    "tone": "Warm, matter-of-fact",
+    "pace": "Slow"
+   },
+   {
+    "stage": "Micro-contract",
+    "tone": "Reasonable",
+    "pace": "Easy, then stop"
+   },
+   {
+    "stage": "Reason for the call",
+    "tone": "Matter-of-fact",
+    "pace": "Slow on the three problems"
+   },
+   {
+    "stage": "Situation",
+    "tone": "Curious",
+    "pace": "Relaxed, pause after"
+   },
+   {
+    "stage": "Problem",
+    "tone": "Curious, lower",
+    "pace": "Slower, soft downward tone"
+   },
+   {
+    "stage": "Consequence",
+    "tone": "Concerned",
+    "pace": "Slowest, let silence work"
+   },
+   {
+    "stage": "Solution",
+    "tone": "Warm, brighter",
+    "pace": "Moderate"
+   },
+   {
+    "stage": "Decision & timing",
+    "tone": "Calm, routine",
+    "pace": "Moderate"
+   },
+   {
+    "stage": "Close",
+    "tone": "Certain, relaxed about “no”",
+    "pace": "Slow, down-inflect"
+   },
+   {
+    "stage": "Brush-off",
+    "tone": "Warm, unbothered",
+    "pace": "Slow down, then ask"
+   }
+  ],
+  "objectionLoop": {
+   "intro": "Never argue with a brush-off. Loop back to the problem, up to three times, and change the angle each time.",
+   "steps": [
+    "Agree: “Fair enough.” “That makes sense.” “No problem.”",
+    "Label: “Sounds like it’s full on.” “Sounds like you’re happy with them.”",
+    "Ask one calm question that gets them to say the problem: “If there was one thing you could change, what would it be?”",
+    "Check, with permission to say no: “Is that right?” “Sound fair?”",
+    "If they still push back, loop with a different angle. After three, thank them and go."
+   ]
+  },
+  "drills": [
+   "Say the same opener three ways: rushed, warm and slow, and flat. Record yourself and pick the one you’d answer.",
+   "Read five situation questions aloud with a three-second pause after each. Count it out.",
+   "Take a brush-off, reply with “fair enough” plus a label, then stop talking for three seconds.",
+   "Say a statement, then the same words as a question. Notice the pitch. Aim for statements to fall.",
+   "Run a two-minute call where you may only ask questions and say “fair enough”."
+  ],
+  "mistakes": [
+   "Rising tone on statements, so everything sounds like a question.",
+   "Rushing the opener and the reason for the call.",
+   "Filling the silence after a question.",
+   "Sounding sarcastic when you label (“sounds like you’re happy with them…”). Mean it, or don’t say it.",
+   "The same tone for every stage. Match the tone to the stage.",
+   "Reading the line instead of saying it. Know it, then say it in your own voice."
+  ]
+ },
  "linkedin": {
-  "influence": "Influenced by the social-selling advice of Daniel Disney (The Daily Sales). Paraphrased, not quoted — the aim is genuine networking, not company-post sharing.",
   "principles": [
    "Treat LinkedIn like a networking event, not a cold-call list. You’re meeting people, not harvesting them.",
    "Make connection notes and messages about them — something of value to the prospect, not a pitch about you.",
@@ -222,16 +369,16 @@
   ],
   "voices": [
    {
-    "id": "dennehy",
-    "label": "Dennehy"
+    "id": "direct",
+    "label": "Direct"
    },
    {
-    "id": "nepq",
-    "label": "NEPQ"
+    "id": "curious",
+    "label": "Curious"
    },
    {
-    "id": "sandler",
-    "label": "Sandler"
+    "id": "structured",
+    "label": "Structured"
    },
    {
     "id": "neutral",
@@ -274,55 +421,71 @@
    "id": "opener",
    "label": "Opener",
    "skill": "elephant",
-   "hint": "Call out the elephant — say the obvious thing out loud."
+   "hint": "Call out the elephant — say the obvious thing out loud.",
+   "delivery": "Warm and unhurried. Smile, slow down, land the last word downward."
   },
   {
    "id": "contract",
    "label": "Micro-contract",
    "skill": "contract",
-   "hint": "Get a small “yes” before you carry on."
+   "hint": "Get a small “yes” before you carry on.",
+   "delivery": "Easy and reasonable. Ask, then stop and let them answer."
   },
   {
    "id": "reason",
    "label": "Reason for the call",
    "skill": "permission",
-   "hint": "Short, no pitch. Make “no” a safe answer."
+   "hint": "Short, no pitch. Make “no” a safe answer.",
+   "delivery": "Matter-of-fact, no pitch. Slow on the three problems; pause before the last line."
   },
   {
    "id": "situation",
    "label": "Situation questions",
    "skill": "curiosity",
-   "hint": "Ask, then stop talking."
+   "hint": "Ask, then stop talking.",
+   "delivery": "Curious and relaxed. Ask, pause two to three seconds, no filler."
   },
   {
    "id": "problem",
    "label": "Problem awareness",
    "skill": "curiosity",
-   "hint": "Let them say what is not working."
+   "hint": "Let them say what is not working.",
+   "delivery": "Lower and slower. Soft downward tone. Let the silence do the work."
   },
   {
    "id": "consequence",
    "label": "Consequence",
    "skill": "curiosity",
-   "hint": "Go one level deeper than feels comfortable."
+   "hint": "Go one level deeper than feels comfortable.",
+   "delivery": "Concerned and sincere. Slow down on the cost. Don’t rescue them from the pause."
   },
   {
    "id": "label",
    "label": "Name the feeling",
    "skill": "label",
-   "hint": "Use any time they sound sceptical, rushed or fed up."
+   "hint": "Use any time they sound sceptical, rushed or fed up.",
+   "delivery": "Gentle and empathic. Downward tone, then stop talking."
   },
   {
    "id": "solution",
    "label": "Solution awareness",
    "skill": "curiosity",
-   "hint": "Let them describe what “fixed” looks like."
+   "hint": "Let them describe what “fixed” looks like.",
+   "delivery": "Warm and forward-looking, slightly brighter. Let them paint the picture."
+  },
+  {
+   "id": "qualify",
+   "label": "Decision & timing",
+   "skill": "curiosity",
+   "hint": "Who, how and when. Find out before you ask for the meeting.",
+   "delivery": "Calm and routine, like checking the diary. No pressure in your voice."
   },
   {
    "id": "close",
    "label": "Close for the meeting",
    "skill": "permission",
-   "hint": "Ask for the meeting. “No” is OK."
+   "hint": "Ask for the meeting. “No” is OK.",
+   "delivery": "Steady and certain, but relaxed about “no”. Down-inflect on the ask."
   }
  ],
  "warmStages": [
@@ -330,47 +493,62 @@
    "id": "opener",
    "label": "Warm opener",
    "skill": "elephant",
-   "hint": "Reference the previous touch."
+   "hint": "Reference the previous touch.",
+   "delivery": "Warm and unhurried. Smile, slow down, land the last word downward."
   },
   {
    "id": "bridge",
    "label": "Bridge",
    "skill": "contract",
-   "hint": "Re-open the thread and agree it is OK to continue."
+   "hint": "Re-open the thread and agree it is OK to continue.",
+   "delivery": "Friendly and familiar, like picking up a conversation."
   },
   {
    "id": "situation",
    "label": "Deepen: situation",
    "skill": "curiosity",
    "hint": "Reuse Stage 4 questions.",
-   "reuse": "cold_call"
+   "reuse": "cold_call",
+   "delivery": "Curious and relaxed. Ask, pause two to three seconds, no filler."
   },
   {
    "id": "problem",
    "label": "Deepen: problem",
    "skill": "curiosity",
    "hint": "Reuse Stage 5 questions.",
-   "reuse": "cold_call"
+   "reuse": "cold_call",
+   "delivery": "Lower and slower. Soft downward tone. Let the silence do the work."
   },
   {
    "id": "consequence",
    "label": "Deepen: consequence",
    "skill": "curiosity",
    "hint": "Reuse Stage 6 questions.",
-   "reuse": "cold_call"
+   "reuse": "cold_call",
+   "delivery": "Concerned and sincere. Slow down on the cost. Don’t rescue them from the pause."
   },
   {
    "id": "solution",
    "label": "Deepen: solution",
    "skill": "curiosity",
    "hint": "Reuse the solution-awareness questions.",
-   "reuse": "cold_call"
+   "reuse": "cold_call",
+   "delivery": "Warm and forward-looking, slightly brighter. Let them paint the picture."
+  },
+  {
+   "id": "qualify",
+   "label": "Deepen: decision & timing",
+   "skill": "curiosity",
+   "hint": "Reuse the decision and timing questions.",
+   "reuse": "cold_call",
+   "delivery": "Calm and routine, like checking the diary. No pressure in your voice."
   },
   {
    "id": "close",
    "label": "Close",
    "skill": "permission",
-   "hint": "Ask for the meeting."
+   "hint": "Ask for the meeting.",
+   "delivery": "Steady and certain, but relaxed about “no”. Down-inflect on the ask."
   }
  ],
  "scripts": [
@@ -378,7 +556,7 @@
    "id": "cc-op-01",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep] — I’ll be honest, this is a cold call. Do you want to hang up now, or give me 30 seconds?"
@@ -387,7 +565,7 @@
    "id": "cc-op-02",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], [Rep] here. We’ve never spoken before, so I know this is out of the blue — have I caught you at a terrible time?"
@@ -396,7 +574,7 @@
    "id": "cc-op-03",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], this is [Rep]. You don’t know me, and I’m interrupting your day — can I tell you why I called and then you can decide if we carry on?"
@@ -405,7 +583,7 @@
    "id": "cc-op-04",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep]. This is a sales call — I’ll be quick and you can tell me to get lost if it’s not relevant. Fair?"
@@ -414,7 +592,7 @@
    "id": "cc-op-05",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], [Rep] calling. I’m guessing you weren’t sitting there hoping a contractor would ring today?"
@@ -432,7 +610,7 @@
    "id": "cc-op-07",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep]. Totally out of the blue — you’re welcome to tell me it’s a rubbish time."
@@ -441,7 +619,7 @@
    "id": "cc-op-08",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep]. I’m going to be upfront: you’ve never heard of me and I’ve got a reason for calling. Can I have 20 seconds to explain?"
@@ -450,7 +628,7 @@
    "id": "cc-mc-01",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Can I take 30 seconds to tell you why I called, and if it’s not relevant you just tell me?"
@@ -459,7 +637,7 @@
    "id": "cc-mc-02",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Here’s what I’d suggest — I’ll ask you a couple of quick questions, and if there’s nothing there, we both get on with our day. OK?"
@@ -468,7 +646,7 @@
    "id": "cc-mc-03",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "If at any point this sounds like a waste of time, just say so — deal?"
@@ -477,7 +655,7 @@
    "id": "cc-mc-04",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Would it be OK if I asked a couple of questions to see whether there’s any point us talking?"
@@ -486,7 +664,7 @@
    "id": "cc-mc-05",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Give me a minute, and if I haven’t said anything useful, you can hang up. Sound fair?"
@@ -495,7 +673,7 @@
    "id": "cc-mc-06",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "I’ll keep it short. If it’s a yes, we’ll talk next steps; if it’s a no, that’s completely fine. Is that OK?"
@@ -517,7 +695,7 @@
    "id": "cc-rs-02",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager"
@@ -529,7 +707,7 @@
    "id": "cc-rs-03",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Most people I call are either happy with their current setup or have one or two things that keep them up at night. I’m not sure which camp you’re in."
@@ -538,7 +716,7 @@
    "id": "cc-rs-04",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "hvac_services",
@@ -563,7 +741,7 @@
    "id": "cc-rs-06",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director",
@@ -578,7 +756,7 @@
    "id": "cc-sq-01",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -591,7 +769,7 @@
    "id": "cc-sq-02",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "hvac_services"
@@ -602,7 +780,7 @@
    "id": "cc-sq-03",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -617,7 +795,7 @@
    "id": "cc-sq-04",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -630,7 +808,7 @@
    "id": "cc-sq-05",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager"
@@ -644,7 +822,7 @@
    "id": "cc-sq-06",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director",
@@ -672,7 +850,7 @@
    "id": "cc-sq-08",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "hs",
     "facilities",
@@ -687,7 +865,7 @@
    "id": "cc-pb-01",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "How’s that working out for you?"
@@ -696,7 +874,7 @@
    "id": "cc-pb-02",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Is there anything about the current setup that frustrates you?"
@@ -705,7 +883,7 @@
    "id": "cc-pb-03",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "If you could change one thing about how the plant’s looked after, what would it be?"
@@ -714,7 +892,7 @@
    "id": "cc-pb-04",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -727,7 +905,7 @@
    "id": "cc-pb-05",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Is there anything you know needs doing but keeps getting pushed back?"
@@ -736,7 +914,7 @@
    "id": "cc-pb-06",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -751,7 +929,7 @@
    "id": "cc-pb-07",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -767,7 +945,7 @@
    "id": "cc-cq-01",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What happens if that doesn’t get sorted?"
@@ -776,7 +954,7 @@
    "id": "cc-cq-02",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "eng_director",
     "ops_director",
@@ -789,7 +967,7 @@
    "id": "cc-cq-03",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "How long has that been an issue?"
@@ -798,7 +976,7 @@
    "id": "cc-cq-04",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "What have you tried so far?"
@@ -807,7 +985,7 @@
    "id": "cc-cq-05",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Who else feels the pain when that goes wrong?"
@@ -816,7 +994,7 @@
    "id": "cc-cq-06",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "How does that affect you personally?"
@@ -825,7 +1003,7 @@
    "id": "cc-cq-07",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "On a scale of 1 to 10, how much of a priority is fixing it?"
@@ -834,7 +1012,7 @@
    "id": "cc-cq-08",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "If nothing changes over the next 12 months, where does that leave you?"
@@ -861,7 +1039,7 @@
    "id": "cc-lb-03",
    "category": "cold_call",
    "stage": "label",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "It sounds like that’s been a real thorn in your side."
@@ -870,7 +1048,7 @@
    "id": "cc-lb-04",
    "category": "cold_call",
    "stage": "label",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "facilities"
@@ -882,7 +1060,7 @@
    "id": "cc-lb-05",
    "category": "cold_call",
    "stage": "label",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Sounds like you’ve got more on your plate than you’ve got people."
@@ -900,7 +1078,7 @@
    "id": "cc-lb-07",
    "category": "cold_call",
    "stage": "label",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "It sounds like you’ve heard this pitch a few times and it’s never gone anywhere."
@@ -909,7 +1087,7 @@
    "id": "cc-cl-01",
    "category": "cold_call",
    "stage": "close",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Would it be worth 15 minutes next week to see if there’s a fit — or is that a waste of your time?"
@@ -918,7 +1096,7 @@
    "id": "cc-cl-02",
    "category": "cold_call",
    "stage": "close",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Would it make sense to get together so I can understand your setup properly? If there’s nothing there, I’ll tell you."
@@ -940,7 +1118,7 @@
    "id": "cc-cl-04",
    "category": "cold_call",
    "stage": "close",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Shall we put 20 minutes in the diary, and if it’s not for you, you tell me no and that’s fine?"
@@ -949,7 +1127,7 @@
    "id": "cc-cl-05",
    "category": "cold_call",
    "stage": "close",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What would need to be true for it to be worth you meeting us?"
@@ -958,7 +1136,7 @@
    "id": "cc-cl-06",
    "category": "cold_call",
    "stage": "close",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Does it sound like something you’d want to look into, or is it not a priority right now?"
@@ -994,7 +1172,7 @@
    "id": "wc-op-04",
    "category": "warm_call",
    "stage": "opener",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], [Rep]. We spoke briefly back in [month] and you said to call around now. Is now still OK?"
@@ -1003,7 +1181,7 @@
    "id": "wc-op-05",
    "category": "warm_call",
    "stage": "opener",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep]. I saw your post about [topic] — it got me thinking, can I ask you something about it?"
@@ -1012,7 +1190,7 @@
    "id": "wc-op-06",
    "category": "warm_call",
    "stage": "opener",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep] — I left you a voicemail on [day]. I’ll keep this short; is it a bad time?"
@@ -1021,7 +1199,7 @@
    "id": "wc-br-01",
    "category": "warm_call",
    "stage": "bridge",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Last time you mentioned [issue] — has anything changed since?"
@@ -1030,7 +1208,7 @@
    "id": "wc-br-02",
    "category": "warm_call",
    "stage": "bridge",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "I promised I’d come back to you when [trigger]. Is now a good moment, or shall I try another day?"
@@ -1039,7 +1217,7 @@
    "id": "wc-br-03",
    "category": "warm_call",
    "stage": "bridge",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Can I check — is [issue] still on your list, or has it been sorted?"
@@ -1048,7 +1226,7 @@
    "id": "wc-br-04",
    "category": "warm_call",
    "stage": "bridge",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "When we last spoke you were weighing up [decision]. Where did you land?"
@@ -1057,7 +1235,7 @@
    "id": "wc-br-05",
    "category": "warm_call",
    "stage": "bridge",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "I’ll be honest, I wasn’t sure whether you’d want me to call back. Is it worth carrying on, or shall I leave it there?"
@@ -1066,7 +1244,7 @@
    "id": "wc-br-06",
    "category": "warm_call",
    "stage": "bridge",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Before I say anything — has your situation with [issue] moved at all since we last talked?"
@@ -1075,7 +1253,7 @@
    "id": "wc-cl-01",
    "category": "warm_call",
    "stage": "close",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Last time it sounded like [issue] was costing you. Worth getting together to look at it properly?"
@@ -1093,7 +1271,7 @@
    "id": "wc-cl-03",
    "category": "warm_call",
    "stage": "close",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Based on what you’ve told me, I think a short site visit would settle it one way or the other. Would that be worth your time?"
@@ -1102,7 +1280,7 @@
    "id": "wc-cl-04",
    "category": "warm_call",
    "stage": "close",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Shall we get something in the diary for [day]? If it turns out there’s nothing in it, you can tell me and that’s that."
@@ -1111,7 +1289,7 @@
    "id": "wc-cl-05",
    "category": "warm_call",
    "stage": "close",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What would be the sensible next step from your side?"
@@ -1129,7 +1307,7 @@
    "id": "vm-01",
    "category": "voicemail",
    "stage": "voicemail",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep] — cold call, I’ll be honest. I’ll drop you a short email; if it’s relevant, great, if not, no problem. [Number]."
@@ -1150,7 +1328,7 @@
    "id": "vm-03",
    "category": "voicemail",
    "stage": "voicemail",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], [Rep] here. You don’t know me — I’ll send a two-line email so you can decide if it’s worth a chat."
@@ -1159,7 +1337,7 @@
    "id": "vm-04",
    "category": "voicemail",
    "stage": "voicemail",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -1172,7 +1350,7 @@
    "id": "vm-05",
    "category": "voicemail",
    "stage": "voicemail",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], [Rep] calling. We’ve not spoken, and I know you’ve got a full day. Email’s on its way — if it’s not for you, just ignore it. [Number]."
@@ -1208,7 +1386,7 @@
    "id": "li-cn-03",
    "category": "li_connect",
    "stage": "connect",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name] — saw your post on [topic], really interesting. Would be great to connect."
@@ -1217,7 +1395,7 @@
    "id": "li-cn-04",
    "category": "li_connect",
    "stage": "connect",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "facilities",
     "eng_manager",
@@ -1230,7 +1408,7 @@
    "id": "li-cn-05",
    "category": "li_connect",
    "stage": "connect",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name] — no pitch, just building my network of people who keep manufacturing sites running. Would be good to have you in it."
@@ -1248,7 +1426,7 @@
    "id": "li-ms-01",
    "category": "li_message",
    "stage": "message",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting [Name]. Out of interest, what’s the biggest headache on the engineering side at the moment?"
@@ -1257,7 +1435,7 @@
    "id": "li-ms-02",
    "category": "li_message",
    "stage": "message",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting. No pitch — if plant or energy ever becomes a priority, happy to be a sounding board."
@@ -1266,7 +1444,7 @@
    "id": "li-ms-03",
    "category": "li_message",
    "stage": "message",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -1279,7 +1457,7 @@
    "id": "li-ms-04",
    "category": "li_message",
    "stage": "message",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting. Quick question, no pitch: who looks after plant decisions at [site] — you, or someone else I should be talking to?"
@@ -1303,7 +1481,7 @@
    "id": "li-ms-06",
    "category": "li_message",
    "stage": "message",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting. I’ll be straight: I work in HVAC, and I’m not going to spam you. If you ever want a second opinion on plant, just shout."
@@ -1312,7 +1490,7 @@
    "id": "cc-rs3-01",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "eng_director"
    ],
@@ -1327,7 +1505,7 @@
    "id": "cc-rs3-02",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "eng_director"
    ],
@@ -1342,7 +1520,7 @@
    "id": "cc-rs3-03",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director"
    ],
@@ -1356,7 +1534,7 @@
    "id": "cc-rs3-04",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "eng_director"
    ],
@@ -1370,7 +1548,7 @@
    "id": "cc-rs3-05",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager"
    ],
@@ -1384,7 +1562,7 @@
    "id": "cc-rs3-06",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "eng_manager"
    ],
@@ -1398,7 +1576,7 @@
    "id": "cc-rs3-07",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "eng_manager"
    ],
@@ -1412,7 +1590,7 @@
    "id": "cc-rs3-08",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager"
    ],
@@ -1426,7 +1604,7 @@
    "id": "cc-rs3-09",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "facilities"
    ],
@@ -1440,7 +1618,7 @@
    "id": "cc-rs3-10",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "facilities"
    ],
@@ -1454,7 +1632,7 @@
    "id": "cc-rs3-11",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "facilities"
    ],
@@ -1468,7 +1646,7 @@
    "id": "cc-rs3-12",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "facilities"
    ],
@@ -1482,7 +1660,7 @@
    "id": "cc-rs3-13",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "ops_director"
    ],
@@ -1496,7 +1674,7 @@
    "id": "cc-rs3-14",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "ops_director"
    ],
@@ -1510,7 +1688,7 @@
    "id": "cc-rs3-15",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "ops_director"
    ],
@@ -1524,7 +1702,7 @@
    "id": "cc-rs3-16",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "ops_director"
    ],
@@ -1538,7 +1716,7 @@
    "id": "cc-rs3-17",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "procurement"
    ],
@@ -1552,7 +1730,7 @@
    "id": "cc-rs3-18",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "procurement"
    ],
@@ -1566,7 +1744,7 @@
    "id": "cc-rs3-19",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "project"
    ],
@@ -1580,7 +1758,7 @@
    "id": "cc-rs3-20",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "project"
    ],
@@ -1594,7 +1772,7 @@
    "id": "cc-rs3-21",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "energy"
    ],
@@ -1608,7 +1786,7 @@
    "id": "cc-rs3-22",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "energy"
    ],
@@ -1622,7 +1800,7 @@
    "id": "cc-rs3-23",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy"
    ],
@@ -1636,7 +1814,7 @@
    "id": "cc-rs3-24",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "energy"
    ],
@@ -1650,7 +1828,7 @@
    "id": "cc-rs3-25",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "hs"
    ],
@@ -1664,7 +1842,7 @@
    "id": "cc-rs3-26",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "hs"
    ],
@@ -1678,7 +1856,7 @@
    "id": "cc-rs3-27",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [
     "hs"
    ],
@@ -1692,7 +1870,7 @@
    "id": "cc-rs3-28",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "hs"
    ],
@@ -1706,7 +1884,7 @@
    "id": "cc-rs3-29",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "I normally speak to people in your position who tell me one of three things: a project they can’t get a shutdown for, plant that’s too old to rely on, or energy costs they can’t explain. But I bet you’re going to tell me none of that’s a problem for you?"
@@ -1715,7 +1893,7 @@
    "id": "cc-rs3-30",
    "category": "cold_call",
    "stage": "reason",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Most people I call tell me it’s one of three things: the work has to happen while the site’s live, the budget’s been squeezed, or head office wants net zero with no plan. I’m guessing none of that’s you?"
@@ -1724,7 +1902,7 @@
    "id": "cc-op2-01",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep]. I’ll be upfront — I’m a cold caller and I work on HVAC projects. One question and then you can tell me to go away. OK?"
@@ -1733,7 +1911,7 @@
    "id": "cc-op2-02",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], [Rep] here. I’m not going to pretend this isn’t a sales call. Have you got 20 seconds for me to say why I rang?"
@@ -1742,7 +1920,7 @@
    "id": "cc-op2-03",
    "category": "cold_call",
    "stage": "opener",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], it’s [Rep]. This is a cold call — one question for you and then I’ll let you get back to your day. OK?"
@@ -1751,7 +1929,7 @@
    "id": "cc-mc2-01",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Can I ask you two questions? If the answers show there’s no point us talking, I’ll say so and let you go."
@@ -1760,7 +1938,7 @@
    "id": "cc-mc2-02",
    "category": "cold_call",
    "stage": "contract",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "I’ll tell you who I am in one sentence and you tell me if it’s worth another minute. Fair?"
@@ -1769,7 +1947,7 @@
    "id": "cc-sq2-01",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "project",
     "eng_director",
@@ -1784,7 +1962,7 @@
    "id": "cc-sq2-02",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "project",
@@ -1801,7 +1979,7 @@
    "id": "cc-sq2-03",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "hs",
     "eng_manager",
@@ -1817,7 +1995,7 @@
    "id": "cc-sq2-04",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "procurement",
     "project",
@@ -1832,7 +2010,7 @@
    "id": "cc-sq2-05",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "facilities",
@@ -1848,7 +2026,7 @@
    "id": "cc-sq2-06",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "facilities",
     "eng_manager",
@@ -1863,7 +2041,7 @@
    "id": "cc-sq2-07",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director"
@@ -1877,7 +2055,7 @@
    "id": "cc-sq2-08",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director",
@@ -1893,7 +2071,7 @@
    "id": "cc-sq2-09",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager"
@@ -1907,7 +2085,7 @@
    "id": "cc-sq2-10",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "ops_director"
@@ -1921,7 +2099,7 @@
    "id": "cc-sq2-11",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "eng_director",
@@ -1936,7 +2114,7 @@
    "id": "cc-sq2-12",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "eng_director",
@@ -1951,7 +2129,7 @@
    "id": "cc-sq2-13",
    "category": "cold_call",
    "stage": "situation",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "procurement",
     "project"
@@ -1963,7 +2141,7 @@
    "id": "cc-pb2-01",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments"
@@ -1974,7 +2152,7 @@
    "id": "cc-pb2-02",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "project",
     "eng_director",
@@ -1989,7 +2167,7 @@
    "id": "cc-pb2-03",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "eng_director",
     "ops_director",
@@ -2002,7 +2180,7 @@
    "id": "cc-pb2-04",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "facilities",
@@ -2015,7 +2193,7 @@
    "id": "cc-pb2-05",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments"
@@ -2026,7 +2204,7 @@
    "id": "cc-pb2-06",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director"
@@ -2041,7 +2219,7 @@
    "id": "cc-pb2-07",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "procurement",
     "project"
@@ -2055,7 +2233,7 @@
    "id": "cc-pb2-08",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager"
@@ -2070,7 +2248,7 @@
    "id": "cc-pb2-09",
    "category": "cold_call",
    "stage": "problem",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "facilities",
@@ -2085,7 +2263,7 @@
    "id": "cc-cq2-01",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "ops_director",
     "eng_director",
@@ -2098,7 +2276,7 @@
    "id": "cc-cq2-02",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "project",
     "eng_director",
@@ -2114,7 +2292,7 @@
    "id": "cc-cq2-03",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "eng_manager",
     "facilities"
@@ -2126,7 +2304,7 @@
    "id": "cc-cq2-04",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director"
@@ -2140,7 +2318,7 @@
    "id": "cc-cq2-05",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "What would your boss say if that went wrong again?"
@@ -2149,7 +2327,7 @@
    "id": "cc-cq2-06",
    "category": "cold_call",
    "stage": "consequence",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "facilities",
@@ -2162,7 +2340,7 @@
    "id": "cc-sl-01",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "If you could wave a magic wand, what would the ideal look like?"
@@ -2171,7 +2349,7 @@
    "id": "cc-sl-02",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What would it mean for you if that was sorted?"
@@ -2180,7 +2358,7 @@
    "id": "cc-sl-03",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "project",
     "eng_director",
@@ -2195,7 +2373,7 @@
    "id": "cc-sl-04",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Have you looked at how to fix it? What stopped you?"
@@ -2204,7 +2382,7 @@
    "id": "cc-sl-05",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments"
@@ -2215,7 +2393,7 @@
    "id": "cc-sl-06",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What would a good outcome look like by this time next year?"
@@ -2224,7 +2402,7 @@
    "id": "cc-sl-07",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "procurement",
     "project"
@@ -2236,7 +2414,7 @@
    "id": "cc-sl-08",
    "category": "cold_call",
    "stage": "solution",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "On a scale of 1 to 10, how confident are you that you can fix it with what you’ve got now?"
@@ -2245,7 +2423,7 @@
    "id": "cc-lb2-01",
    "category": "cold_call",
    "stage": "label",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "facilities",
@@ -2260,7 +2438,7 @@
    "id": "cc-lb2-02",
    "category": "cold_call",
    "stage": "label",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments"
@@ -2271,7 +2449,7 @@
    "id": "cc-lb2-03",
    "category": "cold_call",
    "stage": "label",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "ops_director"
@@ -2283,7 +2461,7 @@
    "id": "cc-cl2-01",
    "category": "cold_call",
    "stage": "close",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Based on what you’ve told me, I think it’s worth sitting down for 20 minutes. If I’m wrong, I’ll tell you."
@@ -2315,7 +2493,7 @@
    "id": "cc-cl2-04",
    "category": "cold_call",
    "stage": "close",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Who else should be in the room for that conversation?"
@@ -2342,7 +2520,7 @@
    "id": "gk-03",
    "category": "gatekeeper",
    "stage": "gatekeeper",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "I’m not sure I’ve got the right person — who looks after the heating and cooling plant on site?"
@@ -2351,7 +2529,7 @@
    "id": "gk-04",
    "category": "gatekeeper",
    "stage": "gatekeeper",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "It’s a sales call, I’ll be honest — who’d be the best person to speak to about site projects?"
@@ -2360,7 +2538,7 @@
    "id": "gk-05",
    "category": "gatekeeper",
    "stage": "gatekeeper",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Could you tell me who’s responsible for engineering projects? I’d rather speak to the right person than waste anyone’s time."
@@ -2369,7 +2547,7 @@
    "id": "gk-06",
    "category": "gatekeeper",
    "stage": "gatekeeper",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What’s the best time to catch [Name]? I don’t want to interrupt their day."
@@ -2387,7 +2565,7 @@
    "id": "gk-08",
    "category": "gatekeeper",
    "stage": "gatekeeper",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "What does [Name] prefer — a call or an email? I’ll go with whichever suits."
@@ -2396,7 +2574,7 @@
    "id": "rf-01",
    "category": "gatekeeper",
    "stage": "referral",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Who else gets involved when plant decisions are made?"
@@ -2405,7 +2583,7 @@
    "id": "rf-02",
    "category": "gatekeeper",
    "stage": "referral",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Who should I speak to so I’m not wasting your time?"
@@ -2414,7 +2592,7 @@
    "id": "rf-03",
    "category": "gatekeeper",
    "stage": "referral",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Who looks after this at your other sites?"
@@ -2432,7 +2610,7 @@
    "id": "rf-05",
    "category": "gatekeeper",
    "stage": "referral",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Who’s been in charge of projects like this in the past?"
@@ -2459,7 +2637,7 @@
    "id": "tx-03",
    "category": "text",
    "stage": "text",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], I’ve sent a short note about [topic]. If it’s not relevant, tell me and I’ll stop."
@@ -2486,7 +2664,7 @@
    "id": "rc-01",
    "category": "recovery",
    "stage": "recovery",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Sorry — I think I’ve come across badly. Can I start again with one question?"
@@ -2495,7 +2673,7 @@
    "id": "rc-02",
    "category": "recovery",
    "stage": "recovery",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "I can hear this isn’t landing. Would it be better if I stopped, or is there something I’ve missed?"
@@ -2504,7 +2682,7 @@
    "id": "rc-03",
    "category": "recovery",
    "stage": "recovery",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "That’s fair. Can I ask you just one thing before I go?"
@@ -2513,7 +2691,7 @@
    "id": "rc-04",
    "category": "recovery",
    "stage": "recovery",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "I’ve talked too much. What would you want to know?"
@@ -2522,7 +2700,7 @@
    "id": "rc-05",
    "category": "recovery",
    "stage": "recovery",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "No problem. Would you rather I emailed something short instead, or not at all?"
@@ -2531,7 +2709,7 @@
    "id": "rc-06",
    "category": "recovery",
    "stage": "recovery",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "I appreciate the honesty. What would have made this call worth taking?"
@@ -2540,7 +2718,7 @@
    "id": "li-cn2-01",
    "category": "li_connect",
    "stage": "connect",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -2565,7 +2743,7 @@
    "id": "li-cn2-03",
    "category": "li_connect",
    "stage": "connect",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Hi [Name] — your point about [topic] stuck with me. Would be good to connect."
@@ -2574,7 +2752,7 @@
    "id": "li-cn2-04",
    "category": "li_connect",
    "stage": "connect",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], we’re both involved in [sector] projects. No pitch — just keen to connect with people who do this well."
@@ -2583,7 +2761,7 @@
    "id": "li-cm-01",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments"
@@ -2603,7 +2781,7 @@
    "id": "li-cm-03",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "project",
     "eng_director",
@@ -2618,7 +2796,7 @@
    "id": "li-cm-04",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments",
@@ -2630,7 +2808,7 @@
    "id": "li-cm-05",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Interesting point about [topic]. Where do you see the biggest barrier to getting it done — budget, time or buy-in?"
@@ -2666,7 +2844,7 @@
    "id": "li-cm-09",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "facilities",
@@ -2682,7 +2860,7 @@
    "id": "li-cm-10",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "live_environments"
@@ -2702,7 +2880,7 @@
    "id": "li-cm-12",
    "category": "li_comment",
    "stage": "comment",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "text": "Good question. Our experience is [short insight]; curious what you’ve found."
@@ -2711,7 +2889,7 @@
    "id": "li-ms2-01",
    "category": "li_message",
    "stage": "message",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting [Name]. What’s the biggest thing on your plate on the engineering side this year?"
@@ -2720,7 +2898,7 @@
    "id": "li-ms2-02",
    "category": "li_message",
    "stage": "message",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_manager",
     "eng_director",
@@ -2744,7 +2922,7 @@
    "id": "li-tg-po-01",
    "category": "li_trigger",
    "stage": "posted",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Thanks for sharing that post on [topic]. It made me wonder — is that something you’re dealing with on site at the moment?"
@@ -2753,7 +2931,7 @@
    "id": "li-tg-po-02",
    "category": "li_trigger",
    "stage": "posted",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "That post on [topic] was spot on. What’s the part of it you find hardest to get right on your site?"
@@ -2762,7 +2940,7 @@
    "id": "li-tg-pj-01",
    "category": "li_trigger",
    "stage": "project",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [
     "complex_projects",
@@ -2774,7 +2952,7 @@
    "id": "li-tg-hr-01",
    "category": "li_trigger",
    "stage": "hiring",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Noticed [company] is hiring a [role]. That often means the team’s stretched on [area] — is that the case? No pitch, just curious."
@@ -2783,7 +2961,7 @@
    "id": "li-tg-ac-01",
    "category": "li_trigger",
    "stage": "accepted",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting [Name]. What’s the biggest thing on your plate on the engineering side this year?"
@@ -2792,7 +2970,7 @@
    "id": "li-tg-ac-02",
    "category": "li_trigger",
    "stage": "accepted",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Thanks for connecting. No pitch — I’ve been following [company] and I’m curious how [recent news] is affecting the site."
@@ -2801,7 +2979,7 @@
    "id": "li-tg-en-01",
    "category": "li_trigger",
    "stage": "engaged",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "Thanks for commenting on my post, [Name]. Is [topic] something you’re working on at the moment?"
@@ -2810,7 +2988,7 @@
    "id": "li-tg-vw-01",
    "category": "li_trigger",
    "stage": "viewed",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "Hi [Name], I noticed you looked at my profile. No pitch — curious whether there’s something on the plant side you’re looking at?"
@@ -2867,7 +3045,7 @@
    "id": "li-po2-04",
    "category": "li_post",
    "stage": "post",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "text": "QUESTION\nGenuine question for engineering and facilities folks: [question]?\nI’ll share the answers next week."
@@ -2876,7 +3054,7 @@
    "id": "li-po2-05",
    "category": "li_post",
    "stage": "post",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "MYTH BUSTER\nMyth: [myth].\nReality: [reality].\nWhy it matters: [consequence]."
@@ -2907,7 +3085,7 @@
    "id": "li-po2-08",
    "category": "li_post",
    "stage": "post",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "text": "OPINION\nUnpopular opinion: [opinion].\nHere’s why: [reason].\nAgree or disagree?"
@@ -2939,7 +3117,7 @@
    "id": "li-po2-11",
    "category": "li_post",
    "stage": "post",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "ops_director",
@@ -2964,26 +3142,993 @@
     "live_environments"
    ],
    "text": "CHECKLIST\nBefore you plan shutdown work:\n☐ [item]\n☐ [item]\n☐ [item]\nSave this."
+  },
+  {
+   "id": "cc-sq3-01",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "project",
+    "eng_director",
+    "ops_director"
+   ],
+   "themes": [
+    "complex_projects"
+   ],
+   "text": "Walk me through how a project usually gets started here — who kicks it off?"
+  },
+  {
+   "id": "cc-sq3-02",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "ops_director",
+    "eng_director",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "How many sites are you responsible for, and which one keeps you busiest?"
+  },
+  {
+   "id": "cc-sq3-03",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [
+    "hvac_services"
+   ],
+   "text": "What does the mechanical plant look like across the site — mostly newer, mostly older, or a mix?"
+  },
+  {
+   "id": "cc-sq3-04",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "hvac_services"
+   ],
+   "text": "Who do you rely on for specialist HVAC work at the moment?"
+  },
+  {
+   "id": "cc-sq3-05",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "How do you usually find out a piece of plant is reaching the end of its life — a survey, a failure, or someone flagging it?"
+  },
+  {
+   "id": "cc-sq3-06",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "facilities",
+    "energy",
+    "eng_manager"
+   ],
+   "themes": [
+    "heating"
+   ],
+   "text": "What’s the heating set up — boilers, steam, a mix, anything electric?"
+  },
+  {
+   "id": "cc-sq3-07",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager"
+   ],
+   "themes": [
+    "process_cooling"
+   ],
+   "text": "What does the process rely on for cooling, and is there any back-up if it fails?"
+  },
+  {
+   "id": "cc-sq3-08",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "eng_manager"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "How is the site split between areas that can’t stop and areas that can?"
+  },
+  {
+   "id": "cc-sq3-09",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "When production can’t stop, how do you normally get access to do the work?"
+  },
+  {
+   "id": "cc-sq3-10",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "project"
+   ],
+   "themes": [
+    "complex_projects"
+   ],
+   "text": "What’s on the capital plan for the next two or three years on the services side?"
+  },
+  {
+   "id": "cc-sq3-11",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "energy",
+    "ops_director"
+   ],
+   "themes": [
+    "decarbonisation"
+   ],
+   "text": "How do your energy costs split — mostly process, or heating and cooling?"
+  },
+  {
+   "id": "cc-sq3-12",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "energy",
+    "ops_director"
+   ],
+   "themes": [
+    "decarbonisation",
+    "heating"
+   ],
+   "text": "What does your sustainability roadmap say about heating?"
+  },
+  {
+   "id": "cc-sq3-13",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "facilities",
+    "procurement"
+   ],
+   "themes": [],
+   "text": "Who owns the budget for plant replacement: engineering, facilities or head office?"
+  },
+  {
+   "id": "cc-sq3-14",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "structured",
+   "personas": [
+    "procurement",
+    "project"
+   ],
+   "themes": [],
+   "text": "What’s your usual route for bigger work: tender, framework or direct appointment?"
+  },
+  {
+   "id": "cc-sq3-15",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "eng_director"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "What’s the longest shutdown you get in a year, and what do you normally fit into it?"
+  },
+  {
+   "id": "cc-sq3-16",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "energy"
+   ],
+   "themes": [],
+   "text": "Have you got monitoring or a BMS on the plant, or is it mostly walk-rounds?"
+  },
+  {
+   "id": "cc-sq3-17",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "neutral",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "How big is the team that looks after the plant?"
+  },
+  {
+   "id": "cc-sq3-18",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "project",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "When did you last bring in an outside company for a bigger job, and how did it go?"
+  },
+  {
+   "id": "cc-sq3-19",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "neutral",
+   "personas": [
+    "hs",
+    "procurement",
+    "project"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "What approvals does a contractor need before they can work on your site?"
+  },
+  {
+   "id": "cc-sq3-20",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "If you had to pick the biggest headache on the services side, what would it be?"
+  },
+  {
+   "id": "cc-sq3-21",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "hs"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "How do you handle out-of-hours or weekend working on site?"
+  },
+  {
+   "id": "cc-sq3-22",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Who else on the engineering side would know more about this than you?"
+  },
+  {
+   "id": "cc-pb3-01",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What’s the biggest frustration with how those jobs usually go?"
+  },
+  {
+   "id": "cc-pb3-02",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "project",
+    "eng_director",
+    "ops_director"
+   ],
+   "themes": [
+    "complex_projects"
+   ],
+   "text": "When a job runs late, what’s normally the cause?"
+  },
+  {
+   "id": "cc-pb3-03",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What would you say is the weakest link in the current set-up?"
+  },
+  {
+   "id": "cc-pb3-04",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "What’s been put off longer than it should have been?"
+  },
+  {
+   "id": "cc-pb3-05",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "How often does unplanned work knock the planned work off the list?"
+  },
+  {
+   "id": "cc-pb3-06",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "How do you feel about the way contractors communicate while they’re on site?"
+  },
+  {
+   "id": "cc-pb3-07",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "What’s the hardest part of getting access to the plant while production’s running?"
+  },
+  {
+   "id": "cc-pb3-08",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "structured",
+   "personas": [
+    "ops_director",
+    "energy",
+    "procurement"
+   ],
+   "themes": [
+    "decarbonisation"
+   ],
+   "text": "Where do you think you’re paying more than you should?"
+  },
+  {
+   "id": "cc-pb3-09",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "hs",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "What keeps coming back on your audit or compliance checks?"
+  },
+  {
+   "id": "cc-pb3-10",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "energy",
+    "ops_director"
+   ],
+   "themes": [
+    "decarbonisation"
+   ],
+   "text": "How well do you really know what the plant costs to run?"
+  },
+  {
+   "id": "cc-pb3-11",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "If you had to pick one risk on the services side that worries you most, what is it?"
+  },
+  {
+   "id": "cc-pb3-12",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "eng_director"
+   ],
+   "themes": [
+    "heating",
+    "process_cooling"
+   ],
+   "text": "Which part of the heating or cooling would you trust least on the hottest or coldest day?"
+  },
+  {
+   "id": "cc-pb3-13",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "procurement"
+   ],
+   "themes": [],
+   "text": "How’s the relationship with the contractors you’ve used for bigger work?"
+  },
+  {
+   "id": "cc-pb3-14",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "What gets missed when everyone’s stretched?"
+  },
+  {
+   "id": "cc-pb3-15",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "project",
+    "eng_director"
+   ],
+   "themes": [
+    "complex_projects"
+   ],
+   "text": "What do you wish you’d known before your last big project started?"
+  },
+  {
+   "id": "cc-pb3-16",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "ops_director"
+   ],
+   "themes": [
+    "process_cooling"
+   ],
+   "text": "How confident are you that the plant will cope with next year’s production plan?"
+  },
+  {
+   "id": "cc-pb3-17",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "structured",
+   "personas": [
+    "energy",
+    "ops_director",
+    "facilities"
+   ],
+   "themes": [
+    "decarbonisation",
+    "heating"
+   ],
+   "text": "What’s the biggest barrier to getting off gas on your site: cost, power supply, space or disruption?"
+  },
+  {
+   "id": "cc-cq3-01",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "What does that cost you each time it happens?"
+  },
+  {
+   "id": "cc-cq3-02",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "If it carried on for another year, what would that mean for you?"
+  },
+  {
+   "id": "cc-cq3-03",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "What knock-on effect does that have on the rest of the team?"
+  },
+  {
+   "id": "cc-cq3-04",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "energy"
+   ],
+   "themes": [],
+   "text": "How does that show up when you talk to the board or head office?"
+  },
+  {
+   "id": "cc-cq3-05",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "eng_manager"
+   ],
+   "themes": [
+    "process_cooling"
+   ],
+   "text": "What would happen to production if the cooling went down for a day?"
+  },
+  {
+   "id": "cc-cq3-06",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [
+    "energy",
+    "ops_director"
+   ],
+   "themes": [
+    "decarbonisation"
+   ],
+   "text": "What’s the impact on your energy bill if nothing changes?"
+  },
+  {
+   "id": "cc-cq3-07",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [
+    "hs",
+    "ops_director",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "How would that affect an audit result or a customer visit?"
+  },
+  {
+   "id": "cc-cq3-08",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "What’s the worst case if that goes wrong during a live shutdown?"
+  },
+  {
+   "id": "cc-cq3-09",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "How much of your time does it take up each month?"
+  },
+  {
+   "id": "cc-cq3-10",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [
+    "project"
+   ],
+   "themes": [
+    "complex_projects"
+   ],
+   "text": "What does it do to the project timeline when that slips?"
+  },
+  {
+   "id": "cc-cq3-11",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Who else gets pulled in when it goes wrong, and what does that cost them?"
+  },
+  {
+   "id": "cc-cq3-12",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What’s stopping you from sorting it now?"
+  },
+  {
+   "id": "cc-cq3-13",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [
+    "energy"
+   ],
+   "themes": [
+    "decarbonisation"
+   ],
+   "text": "If you don’t fix it, what happens to your carbon targets?"
+  },
+  {
+   "id": "cc-cq3-14",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What would the people on the shop floor say about it?"
+  },
+  {
+   "id": "cc-cq3-15",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "structured",
+   "personas": [
+    "eng_manager",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "What happens to your credibility if it fails again?"
+  },
+  {
+   "id": "cc-sl2-01",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "If you could design the ideal way to get this done, what would it include?"
+  },
+  {
+   "id": "cc-sl2-02",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What would make you say, “that’s exactly what we needed”?"
+  },
+  {
+   "id": "cc-sl2-03",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Who would you want involved from day one?"
+  },
+  {
+   "id": "cc-sl2-04",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "How would things be different for you if this was off your plate?"
+  },
+  {
+   "id": "cc-sl2-05",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "What would the perfect contractor do differently on a live site?"
+  },
+  {
+   "id": "cc-sl2-06",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "How would you know it had worked?"
+  },
+  {
+   "id": "cc-sl2-07",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What would need to be true for you to do this next year rather than next decade?"
+  },
+  {
+   "id": "cc-sl2-08",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "What’s the first step you’d want to take?"
+  },
+  {
+   "id": "cc-sl2-09",
+   "category": "cold_call",
+   "stage": "solution",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "If we could take the risk of disruption out of it, how would that change your timing?"
+  },
+  {
+   "id": "cc-qf-01",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Who else would need to be involved in a decision like this?"
+  },
+  {
+   "id": "cc-qf-02",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "How do projects like this normally get approved here?"
+  },
+  {
+   "id": "cc-qf-03",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "When would you ideally want this done by?"
+  },
+  {
+   "id": "cc-qf-04",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Is there a budget set aside for it, or would one need to be built?"
+  },
+  {
+   "id": "cc-qf-05",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What would have to happen for this to become a priority this year?"
+  },
+  {
+   "id": "cc-qf-06",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Is there anything that would stop you moving forward, even if it made sense?"
+  },
+  {
+   "id": "cc-qf-07",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "What would you need to see to feel confident?"
+  },
+  {
+   "id": "cc-qf-08",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "neutral",
+   "personas": [
+    "procurement",
+    "hs",
+    "project"
+   ],
+   "themes": [],
+   "text": "Is procurement or health and safety involved at this stage?"
+  },
+  {
+   "id": "cc-qf-09",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "If we got together, who would you want in the room?"
+  },
+  {
+   "id": "cc-qf-10",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "On a scale of 1 to 10, how likely is it that this goes ahead in the next 12 months?"
+  },
+  {
+   "id": "cc-qf-11",
+   "category": "cold_call",
+   "stage": "qualify",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "eng_director",
+    "project"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "How does the timing fit around your shutdown calendar?"
+  },
+  {
+   "id": "cc-lb3-01",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Sounds like it’s full on."
+  },
+  {
+   "id": "cc-lb3-02",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "It sounds like you’re pretty happy with how things are."
+  },
+  {
+   "id": "cc-lb3-03",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "It sounds like this has come up before and gone nowhere."
+  },
+  {
+   "id": "cc-lb3-04",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "direct",
+   "personas": [],
+   "themes": [],
+   "text": "Sounds like you don’t want to be sold to — fair enough."
+  },
+  {
+   "id": "cc-lb3-05",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "It sounds like you’ve got a lot riding on this."
+  },
+  {
+   "id": "cc-lb3-06",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "I get the sense that’s been frustrating."
+  },
+  {
+   "id": "cc-lb3-07",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "project"
+   ],
+   "themes": [],
+   "text": "It sounds like you’ve been let down by promises before."
+  },
+  {
+   "id": "cc-lb3-08",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Sounds like timing is the real issue."
+  },
+  {
+   "id": "cc-lb3-09",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "direct",
+   "personas": [],
+   "themes": [],
+   "text": "It seems like you’ve got this under control."
+  },
+  {
+   "id": "cc-lb3-10",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "project"
+   ],
+   "themes": [],
+   "text": "It sounds like there’s a lot of pressure on you to get this right."
   }
  ],
  "brushoffs": [
   {
    "id": "bo-01",
    "objection": "Send me an email",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-01-1",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Happy to — so I don’t send you rubbish, what would actually be useful to you?"
     },
     {
      "id": "bo-01-2",
-     "voice": "dennehy",
+     "voice": "direct",
      "text": "Sure. Most people say that to get me off the phone — is that what’s happening here? Totally fine if so."
     },
     {
      "id": "bo-01-3",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "No problem. Before I do, can I ask one quick question so I make it relevant: who looks after the plant day to day?"
     }
    ]
@@ -2991,20 +4136,21 @@
   {
    "id": "bo-02",
    "objection": "We’ve already got someone",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-02-1",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Makes sense — most good sites do. How’s it going with them?"
     },
     {
      "id": "bo-02-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Great. If you could change one thing about them, what would it be?"
     },
     {
      "id": "bo-02-3",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "That’s fine — I’m not asking you to change anyone. Is there anything you’d like a second opinion on?"
     }
    ]
@@ -3012,15 +4158,21 @@
   {
    "id": "bo-03",
    "objection": "Not interested",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-03-1",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "That’s fine. Can I ask — is it not interested in us, or not interested in looking at the plant at all right now?"
     },
     {
      "id": "bo-03-2",
-     "voice": "nepq",
+     "voice": "curious",
+     "text": "No worries. It sounds like you’re all set, so just so I’m not missing something: is there anything at all you’d change about how it’s done today?"
+    },
+    {
+     "id": "bo-03-3",
+     "voice": "curious",
      "text": "No problem at all. Out of curiosity, is that because it’s all working well, or because it’s just not a priority?"
     }
    ]
@@ -3028,15 +4180,16 @@
   {
    "id": "bo-04",
    "objection": "No budget",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-04-1",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "Understood. When does budget planning start for next year?"
     },
     {
      "id": "bo-04-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Is that no budget at all, or no budget for something that isn’t a problem yet?"
     },
     {
@@ -3049,31 +4202,38 @@
   {
    "id": "bo-05",
    "objection": "Too busy",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-05-1",
-     "voice": "dennehy",
+     "voice": "direct",
      "text": "Sounds like it’s full on. Is there a better time, or would you rather I didn’t call back?"
     },
     {
      "id": "bo-05-2",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "I get it. Can I try you [day] for two minutes? If it’s still bad, tell me and I’ll go away."
+    },
+    {
+     "id": "bo-05-3",
+     "voice": "direct",
+     "text": "No worries, sounds like it’s full on, and it also sounds like you’re 100% happy with who you’re using and wouldn’t change a thing about them. Is that right?"
     }
    ]
   },
   {
    "id": "bo-06",
    "objection": "Call me in six months",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-06-1",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Happy to. What’s likely to be different in six months?"
     },
     {
      "id": "bo-06-2",
-     "voice": "dennehy",
+     "voice": "direct",
      "text": "No problem. Is six months when the plant gets reviewed, or just a polite way of saying no? Either is fine."
     }
    ]
@@ -3081,6 +4241,7 @@
   {
    "id": "bo-07",
    "objection": "Who are you with again?",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-07-1",
@@ -3092,15 +4253,16 @@
   {
    "id": "bo-08",
    "objection": "We do it all in-house",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-08-1",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "That’s great — most good sites do some. Where does the in-house team tend to need support, like specialist kit or peaks of work?"
     },
     {
      "id": "bo-08-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Makes sense. What happens when something big fails and the team’s already stretched?"
     }
    ]
@@ -3108,15 +4270,16 @@
   {
    "id": "bo-09",
    "objection": "What’s your price?",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-09-1",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "It depends on the scope, and I’d rather not guess. Can I ask two questions so I can give you a number that means something?"
     },
     {
      "id": "bo-09-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Fair question. If I gave you a figure now it would be wrong. What are you trying to achieve, and when?"
     }
    ]
@@ -3124,15 +4287,16 @@
   {
    "id": "bo-10",
    "objection": "We’ve just done a project",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-10-1",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Good to hear. How did it go — anything you’d do differently?"
     },
     {
      "id": "bo-10-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "That makes sense. Is there a second phase, or other sites that haven’t been done yet?"
     }
    ]
@@ -3140,15 +4304,16 @@
   {
    "id": "bo-11",
    "objection": "Speak to head office / procurement",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-11-1",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "Happy to. Who in particular, and what should I say so I don’t waste their time?"
     },
     {
      "id": "bo-11-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "That’s fair. Before I do, who on site would actually use the result, so I can speak to them as well?"
     }
    ]
@@ -3156,6 +4321,7 @@
   {
    "id": "bo-12",
    "objection": "Who gave you my number?",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-12-1",
@@ -3164,7 +4330,7 @@
     },
     {
      "id": "bo-12-2",
-     "voice": "dennehy",
+     "voice": "direct",
      "text": "I found you through LinkedIn / the company website. If you’d rather I didn’t call, say the word."
     }
    ]
@@ -3172,15 +4338,16 @@
   {
    "id": "bo-13",
    "objection": "I don’t deal with that",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-13-1",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "No problem. Who does, so I can speak to the right person?"
     },
     {
      "id": "bo-13-2",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Thanks for being straight. Who looks after plant projects on site, and is it OK to mention you pointed me?"
     }
    ]
@@ -3188,16 +4355,456 @@
   {
    "id": "bo-14",
    "objection": "Not a priority this year",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
    "responses": [
     {
      "id": "bo-14-1",
-     "voice": "nepq",
+     "voice": "curious",
      "text": "Understood. What would have to change for it to become one?"
     },
     {
      "id": "bo-14-2",
-     "voice": "sandler",
+     "voice": "structured",
      "text": "That’s fair. Is it a priority next year, and when does that planning start?"
+    }
+   ]
+  },
+  {
+   "id": "bo-15",
+   "objection": "We’re in contract with [supplier] until [date]",
+   "delivery": "Warm and unbothered. You are not asking them to break anything. Slow down on “one thing”, then stop talking.",
+   "responses": [
+    {
+     "id": "bo-15-1",
+     "voice": "curious",
+     "text": "That makes sense, and I wouldn’t expect you to break a contract. Just out of curiosity, if there was one thing you could change about the way they do things, what would it be?"
+    },
+    {
+     "id": "bo-15-2",
+     "voice": "curious",
+     "text": "Fair enough, good to know. When the contract comes up for review, what would you want to be different?"
+    },
+    {
+     "id": "bo-15-3",
+     "voice": "structured",
+     "text": "No problem at all. When does the review normally start, and who gets involved? I’d rather speak to you early than at the last minute."
+    },
+    {
+     "id": "bo-15-4",
+     "voice": "curious",
+     "text": "Understood. Out of interest, if they were up for renewal tomorrow, would you sign up with them again?"
+    }
+   ]
+  },
+  {
+   "id": "bo-16",
+   "objection": "We’re happy with who we use",
+   "delivery": "Genuine, never sarcastic. Slow down on “wouldn’t change a thing”, down-inflect on “is that right?”, then say nothing.",
+   "responses": [
+    {
+     "id": "bo-16-1",
+     "voice": "direct",
+     "text": "Good to hear. So it sounds like you’re 100% happy with them, and you wouldn’t change a thing about the way they work. Is that right?"
+    },
+    {
+     "id": "bo-16-2",
+     "voice": "curious",
+     "text": "That’s great, genuinely. If you could improve one thing about them, what would it be?"
+    },
+    {
+     "id": "bo-16-3",
+     "voice": "structured",
+     "text": "Fair enough. So I don’t waste your time: is it all good, or is there a small thing that irritates you now and then?"
+    }
+   ]
+  },
+  {
+   "id": "bo-17",
+   "objection": "Just send me your brochure / price list",
+   "delivery": "Easy and helpful. Don’t sound deflated. Smile as you say “happy to”.",
+   "responses": [
+    {
+     "id": "bo-17-1",
+     "voice": "curious",
+     "text": "Happy to. So I send you something useful rather than a brochure, what are you trying to get done on site?"
+    },
+    {
+     "id": "bo-17-2",
+     "voice": "direct",
+     "text": "Sure. I should be upfront: a brochure won’t tell you much. What would you actually want to know?"
+    },
+    {
+     "id": "bo-17-3",
+     "voice": "structured",
+     "text": "No problem. If I send it, would it be OK to follow up in a week to hear what you thought, or would you rather I didn’t?"
+    }
+   ]
+  },
+  {
+   "id": "bo-18",
+   "objection": "I’m not the right person / the decision maker",
+   "delivery": "Relaxed and appreciative. You are asking for help, not pushing past them.",
+   "responses": [
+    {
+     "id": "bo-18-1",
+     "voice": "structured",
+     "text": "No problem, thanks for being straight. Who would be, and what’s the best way to reach them?"
+    },
+    {
+     "id": "bo-18-2",
+     "voice": "curious",
+     "text": "That’s fair. Out of interest, how are decisions like this normally made here, and where do you fit in?"
+    },
+    {
+     "id": "bo-18-3",
+     "voice": "neutral",
+     "text": "Understood. Would it be OK to mention you suggested I get in touch?"
+    }
+   ]
+  },
+  {
+   "id": "bo-19",
+   "objection": "We haven’t got any projects planned",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-19-1",
+     "voice": "curious",
+     "text": "That’s fair. When you do have one, how do you usually go about it?"
+    },
+    {
+     "id": "bo-19-2",
+     "voice": "curious",
+     "text": "Understood. Is that because everything’s in good shape, or because projects are hard to get approved?"
+    },
+    {
+     "id": "bo-19-3",
+     "voice": "structured",
+     "text": "No problem. What would have to change for a project to land on your list?"
+    }
+   ]
+  },
+  {
+   "id": "bo-20",
+   "objection": "We’ve been burnt before",
+   "delivery": "Slow, low and sincere. This is a label moment: let them tell the story and don’t defend anyone.",
+   "responses": [
+    {
+     "id": "bo-20-1",
+     "voice": "curious",
+     "text": "Sounds like that was really frustrating. What went wrong?"
+    },
+    {
+     "id": "bo-20-2",
+     "voice": "curious",
+     "text": "I’m sorry to hear that. What would a contractor have to do differently for you to trust them again?"
+    },
+    {
+     "id": "bo-20-3",
+     "voice": "direct",
+     "text": "That’s fair, and I’d rather know now. What happened, and what would have prevented it?"
+    }
+   ]
+  },
+  {
+   "id": "bo-21",
+   "objection": "We always go to tender",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-21-1",
+     "voice": "curious",
+     "text": "That makes sense. How do suppliers normally get invited to tender, and what makes a good one stand out?"
+    },
+    {
+     "id": "bo-21-2",
+     "voice": "structured",
+     "text": "Fair enough. Before a tender goes out, who writes the specification? That’s usually where the right questions get asked."
+    },
+    {
+     "id": "bo-21-3",
+     "voice": "structured",
+     "text": "Understood. When’s the next one, and would it be possible to talk to someone about the scope beforehand?"
+    }
+   ]
+  },
+  {
+   "id": "bo-22",
+   "objection": "Is this a sales call?",
+   "delivery": "Say “yes” without hesitation. Confidence here earns trust.",
+   "responses": [
+    {
+     "id": "bo-22-1",
+     "voice": "direct",
+     "text": "Yes, I’ll be honest, it is. I’m calling to see whether any of what we do is relevant. If it isn’t, tell me and I’ll leave you alone. Fair enough?"
+    },
+    {
+     "id": "bo-22-2",
+     "voice": "structured",
+     "text": "It is, and thanks for asking directly. Can I have 20 seconds, and then you tell me whether to carry on?"
+    }
+   ]
+  },
+  {
+   "id": "bo-23",
+   "objection": "I’m about to go into a meeting / I’m driving",
+   "delivery": "Quick and easy. Give them the exit, then wait. Never fight for the time.",
+   "responses": [
+    {
+     "id": "bo-23-1",
+     "voice": "structured",
+     "text": "No worries at all. When would be a better time, and is it better for me to call or email?"
+    },
+    {
+     "id": "bo-23-2",
+     "voice": "direct",
+     "text": "Sounds like it’s full on. Is there a better time, or would you rather I didn’t call back?"
+    },
+    {
+     "id": "bo-23-3",
+     "voice": "direct",
+     "text": "Sounds like it’s full on, and it also sounds like you’re 100% happy with who you’re using and wouldn’t change a thing about them. Is that right?"
+    }
+   ]
+  },
+  {
+   "id": "bo-24",
+   "objection": "Please take me off your list / don’t call again",
+   "delivery": "Calm and respectful. Do exactly what they ask and note it in Pipedrive. No last question.",
+   "responses": [
+    {
+     "id": "bo-24-1",
+     "voice": "neutral",
+     "text": "Absolutely, I’ll make sure that happens. Sorry to have bothered you."
+    },
+    {
+     "id": "bo-24-2",
+     "voice": "direct",
+     "text": "Understood. Thanks for being straight with me. Take care."
+    }
+   ]
+  },
+  {
+   "id": "bo-25",
+   "objection": "We have an approved supplier list",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-25-1",
+     "voice": "curious",
+     "text": "Understood. How does a company usually get on it, and how often is it reviewed?"
+    },
+    {
+     "id": "bo-25-2",
+     "voice": "structured",
+     "text": "That makes sense. Who looks after the list, and would it be OK to speak to them?"
+    }
+   ]
+  },
+  {
+   "id": "bo-26",
+   "objection": "We’re in a restructure / freeze / being sold",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-26-1",
+     "voice": "curious",
+     "text": "That sounds like an uncertain time. How is it affecting your plans for the plant?"
+    },
+    {
+     "id": "bo-26-2",
+     "voice": "curious",
+     "text": "I understand. What would you want sorted whatever happens with the restructure?"
+    },
+    {
+     "id": "bo-26-3",
+     "voice": "structured",
+     "text": "Fair enough. When do you expect things to settle, and would it be OK to check in then?"
+    }
+   ]
+  },
+  {
+   "id": "bo-27",
+   "objection": "Net zero isn’t a priority for us",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-27-1",
+     "voice": "curious",
+     "text": "That’s fair. Is that because of cost, because other things come first, or because nobody’s asked for it yet?"
+    },
+    {
+     "id": "bo-27-2",
+     "voice": "curious",
+     "text": "Understood. Is there anything on the heating side that has to change in the next few years, whatever happens with net zero?"
+    },
+    {
+     "id": "bo-27-3",
+     "voice": "structured",
+     "text": "No problem. If energy costs kept rising, would that change the conversation?"
+    }
+   ]
+  },
+  {
+   "id": "bo-28",
+   "objection": "I’ve never heard of you / are you big enough?",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-28-1",
+     "voice": "direct",
+     "text": "Fair enough, we’re not a household name. That’s partly why I’m calling: to find out whether there’s anything we could help with. Is it OK if I ask two quick questions?"
+    },
+    {
+     "id": "bo-28-2",
+     "voice": "curious",
+     "text": "That’s a fair concern. What would you want to see from a contractor to feel comfortable they can handle the job?"
+    }
+   ]
+  },
+  {
+   "id": "bo-29",
+   "objection": "That sounds expensive",
+   "delivery": "Calm and curious, never defensive. Pause after “compared with what?”",
+   "responses": [
+    {
+     "id": "bo-29-1",
+     "voice": "curious",
+     "text": "I hear you. Out of curiosity, expensive compared with what?"
+    },
+    {
+     "id": "bo-29-2",
+     "voice": "structured",
+     "text": "Fair enough. When a job goes wrong on a live site, what does that cost you?"
+    },
+    {
+     "id": "bo-29-3",
+     "voice": "structured",
+     "text": "That’s fair. We haven’t discussed a price yet. What would you need to see to know it was worth it?"
+    }
+   ]
+  },
+  {
+   "id": "bo-30",
+   "objection": "We’ll do it ourselves",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-30-1",
+     "voice": "curious",
+     "text": "That’s great. Where do you tend to need extra hands or specialist kit?"
+    },
+    {
+     "id": "bo-30-2",
+     "voice": "curious",
+     "text": "Makes sense. What happens when a job’s bigger than the team can handle in the shutdown window?"
+    }
+   ]
+  },
+  {
+   "id": "bo-31",
+   "objection": "Come back when we’ve got a project",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-31-1",
+     "voice": "structured",
+     "text": "Happy to. How will I know when that’s happening, and who decides?"
+    },
+    {
+     "id": "bo-31-2",
+     "voice": "curious",
+     "text": "Fair enough. What usually triggers a project here: a failure, a budget cycle or a target?"
+    },
+    {
+     "id": "bo-31-3",
+     "voice": "direct",
+     "text": "No problem. Would it be OK to check in every few months, or would you rather I didn’t?"
+    }
+   ]
+  },
+  {
+   "id": "bo-32",
+   "objection": "Why should I talk to you?",
+   "delivery": "Light, honest and unbothered. A little humour helps. Don’t get defensive.",
+   "responses": [
+    {
+     "id": "bo-32-1",
+     "voice": "direct",
+     "text": "Honestly, you probably shouldn’t, unless one of those three things sounds familiar. Does any of it?"
+    },
+    {
+     "id": "bo-32-2",
+     "voice": "curious",
+     "text": "Fair question. I’ve got no idea if I can help, and that’s what I’d like to find out. Is it OK to ask two questions?"
+    }
+   ]
+  },
+  {
+   "id": "bo-33",
+   "objection": "We tried that and it didn’t work",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-33-1",
+     "voice": "curious",
+     "text": "I appreciate you telling me. What did you try, and what happened?"
+    },
+    {
+     "id": "bo-33-2",
+     "voice": "curious",
+     "text": "That’s frustrating. What would you want to be different this time?"
+    }
+   ]
+  },
+  {
+   "id": "bo-34",
+   "objection": "Now’s not a good time of year",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-34-1",
+     "voice": "curious",
+     "text": "Understood. Sounds like it’s a busy period. When does it ease off?"
+    },
+    {
+     "id": "bo-34-2",
+     "voice": "structured",
+     "text": "Fair enough. Is it that it’s a busy time, or that this isn’t on your list right now?"
+    }
+   ]
+  },
+  {
+   "id": "bo-35",
+   "objection": "Can you call my colleague instead?",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-35-1",
+     "voice": "structured",
+     "text": "Of course. What’s the best way to reach them, and is it OK to say you suggested it?"
+    },
+    {
+     "id": "bo-35-2",
+     "voice": "curious",
+     "text": "Happy to. What does your colleague look after, so I can speak to them about the right thing?"
+    }
+   ]
+  },
+  {
+   "id": "bo-36",
+   "objection": "We don’t need anything right now",
+   "delivery": "Agree first (“fair enough”) in a warm, downward tone. Then ask one calm, curious question and stop talking.",
+   "responses": [
+    {
+     "id": "bo-36-1",
+     "voice": "curious",
+     "text": "Understood. Is that because everything’s working well, or because there’s no budget at the moment?"
+    },
+    {
+     "id": "bo-36-2",
+     "voice": "curious",
+     "text": "Fair enough. Would it be OK to ask what’s working well, so I know what good looks like?"
     }
    ]
   }
@@ -3207,7 +4814,7 @@
    "id": "ce-a",
    "category": "cold_email",
    "title": "Honest cold",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "subject": "cold email — sorry",
@@ -3217,7 +4824,7 @@
    "id": "ce-b",
    "category": "cold_email",
    "title": "Curiosity question",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -3243,7 +4850,7 @@
    "id": "ce-d",
    "category": "cold_email",
    "title": "Problem-led",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager",
@@ -3278,7 +4885,7 @@
    "id": "ce-f",
    "category": "cold_email",
    "title": "Break-up — close the loop (Day 21)",
-   "voice": "dennehy",
+   "voice": "direct",
    "personas": [],
    "themes": [],
    "subject": "closing the loop",
@@ -3305,7 +4912,7 @@
    "id": "ce-h",
    "category": "cold_email",
    "title": "Decarbonisation angle",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "project",
@@ -3342,7 +4949,7 @@
    "id": "we-c",
    "category": "warm_email",
    "title": "Re-engage (nurture)",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "subject": "still on your list?",
@@ -3362,7 +4969,7 @@
    "id": "we-e",
    "category": "warm_email",
    "title": "After LinkedIn connect",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [],
    "themes": [],
    "subject": "good to connect",
@@ -3382,7 +4989,7 @@
    "id": "ce-i",
    "category": "cold_email",
    "title": "Live site / complex project",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "project",
@@ -3399,7 +5006,7 @@
    "id": "ce-j",
    "category": "cold_email",
    "title": "Heating",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "energy",
     "facilities",
@@ -3416,7 +5023,7 @@
    "id": "ce-k",
    "category": "cold_email",
    "title": "Procurement angle",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [
     "procurement"
    ],
@@ -3430,7 +5037,7 @@
    "id": "ce-l",
    "category": "cold_email",
    "title": "Process cooling capacity",
-   "voice": "nepq",
+   "voice": "curious",
    "personas": [
     "eng_director",
     "eng_manager"
@@ -3455,7 +5062,7 @@
    "id": "we-h",
    "category": "warm_email",
    "title": "Proposal nudge",
-   "voice": "sandler",
+   "voice": "structured",
    "personas": [],
    "themes": [],
    "subject": "where are we with this?",
@@ -3566,28 +5173,28 @@
  ],
  "voices": [
   {
-   "id": "dennehy",
-   "name": "Dennehy style",
-   "tag": "Blunt & honest",
-   "summary": "Brutally honest, upfront about the cold call, refuses to chase. The prospect has to qualify themselves. Pattern-interrupt openers that sound nothing like a sales call.",
-   "when": "Best with senior, time-poor people and anyone who’s clearly heard every pitch. Works well for openers and brush-offs.",
-   "watch": "Can come across as cold if your tone is flat. Keep it warm and relaxed, not aggressive."
+   "id": "direct",
+   "name": "Direct",
+   "tag": "Honest & upfront",
+   "summary": "Honest, upfront about the cold call, never chases. The prospect decides whether it is relevant. Pattern-interrupt openers that sound nothing like a sales call.",
+   "when": "Best with senior, time-poor people and anyone who has heard every pitch. Works well for openers and brush-offs.",
+   "watch": "Can come across as cold if your tone is flat. Keep it warm and relaxed, never aggressive."
   },
   {
-   "id": "nepq",
-   "name": "NEPQ style",
+   "id": "curious",
+   "name": "Curious",
    "tag": "Calm & curious",
-   "summary": "Calm, curious, neutral tone. Staged questions — situation, problem awareness, consequence, solution awareness, commitment — so the prospect talks themselves into change.",
+   "summary": "Calm, neutral, curious tone. Staged questions (situation, problem, consequence, solution, decision) so the prospect talks themselves into change.",
    "when": "Best once someone is on the line and willing to talk. Perfect for engineers and facilities managers who like to explain how things work.",
-   "watch": "Don’t rush through the stages. If you skip to the consequence before they’ve described the problem, it feels like a trap."
+   "watch": "Do not rush the stages. If you jump to the consequence before they have described the problem, it feels like a trap."
   },
   {
-   "id": "sandler",
-   "name": "Sandler style",
-   "tag": "Up-front contracts",
-   "summary": "Agree the agenda, time and possible outcomes up front. Use the pain funnel — go from the surface problem to the business and personal impact. “No” is OK.",
-   "when": "Best for structured meetings and procurement or project people who want clarity. Good for micro-contracts and closes.",
-   "watch": "Don’t make the contract too formal on a cold call. Keep it light and conversational."
+   "id": "structured",
+   "name": "Structured",
+   "tag": "Agree up front",
+   "summary": "Agree the agenda, the time and the possible outcomes up front. Move from the surface problem to the business and personal impact. “No” is always OK.",
+   "when": "Best for structured meetings and procurement or project people who want clarity. Good for micro-agreements and closes.",
+   "watch": "Keep it light and conversational on a cold call. Too formal and it sounds scripted."
   }
  ],
  "ladder": [
@@ -3797,7 +5404,7 @@
   {
    "time": "50–60 min",
    "title": "Skills 4 & 5: Curiosity & permission to say no",
-   "body": "Questions over pitching (situation → problem → consequence). Making “no” safe. Show the three voices briefly."
+   "body": "Questions over pitching (situation → problem → consequence). Making “no” safe. Introduce the three conversation styles briefly."
   },
   {
    "time": "60–80 min",

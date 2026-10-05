@@ -73,7 +73,7 @@ export async function render(root) {
   // Preferences
   root.append(sectionLabel('Preferences'));
   root.append(h('div', { class: 'card form' },
-    field('Default voice', selectEl([{ value: 'any', label: 'Any (show all)' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral').map((v) => ({ value: v.id, label: v.label }))], s.defaultVoice, async (v) => { await saveSettings({ defaultVoice: v }); saved(); }), 'Pre-selects the voice filter on the Scripts page after a restart.'),
+    field('Default style', selectEl([{ value: 'any', label: 'Any (show all)' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral').map((v) => ({ value: v.id, label: v.label }))], s.defaultVoice, async (v) => { await saveSettings({ defaultVoice: v }); saved(); }), 'Pre-selects the style filter on the Scripts page.'),
     h('div', { class: 'field' }, h('span', null, 'Theme'), segmented([{ value: 'dark', label: 'Dark' }, { value: 'light', label: 'Light' }], s.theme, async (v) => { await saveSettings({ theme: v }); refresh(); }))));
   root.append(sectionLabel('Pipedrive'), h('div', { class: 'card form' },
     field('Pipedrive link', textInput('pipedriveUrl', { type: 'url', inputmode: 'url', placeholder: 'https://yourcompany.pipedrive.com' }), 'The “Open Pipedrive” buttons use this.')));

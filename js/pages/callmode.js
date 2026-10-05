@@ -6,12 +6,12 @@ import { filterItems } from '../shuffle.js';
 import { logWithFeedback } from '../activity.js';
 import { initFilters } from './scripts.js';
 
-const STAGE_LABEL_SHORT = { opener: 'Opener', contract: 'Contract', reason: 'Reason', situation: 'Situation', problem: 'Problem', consequence: 'Impact', solution: 'Vision', close: 'Close', bridge: 'Bridge' };
+const STAGE_LABEL_SHORT = { opener: 'Opener', contract: 'Contract', reason: 'Reason', situation: 'Situation', problem: 'Problem', consequence: 'Impact', solution: 'Vision', qualify: 'Decision', close: 'Close', bridge: 'Bridge' };
 
 function stepsFor(mode) {
   const main = mode === 'warm'
-    ? ['opener', 'bridge', 'situation', 'problem', 'consequence', 'solution', 'close']
-    : ['opener', 'contract', 'reason', 'situation', 'problem', 'consequence', 'solution', 'close'];
+    ? ['opener', 'bridge', 'situation', 'problem', 'consequence', 'solution', 'qualify', 'close']
+    : ['opener', 'contract', 'reason', 'situation', 'problem', 'consequence', 'solution', 'qualify', 'close'];
   return { main, any: ['label', 'brushoffs', 'voicemail'] };
 }
 
@@ -70,7 +70,7 @@ export async function render(root, { query }) {
 
     screen.append(h('div', { class: 'call-sub' },
       h('div', { class: 'voice-chips' },
-        [{ id: '', label: 'All voices' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral')].map((v) =>
+        [{ id: '', label: 'All styles' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral')].map((v) =>
           h('button', { class: 'chip sm' + (f.voice === v.id ? ' on' : ''), onclick: () => { f.voice = v.id; draw(); } }, v.label)))));
 
     const chips = h('nav', { class: 'call-steps', 'aria-label': 'Call stages' });
@@ -116,18 +116,18 @@ export async function render(root, { query }) {
     if (step === 'brushoffs') {
       const chipsRow = h('div', { class: 'obj-chips' });
       state.content.brushoffs.forEach((b, i) => chipsRow.append(h('button', { class: 'chip' + (i === objIdx ? ' on' : ''), onclick: () => { objIdx = i; draw(); } }, b.objection)));
-      bodyEl.append(h('h2', { class: 'stage-title' }, 'Brush-offs'), h('p', { class: 'muted' }, 'Respond, don’t fight. Label it, ask a question.'), chipsRow);
+      bodyEl.append(h('h2', { class: 'stage-title' }, 'Brush-offs'), h('p', { class: 'muted' }, 'Respond, don’t fight. Agree, label, ask one calm question.'), chipsRow, state.content.brushoffs[objIdx].delivery ? h('p', { class: 'delivery' }, state.content.brushoffs[objIdx].delivery) : null);
       items = filterItems(state.content.brushoffs[objIdx].responses.map((r) => ({ ...r, personas: [], themes: [] })), f);
     } else if (step === 'voicemail') {
-      bodyEl.append(h('h2', { class: 'stage-title' }, 'Voicemail'), h('p', { class: 'muted' }, 'Under 20 seconds. Say your number slowly.'));
+      bodyEl.append(h('h2', { class: 'stage-title' }, 'Voicemail'), h('p', { class: 'muted' }, 'Under 20 seconds. Say your number slowly.'), h('p', { class: 'delivery' }, 'Warm and unhurried. Smile. Slow down on the number.'));
       items = filterItems(state.content.byCategory('voicemail'), f);
     } else if (step === 'label') {
-      bodyEl.append(h('h2', { class: 'stage-title' }, 'Name the feeling'), h('p', { class: 'muted' }, 'Use any time they sound sceptical, rushed or fed up.'));
+      bodyEl.append(h('h2', { class: 'stage-title' }, 'Name the feeling'), h('p', { class: 'muted' }, 'Use any time they sound sceptical, rushed or fed up.'), h('p', { class: 'delivery' }, state.content.stages.find((x) => x.id === 'label').delivery));
       items = filterItems(state.content.byCategory('cold_call', 'label'), f);
     } else {
       const st = stageInfo || { label: step, hint: '' };
       const cat = st.reuse || (mode === 'warm' ? 'warm_call' : 'cold_call');
-      bodyEl.append(h('h2', { class: 'stage-title' }, st.label), h('p', { class: 'muted' }, st.hint));
+      bodyEl.append(h('h2', { class: 'stage-title' }, st.label), h('p', { class: 'muted' }, st.hint), st.delivery ? h('p', { class: 'delivery' }, st.delivery) : null);
       items = filterItems(state.content.byCategory(cat, step), f);
     }
     car = carousel({ key: `call:${mode}:${step}:${step === 'brushoffs' ? objIdx : ''}`, items, ctx, big: true, onUsed: (id) => used.add(id) });

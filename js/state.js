@@ -45,6 +45,8 @@ export async function loadState() {
   const content = await loadContent();
   const saved = await db.get('settings', 'main');
   state.settings = { ...defaultSettings(), ...(saved || {}) };
+  // an older saved style that no longer exists falls back to "any"
+  if (state.settings.defaultVoice !== 'any' && !content.meta.voices.some((v) => v.id === state.settings.defaultVoice)) state.settings.defaultVoice = 'any';
   state.settings.targets = { ...defaultSettings().targets, ...(saved && saved.targets) };
   if (!saved) await db.put('settings', state.settings);
   const usage = await db.all('scriptUsage');

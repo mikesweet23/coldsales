@@ -31,7 +31,7 @@ export function openPipedrive() { window.open(pipedriveUrl(), '_blank', 'noopene
 
 export async function logActivity({ type, outcome = 'done', who = '', notes = '', scriptIds = [], skills = [], variant = '', timestamp }) {
   const activity = {
-    id: uid(), contactId: null, type, outcome, who: who.trim(), notes: notes.trim(), scriptIdsUsed: scriptIds, skills,
+    id: uid(), type, outcome, who: who.trim(), notes: notes.trim(), scriptIdsUsed: scriptIds, skills,
     variant, timestamp: timestamp || Date.now(),
   };
   await db.put('activities', activity);
