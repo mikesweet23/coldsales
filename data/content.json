@@ -1,5 +1,51 @@
 {
- "version": 3,
+ "version": 4,
+ "huntNo": {
+  "title": "Hunt for the no",
+  "summary": "Most people find it easier to say no than yes. A yes is a commitment. A no feels safe and keeps them in control. So word the question so that “no” is the answer you want.",
+  "why": [
+   "People protect their freedom to choose. Push for a yes and they push back. Invite a no and they relax.",
+   "A “no” to a negative question means “yes” to your request: “Would it be unreasonable…?” “No, it wouldn’t.”",
+   "It makes the next step feel like their idea, so they agree faster and mean it.",
+   "And if the real answer is no, you find out early and honestly."
+  ],
+  "formula": [
+   "Start soft: “Would it be…”, “Is it…”, “Are you against…”",
+   "Use a word that makes “no” the easy answer: unreasonable, crazy, a bad idea, out of the question, opposed.",
+   "Ask for one small, specific thing: a site visit, 15 minutes, a short email, an introduction.",
+   "Say it curious and slightly unsure, with a downward tone. Then stop talking."
+  ],
+  "answers": [
+   {
+    "they": "“No, not at all.”",
+    "you": "Take the yes: “Brilliant, thank you. How does Thursday at 10 look?”"
+   },
+   {
+    "they": "“No, I wouldn’t be against that.”",
+    "you": "Move to the detail: “Great. Is morning or afternoon better for you?”"
+   },
+   {
+    "they": "“Yes, it would be.”",
+    "you": "Respect it and explore: “Fair enough. What would make it unreasonable?”"
+   },
+   {
+    "they": "“Maybe.”",
+    "you": "Find the gap: “That’s fair. What would you need to know to be comfortable?”"
+   },
+   {
+    "they": "Silence",
+    "you": "Wait. Count to five. They are thinking, not leaving."
+   }
+  ],
+  "mistakes": [
+   "Using it for something that isn’t actually reasonable. They will feel it.",
+   "Sounding sarcastic or clever. Be genuinely curious.",
+   "Filling the silence. Ask, then stop.",
+   "Stacking two questions in one. One small ask at a time.",
+   "Pushing after a real “yes, it would be”. Respect it, ask what would change it, and move on."
+  ],
+  "honesty": "This only works if the ask is genuinely reasonable and you are genuinely fine with either answer. If they say no (meaning no), thank them and ask what would change that."
+ },
  "tonality": {
   "intro": "How you say it matters as much as what you say. The goal of every call is to get the prospect to say the problem out loud, in their own words. Tone and pace make that feel safe.",
   "tones": [
@@ -487,6 +533,13 @@
    "delivery": "Calm and routine, like checking the diary. No pressure in your voice."
   },
   {
+   "id": "hunt",
+   "label": "Hunt for the no",
+   "skill": "permission",
+   "hint": "Ask so that “no” means yes. Then stop talking.",
+   "delivery": "Curious and a little unsure. Down-inflect, then stop talking and let them say “no”."
+  },
+  {
    "id": "close",
    "label": "Close for the meeting",
    "skill": "permission",
@@ -548,6 +601,14 @@
    "hint": "Reuse the decision and timing questions.",
    "reuse": "cold_call",
    "delivery": "Calm and routine, like checking the diary. No pressure in your voice."
+  },
+  {
+   "id": "hunt",
+   "label": "Hunt for the no",
+   "skill": "permission",
+   "hint": "Ask so that “no” means yes.",
+   "reuse": "cold_call",
+   "delivery": "Curious and a little unsure. Down-inflect, then stop talking and let them say “no”."
   },
   {
    "id": "close",
@@ -4114,6 +4175,273 @@
    ],
    "themes": [],
    "text": "It sounds like there’s a lot of pressure on you to get this right."
+  },
+  {
+   "id": "cc-hn-01",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities",
+    "project"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "Would it be totally unreasonable to suggest a site visit?"
+  },
+  {
+   "id": "cc-hn-02",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "Would it be crazy to take 15 minutes to see whether there’s a fit?"
+  },
+  {
+   "id": "cc-hn-03",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Is it a terrible idea if I come and take a look at the plant with you?"
+  },
+  {
+   "id": "cc-hn-04",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities",
+    "project"
+   ],
+   "themes": [],
+   "text": "Are you against us having a quick walk-round, with no obligation?"
+  },
+  {
+   "id": "cc-hn-05",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Would it be out of the question to put 20 minutes in the diary next week?"
+  },
+  {
+   "id": "cc-hn-06",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Would you be opposed to me sending a two-line email so you can judge for yourself?"
+  },
+  {
+   "id": "cc-hn-07",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Have you completely ruled out getting a second opinion on the plant?"
+  },
+  {
+   "id": "cc-hn-08",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "ops_director",
+    "energy",
+    "procurement"
+   ],
+   "themes": [
+    "decarbonisation"
+   ],
+   "text": "Is it a bad idea to look at the numbers together before you decide anything?"
+  },
+  {
+   "id": "cc-hn-09",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "Would it be ridiculous to ask who else should see this?"
+  },
+  {
+   "id": "cc-hn-10",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Would it be out of order to ask for an introduction to your maintenance manager?"
+  },
+  {
+   "id": "cc-hn-11",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_manager",
+    "eng_director",
+    "project"
+   ],
+   "themes": [
+    "live_environments"
+   ],
+   "text": "Is it unreasonable to think a short shutdown-planning chat might help?"
+  },
+  {
+   "id": "cc-hn-12",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "energy",
+    "ops_director",
+    "facilities"
+   ],
+   "themes": [
+    "decarbonisation",
+    "heating"
+   ],
+   "text": "Are you dead against looking at heat pumps, or is it just not the right time?"
+  },
+  {
+   "id": "cc-hn-13",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [],
+   "themes": [],
+   "text": "Would it be a problem if I called you back on Thursday to see where you’ve got to?"
+  },
+  {
+   "id": "cc-hn-14",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [],
+   "themes": [],
+   "text": "Is it a bad time to ask whether this is something worth looking at?"
+  },
+  {
+   "id": "cc-hn-15",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "energy"
+   ],
+   "themes": [],
+   "text": "Would you hate it if I put together a rough budget so you’ve got something for the board?"
+  },
+  {
+   "id": "cc-hn-16",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [],
+   "themes": [
+    "live_environments",
+    "complex_projects"
+   ],
+   "text": "Is it crazy to think we could do the work without stopping production?"
+  },
+  {
+   "id": "cc-hn-17",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Would it be unfair to ask you to show me the plant that worries you most?"
+  },
+  {
+   "id": "cc-hn-18",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "direct",
+   "personas": [],
+   "themes": [],
+   "text": "Have you given up on getting this sorted this year?"
+  },
+  {
+   "id": "cc-hn-19",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "procurement"
+   ],
+   "themes": [],
+   "text": "Would it be wrong to assume this is on the list for next year’s budget?"
+  },
+  {
+   "id": "cc-hn-20",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "structured",
+   "personas": [
+    "procurement",
+    "project",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "Is it totally off the table to get procurement involved early?"
+  },
+  {
+   "id": "cc-hn-21",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "ops_director",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "Are you dead set against trying it on one site first?"
+  },
+  {
+   "id": "cc-hn-22",
+   "category": "cold_call",
+   "stage": "hunt",
+   "voice": "curious",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Is it too much to ask for ten minutes on site with your engineer?"
   }
  ],
  "brushoffs": [
@@ -4134,6 +4462,11 @@
     },
     {
      "id": "bo-01-3",
+     "voice": "structured",
+     "text": "Would you be against me sending a two-line email now, and a quick call once you’ve had a chance to read it?"
+    },
+    {
+     "id": "bo-01-4",
      "voice": "curious",
      "text": "No problem. Before I do, can I ask one quick question so I make it relevant: who looks after the plant day to day?"
     }
@@ -4178,6 +4511,11 @@
     },
     {
      "id": "bo-03-3",
+     "voice": "curious",
+     "text": "Is it a bad idea to ask what would have to change for it to become interesting?"
+    },
+    {
+     "id": "bo-03-4",
      "voice": "curious",
      "text": "No problem at all. Out of curiosity, is that because it’s all working well, or because it’s just not a priority?"
     }
@@ -4415,10 +4753,15 @@
     {
      "id": "bo-16-2",
      "voice": "curious",
-     "text": "That’s great, genuinely. If you could improve one thing about them, what would it be?"
+     "text": "Would it be crazy to have a coffee anyway, in case anything changes down the line?"
     },
     {
      "id": "bo-16-3",
+     "voice": "curious",
+     "text": "That’s great, genuinely. If you could improve one thing about them, what would it be?"
+    },
+    {
+     "id": "bo-16-4",
      "voice": "structured",
      "text": "Fair enough. So I don’t waste your time: is it all good, or is there a small thing that irritates you now and then?"
     }
@@ -5164,14 +5507,15 @@
    "id": "permission",
    "num": 5,
    "title": "Permission to say no",
-   "summary": "Make “no” a safe answer. It makes “yes” more likely and gets you honest answers.",
+   "summary": "Make “no” a safe answer. It makes “yes” more likely and gets you honest answers. Go further and hunt for the no: word the ask so that “no” means yes.",
    "why": "If “no” feels hard, people hedge and brush you off. If it’s explicitly OK, they relax and tell you the truth — and the ones who say yes mean it.",
    "examples": [
     "If it’s not relevant, just say so and I’ll leave you alone.",
     "Is that a waste of your time? You can tell me.",
     "If there’s nothing there, I’ll tell you.",
     "It’s fine if it’s not for you — no hard feelings.",
-    "Would it be worth 15 minutes, or is it not a priority right now?"
+    "Would it be worth 15 minutes, or is it not a priority right now?",
+    "Would it be totally unreasonable to suggest a site visit?"
    ],
    "practice": "Rewrite your usual close so it includes an easy “no”. Say it to a partner and ask them whether it felt pushy.",
    "mistake": "Saying it insincerely. If you say “no problem” and then chase, they’ll notice. Mean it — and if they say no, thank them and move on."
