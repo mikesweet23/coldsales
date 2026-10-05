@@ -1,0 +1,1985 @@
+{
+ "version": 1,
+ "meta": {
+  "personas": [
+   {
+    "id": "eng_director",
+    "label": "Engineering Director"
+   },
+   {
+    "id": "eng_manager",
+    "label": "Engineering / Maintenance Manager"
+   },
+   {
+    "id": "facilities",
+    "label": "Facilities Manager / Head of Facilities"
+   },
+   {
+    "id": "ops_director",
+    "label": "Operations / Site Director"
+   },
+   {
+    "id": "procurement",
+    "label": "Procurement / Category Manager"
+   },
+   {
+    "id": "project",
+    "label": "Project Manager / Capital Projects Lead"
+   },
+   {
+    "id": "energy",
+    "label": "Energy / Sustainability Manager"
+   },
+   {
+    "id": "hs",
+    "label": "Health & Safety / Compliance Lead"
+   }
+  ],
+  "sectors": [
+   "Manufacturing",
+   "Food & Beverage",
+   "Pharmaceutical",
+   "Aerospace",
+   "Automotive",
+   "Logistics / Warehousing",
+   "Commercial / Other"
+  ],
+  "themes": [
+   {
+    "id": "hvac",
+    "label": "HVAC maintenance"
+   },
+   {
+    "id": "chiller",
+    "label": "Chiller replacement"
+   },
+   {
+    "id": "heatpump",
+    "label": "Heat pumps / decarbonisation"
+   },
+   {
+    "id": "lev",
+    "label": "LEV"
+   },
+   {
+    "id": "refrigeration",
+    "label": "Refrigeration"
+   },
+   {
+    "id": "process_cooling",
+    "label": "Process cooling"
+   },
+   {
+    "id": "energy",
+    "label": "Energy saving"
+   },
+   {
+    "id": "compliance",
+    "label": "Compliance (F-Gas etc.)"
+   }
+  ],
+  "voices": [
+   {
+    "id": "dennehy",
+    "label": "Dennehy"
+   },
+   {
+    "id": "nepq",
+    "label": "NEPQ"
+   },
+   {
+    "id": "sandler",
+    "label": "Sandler"
+   },
+   {
+    "id": "neutral",
+    "label": "Neutral"
+   }
+  ],
+  "outcomes": [
+   {
+    "id": "no_answer",
+    "label": "No answer"
+   },
+   {
+    "id": "voicemail",
+    "label": "Voicemail"
+   },
+   {
+    "id": "spoke_not_now",
+    "label": "Spoke – not now"
+   },
+   {
+    "id": "spoke_follow_up",
+    "label": "Spoke – follow up"
+   },
+   {
+    "id": "meeting",
+    "label": "Meeting booked"
+   },
+   {
+    "id": "wrong_person",
+    "label": "Wrong person"
+   },
+   {
+    "id": "not_interested",
+    "label": "Not interested"
+   }
+  ]
+ },
+ "stages": [
+  {
+   "id": "opener",
+   "label": "Opener",
+   "skill": "elephant",
+   "hint": "Call out the elephant — say the obvious thing out loud."
+  },
+  {
+   "id": "contract",
+   "label": "Micro-contract",
+   "skill": "contract",
+   "hint": "Get a small “yes” before you carry on."
+  },
+  {
+   "id": "reason",
+   "label": "Reason for the call",
+   "skill": "permission",
+   "hint": "Short, no pitch. Make “no” a safe answer."
+  },
+  {
+   "id": "situation",
+   "label": "Situation questions",
+   "skill": "curiosity",
+   "hint": "Ask, then stop talking."
+  },
+  {
+   "id": "problem",
+   "label": "Problem awareness",
+   "skill": "curiosity",
+   "hint": "Let them say what is not working."
+  },
+  {
+   "id": "consequence",
+   "label": "Consequence",
+   "skill": "curiosity",
+   "hint": "Go one level deeper than feels comfortable."
+  },
+  {
+   "id": "label",
+   "label": "Name the feeling",
+   "skill": "label",
+   "hint": "Use any time they sound sceptical, rushed or fed up."
+  },
+  {
+   "id": "close",
+   "label": "Close for the meeting",
+   "skill": "permission",
+   "hint": "Ask for the meeting. “No” is OK."
+  }
+ ],
+ "warmStages": [
+  {
+   "id": "opener",
+   "label": "Warm opener",
+   "skill": "elephant",
+   "hint": "Reference the previous touch."
+  },
+  {
+   "id": "bridge",
+   "label": "Bridge",
+   "skill": "contract",
+   "hint": "Re-open the thread and agree it is OK to continue."
+  },
+  {
+   "id": "situation",
+   "label": "Deepen: situation",
+   "skill": "curiosity",
+   "hint": "Reuse Stage 4 questions.",
+   "reuse": "cold_call"
+  },
+  {
+   "id": "problem",
+   "label": "Deepen: problem",
+   "skill": "curiosity",
+   "hint": "Reuse Stage 5 questions.",
+   "reuse": "cold_call"
+  },
+  {
+   "id": "consequence",
+   "label": "Deepen: consequence",
+   "skill": "curiosity",
+   "hint": "Reuse Stage 6 questions.",
+   "reuse": "cold_call"
+  },
+  {
+   "id": "close",
+   "label": "Close",
+   "skill": "permission",
+   "hint": "Ask for the meeting."
+  }
+ ],
+ "scripts": [
+  {
+   "id": "cc-op-01",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep] — I’ll be honest, this is a cold call. Do you want to hang up now, or give me 30 seconds?"
+  },
+  {
+   "id": "cc-op-02",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], [Rep] here. We’ve never spoken before, so I know this is out of the blue — have I caught you at a terrible time?"
+  },
+  {
+   "id": "cc-op-03",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], this is [Rep]. You don’t know me, and I’m interrupting your day — can I tell you why I called and then you can decide if we carry on?"
+  },
+  {
+   "id": "cc-op-04",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. This is a sales call — I’ll be quick and you can tell me to get lost if it’s not relevant. Fair?"
+  },
+  {
+   "id": "cc-op-05",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], [Rep] calling. I’m guessing you weren’t sitting there hoping a contractor would ring today?"
+  },
+  {
+   "id": "cc-op-06",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. Cold call, I’m afraid — is now a really bad time, or have you got a minute?"
+  },
+  {
+   "id": "cc-op-07",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. Totally out of the blue — you’re welcome to tell me it’s a rubbish time."
+  },
+  {
+   "id": "cc-op-08",
+   "category": "cold_call",
+   "stage": "opener",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. I’m going to be upfront: you’ve never heard of me and I’ve got a reason for calling. Can I have 20 seconds to explain?"
+  },
+  {
+   "id": "cc-mc-01",
+   "category": "cold_call",
+   "stage": "contract",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Can I take 30 seconds to tell you why I called, and if it’s not relevant you just tell me?"
+  },
+  {
+   "id": "cc-mc-02",
+   "category": "cold_call",
+   "stage": "contract",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Here’s what I’d suggest — I’ll ask you a couple of quick questions, and if there’s nothing there, we both get on with our day. OK?"
+  },
+  {
+   "id": "cc-mc-03",
+   "category": "cold_call",
+   "stage": "contract",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "If at any point this sounds like a waste of time, just say so — deal?"
+  },
+  {
+   "id": "cc-mc-04",
+   "category": "cold_call",
+   "stage": "contract",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Would it be OK if I asked a couple of questions to see whether there’s any point us talking?"
+  },
+  {
+   "id": "cc-mc-05",
+   "category": "cold_call",
+   "stage": "contract",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Give me a minute, and if I haven’t said anything useful, you can hang up. Sound fair?"
+  },
+  {
+   "id": "cc-mc-06",
+   "category": "cold_call",
+   "stage": "contract",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "I’ll keep it short. If it’s a yes, we’ll talk next steps; if it’s a no, that’s completely fine. Is that OK?"
+  },
+  {
+   "id": "cc-rs-01",
+   "category": "cold_call",
+   "stage": "reason",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [
+    "hvac",
+    "chiller",
+    "heatpump",
+    "process_cooling"
+   ],
+   "text": "We look after HVAC and mechanical plant for manufacturing sites — chillers, heat pumps, process cooling. I’ve no idea whether that’s relevant to you right now."
+  },
+  {
+   "id": "cc-rs-02",
+   "category": "cold_call",
+   "stage": "reason",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager"
+   ],
+   "themes": [],
+   "text": "I speak to a lot of engineering directors who are juggling ageing plant and pressure to cut energy. I don’t know if that’s you."
+  },
+  {
+   "id": "cc-rs-03",
+   "category": "cold_call",
+   "stage": "reason",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Most people I call are either happy with their current setup or have one or two things that keep them up at night. I’m not sure which camp you’re in."
+  },
+  {
+   "id": "cc-rs-04",
+   "category": "cold_call",
+   "stage": "reason",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [
+    "chiller",
+    "energy",
+    "compliance"
+   ],
+   "text": "We tend to get called when chillers are getting old, energy bills are climbing, or there’s a compliance headache. Is any of that on your radar?"
+  },
+  {
+   "id": "cc-rs-05",
+   "category": "cold_call",
+   "stage": "reason",
+   "voice": "neutral",
+   "personas": [
+    "facilities"
+   ],
+   "themes": [
+    "hvac"
+   ],
+   "text": "I work with facilities teams who’ve inherited plant nobody’s quite sure about — no records, no plan. Not sure if that’s you, but thought it was worth a call."
+  },
+  {
+   "id": "cc-rs-06",
+   "category": "cold_call",
+   "stage": "reason",
+   "voice": "nepq",
+   "personas": [
+    "energy",
+    "ops_director",
+    "project"
+   ],
+   "themes": [
+    "heatpump",
+    "energy"
+   ],
+   "text": "A lot of sites we speak to are trying to work out how to get off gas without a huge capital bill. I don’t know if that’s on your agenda yet."
+  },
+  {
+   "id": "cc-sq-01",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "How are you currently handling HVAC and mechanical maintenance across your sites?"
+  },
+  {
+   "id": "cc-sq-02",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [
+    "chiller"
+   ],
+   "text": "Who looks after your chillers and cooling plant at the moment?"
+  },
+  {
+   "id": "cc-sq-03",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [
+    "chiller",
+    "hvac"
+   ],
+   "text": "Roughly how old is the main plant on site?"
+  },
+  {
+   "id": "cc-sq-04",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Is maintenance in-house, a contractor, or a bit of both?"
+  },
+  {
+   "id": "cc-sq-05",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager"
+   ],
+   "themes": [
+    "process_cooling"
+   ],
+   "text": "What’s the setup for process cooling — is it on its own system or shared?"
+  },
+  {
+   "id": "cc-sq-06",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [
+    "energy",
+    "ops_director",
+    "eng_director"
+   ],
+   "themes": [
+    "energy"
+   ],
+   "text": "When did you last look at what the plant is costing you to run?"
+  },
+  {
+   "id": "cc-sq-07",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "neutral",
+   "personas": [
+    "ops_director",
+    "eng_director",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "How many sites are you responsible for?"
+  },
+  {
+   "id": "cc-sq-08",
+   "category": "cold_call",
+   "stage": "situation",
+   "voice": "nepq",
+   "personas": [
+    "hs",
+    "facilities",
+    "eng_manager"
+   ],
+   "themes": [
+    "compliance",
+    "refrigeration"
+   ],
+   "text": "How do you currently keep track of F-Gas and compliance checks?"
+  },
+  {
+   "id": "cc-pb-01",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "How’s that working out for you?"
+  },
+  {
+   "id": "cc-pb-02",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Is there anything about the current setup that frustrates you?"
+  },
+  {
+   "id": "cc-pb-03",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "If you could change one thing about how the plant’s looked after, what would it be?"
+  },
+  {
+   "id": "cc-pb-04",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "When was the last unplanned breakdown, and what happened?"
+  },
+  {
+   "id": "cc-pb-05",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Is there anything you know needs doing but keeps getting pushed back?"
+  },
+  {
+   "id": "cc-pb-06",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [
+    "chiller",
+    "hvac"
+   ],
+   "text": "How confident are you the plant gets through next summer without a problem?"
+  },
+  {
+   "id": "cc-pb-07",
+   "category": "cold_call",
+   "stage": "problem",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "ops_director"
+   ],
+   "themes": [
+    "chiller",
+    "process_cooling"
+   ],
+   "text": "What worries you most about the plant on a hot week?"
+  },
+  {
+   "id": "cc-cq-01",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "What happens if that doesn’t get sorted?"
+  },
+  {
+   "id": "cc-cq-02",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "sandler",
+   "personas": [
+    "eng_director",
+    "ops_director",
+    "eng_manager"
+   ],
+   "themes": [],
+   "text": "What did that breakdown end up costing — in downtime or otherwise?"
+  },
+  {
+   "id": "cc-cq-03",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "How long has that been an issue?"
+  },
+  {
+   "id": "cc-cq-04",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "What have you tried so far?"
+  },
+  {
+   "id": "cc-cq-05",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Who else feels the pain when that goes wrong?"
+  },
+  {
+   "id": "cc-cq-06",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "How does that affect you personally?"
+  },
+  {
+   "id": "cc-cq-07",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "On a scale of 1 to 10, how much of a priority is fixing it?"
+  },
+  {
+   "id": "cc-cq-08",
+   "category": "cold_call",
+   "stage": "consequence",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "If nothing changes over the next 12 months, where does that leave you?"
+  },
+  {
+   "id": "cc-lb-01",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Sounds like you get a lot of these calls."
+  },
+  {
+   "id": "cc-lb-02",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "You sound a bit sceptical — that’s fair."
+  },
+  {
+   "id": "cc-lb-03",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "It sounds like that’s been a real thorn in your side."
+  },
+  {
+   "id": "cc-lb-04",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "nepq",
+   "personas": [
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "I get the sense you’ve been let down by a contractor before."
+  },
+  {
+   "id": "cc-lb-05",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Sounds like you’ve got more on your plate than you’ve got people."
+  },
+  {
+   "id": "cc-lb-06",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "It sounds like now’s not great timing."
+  },
+  {
+   "id": "cc-lb-07",
+   "category": "cold_call",
+   "stage": "label",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "It sounds like you’ve heard this pitch a few times and it’s never gone anywhere."
+  },
+  {
+   "id": "cc-cl-01",
+   "category": "cold_call",
+   "stage": "close",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Would it be worth 15 minutes next week to see if there’s a fit — or is that a waste of your time?"
+  },
+  {
+   "id": "cc-cl-02",
+   "category": "cold_call",
+   "stage": "close",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Would it make sense to get together so I can understand your setup properly? If there’s nothing there, I’ll tell you."
+  },
+  {
+   "id": "cc-cl-03",
+   "category": "cold_call",
+   "stage": "close",
+   "voice": "neutral",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "How about a quick site walk-round — no obligation — and if we can’t add anything, I’ll say so?"
+  },
+  {
+   "id": "cc-cl-04",
+   "category": "cold_call",
+   "stage": "close",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Shall we put 20 minutes in the diary, and if it’s not for you, you tell me no and that’s fine?"
+  },
+  {
+   "id": "cc-cl-05",
+   "category": "cold_call",
+   "stage": "close",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "What would need to be true for it to be worth you meeting us?"
+  },
+  {
+   "id": "cc-cl-06",
+   "category": "cold_call",
+   "stage": "close",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Does it sound like something you’d want to look into, or is it not a priority right now?"
+  },
+  {
+   "id": "wc-op-01",
+   "category": "warm_call",
+   "stage": "opener",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep] — we connected on LinkedIn last week. Thought I’d put a voice to the name. Have you got a minute?"
+  },
+  {
+   "id": "wc-op-02",
+   "category": "warm_call",
+   "stage": "opener",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], [Rep] here — I sent you an email on [day]. I’m guessing it got buried. Is it OK to take 60 seconds?"
+  },
+  {
+   "id": "wc-op-03",
+   "category": "warm_call",
+   "stage": "opener",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. [Colleague name] mentioned you look after the plant at [site] — have I got the right person?"
+  },
+  {
+   "id": "wc-op-04",
+   "category": "warm_call",
+   "stage": "opener",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], [Rep]. We spoke briefly back in [month] and you said to call around now. Is now still OK?"
+  },
+  {
+   "id": "wc-op-05",
+   "category": "warm_call",
+   "stage": "opener",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. I saw your post about [topic] — it got me thinking, can I ask you something about it?"
+  },
+  {
+   "id": "wc-op-06",
+   "category": "warm_call",
+   "stage": "opener",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep] — I left you a voicemail on [day]. I’ll keep this short; is it a bad time?"
+  },
+  {
+   "id": "wc-br-01",
+   "category": "warm_call",
+   "stage": "bridge",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Last time you mentioned [issue] — has anything changed since?"
+  },
+  {
+   "id": "wc-br-02",
+   "category": "warm_call",
+   "stage": "bridge",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "I promised I’d come back to you when [trigger]. Is now a good moment, or shall I try another day?"
+  },
+  {
+   "id": "wc-br-03",
+   "category": "warm_call",
+   "stage": "bridge",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Can I check — is [issue] still on your list, or has it been sorted?"
+  },
+  {
+   "id": "wc-br-04",
+   "category": "warm_call",
+   "stage": "bridge",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "When we last spoke you were weighing up [decision]. Where did you land?"
+  },
+  {
+   "id": "wc-br-05",
+   "category": "warm_call",
+   "stage": "bridge",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "I’ll be honest, I wasn’t sure whether you’d want me to call back. Is it worth carrying on, or shall I leave it there?"
+  },
+  {
+   "id": "wc-br-06",
+   "category": "warm_call",
+   "stage": "bridge",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Before I say anything — has your situation with [issue] moved at all since we last talked?"
+  },
+  {
+   "id": "wc-cl-01",
+   "category": "warm_call",
+   "stage": "close",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Last time it sounded like [issue] was costing you. Worth getting together to look at it properly?"
+  },
+  {
+   "id": "wc-cl-02",
+   "category": "warm_call",
+   "stage": "close",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Would it help if I brought [engineer/specialist] along so you get a straight answer?"
+  },
+  {
+   "id": "wc-cl-03",
+   "category": "warm_call",
+   "stage": "close",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Based on what you’ve told me, I think a short site visit would settle it one way or the other. Would that be worth your time?"
+  },
+  {
+   "id": "wc-cl-04",
+   "category": "warm_call",
+   "stage": "close",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Shall we get something in the diary for [day]? If it turns out there’s nothing in it, you can tell me and that’s that."
+  },
+  {
+   "id": "wc-cl-05",
+   "category": "warm_call",
+   "stage": "close",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "What would be the sensible next step from your side?"
+  },
+  {
+   "id": "wc-cl-06",
+   "category": "warm_call",
+   "stage": "close",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "If I sent you [one useful thing] first, would you be open to a 15-minute chat after you’d had a look?"
+  },
+  {
+   "id": "vm-01",
+   "category": "voicemail",
+   "stage": "voicemail",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep] — cold call, I’ll be honest. I’ll drop you a short email; if it’s relevant, great, if not, no problem. [Number]."
+  },
+  {
+   "id": "vm-02",
+   "category": "voicemail",
+   "stage": "voicemail",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [
+    "chiller",
+    "process_cooling"
+   ],
+   "text": "Hi [Name], [Rep]. Quick one about your cooling plant — not urgent. I’ll try you again [day]. [Number]."
+  },
+  {
+   "id": "vm-03",
+   "category": "voicemail",
+   "stage": "voicemail",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], [Rep] here. You don’t know me — I’ll send a two-line email so you can decide if it’s worth a chat."
+  },
+  {
+   "id": "vm-04",
+   "category": "voicemail",
+   "stage": "voicemail",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep]. I’ve got one question about how the plant’s looked after at [site]. It’s in an email now — a one-line reply is plenty. [Number]."
+  },
+  {
+   "id": "vm-05",
+   "category": "voicemail",
+   "stage": "voicemail",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], [Rep] calling. We’ve not spoken, and I know you’ve got a full day. Email’s on its way — if it’s not for you, just ignore it. [Number]."
+  },
+  {
+   "id": "vm-06",
+   "category": "voicemail",
+   "stage": "voicemail",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], it’s [Rep] — second try. I’ll leave it with you: if there’s a good time for a two-minute call, my number is [Number]."
+  },
+  {
+   "id": "li-cn-01",
+   "category": "li_connect",
+   "stage": "connect",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name] — I work with engineering teams across manufacturing on HVAC and cooling. Would be good to connect."
+  },
+  {
+   "id": "li-cn-02",
+   "category": "li_connect",
+   "stage": "connect",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], noticed we’re both in the [sector] world. Happy to connect."
+  },
+  {
+   "id": "li-cn-03",
+   "category": "li_connect",
+   "stage": "connect",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name] — saw your post on [topic], really interesting. Would be great to connect."
+  },
+  {
+   "id": "li-cn-04",
+   "category": "li_connect",
+   "stage": "connect",
+   "voice": "nepq",
+   "personas": [
+    "facilities",
+    "eng_manager",
+    "eng_director"
+   ],
+   "themes": [],
+   "text": "Hi [Name] — I speak to a lot of people looking after plant and facilities in [sector]. Always keen to learn from people who run it day to day. Would be great to connect."
+  },
+  {
+   "id": "li-cn-05",
+   "category": "li_connect",
+   "stage": "connect",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name] — no pitch, just building my network of people who keep manufacturing sites running. Would be good to have you in it."
+  },
+  {
+   "id": "li-cn-06",
+   "category": "li_connect",
+   "stage": "connect",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Hi [Name], I see you’re at [company]. I’ve been following the [project/news] — would be good to connect."
+  },
+  {
+   "id": "li-en-01",
+   "category": "li_engage",
+   "stage": "engage",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Comment with a genuine question, not “great post”."
+  },
+  {
+   "id": "li-en-02",
+   "category": "li_engage",
+   "stage": "engage",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Congratulate on new roles, projects, awards, site openings."
+  },
+  {
+   "id": "li-en-03",
+   "category": "li_engage",
+   "stage": "engage",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Share their company’s post with a one-line comment."
+  },
+  {
+   "id": "li-en-04",
+   "category": "li_engage",
+   "stage": "engage",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Add one relevant fact or experience to their post — a short, useful comment beats a long one."
+  },
+  {
+   "id": "li-en-05",
+   "category": "li_engage",
+   "stage": "engage",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "Like two or three recent posts first, then leave one thoughtful comment on the one that matters most to them."
+  },
+  {
+   "id": "li-po-01",
+   "category": "li_post",
+   "stage": "post",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "A lesson learned on a job (anonymised)."
+  },
+  {
+   "id": "li-po-02",
+   "category": "li_post",
+   "stage": "post",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [
+    "chiller"
+   ],
+   "text": "A quick tip (e.g. one sign your chiller is struggling)."
+  },
+  {
+   "id": "li-po-03",
+   "category": "li_post",
+   "stage": "post",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "A photo from site with a one-line story."
+  },
+  {
+   "id": "li-po-04",
+   "category": "li_post",
+   "stage": "post",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "A question to your network."
+  },
+  {
+   "id": "li-po-05",
+   "category": "li_post",
+   "stage": "post",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "text": "A before-and-after: what the plant looked like when you arrived and what it looks like now."
+  },
+  {
+   "id": "li-ms-01",
+   "category": "li_message",
+   "stage": "message",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "text": "Thanks for connecting [Name]. Out of interest, what’s the biggest headache on the engineering side at the moment?"
+  },
+  {
+   "id": "li-ms-02",
+   "category": "li_message",
+   "stage": "message",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Thanks for connecting. No pitch — if plant or energy ever becomes a priority, happy to be a sounding board."
+  },
+  {
+   "id": "li-ms-03",
+   "category": "li_message",
+   "stage": "message",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [],
+   "text": "Thanks for connecting [Name]. I noticed [site] has [detail] — how are you finding it to look after?"
+  },
+  {
+   "id": "li-ms-04",
+   "category": "li_message",
+   "stage": "message",
+   "voice": "sandler",
+   "personas": [],
+   "themes": [],
+   "text": "Thanks for connecting. Quick question, no pitch: who looks after plant decisions at [site] — you, or someone else I should be talking to?"
+  },
+  {
+   "id": "li-ms-05",
+   "category": "li_message",
+   "stage": "message",
+   "voice": "neutral",
+   "personas": [
+    "eng_manager",
+    "facilities",
+    "eng_director"
+   ],
+   "themes": [
+    "chiller",
+    "hvac"
+   ],
+   "text": "Thanks for connecting [Name]. If it’s useful, I put together a short checklist on what to look at before summer for cooling plant. Happy to send it over — no strings."
+  },
+  {
+   "id": "li-ms-06",
+   "category": "li_message",
+   "stage": "message",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "text": "Thanks for connecting. I’ll be straight: I work in HVAC, and I’m not going to spam you. If you ever want a second opinion on plant, just shout."
+  }
+ ],
+ "brushoffs": [
+  {
+   "id": "bo-01",
+   "objection": "Send me an email",
+   "responses": [
+    {
+     "id": "bo-01-1",
+     "voice": "nepq",
+     "text": "Happy to — so I don’t send you rubbish, what would actually be useful to you?"
+    },
+    {
+     "id": "bo-01-2",
+     "voice": "dennehy",
+     "text": "Sure. Most people say that to get me off the phone — is that what’s happening here? Totally fine if so."
+    },
+    {
+     "id": "bo-01-3",
+     "voice": "nepq",
+     "text": "No problem. Before I do, can I ask one quick question so I make it relevant: who looks after the plant day to day?"
+    }
+   ]
+  },
+  {
+   "id": "bo-02",
+   "objection": "We’ve already got someone",
+   "responses": [
+    {
+     "id": "bo-02-1",
+     "voice": "nepq",
+     "text": "Makes sense — most good sites do. How’s it going with them?"
+    },
+    {
+     "id": "bo-02-2",
+     "voice": "nepq",
+     "text": "Great. If you could change one thing about them, what would it be?"
+    },
+    {
+     "id": "bo-02-3",
+     "voice": "sandler",
+     "text": "That’s fine — I’m not asking you to change anyone. Is there anything you’d like a second opinion on?"
+    }
+   ]
+  },
+  {
+   "id": "bo-03",
+   "objection": "Not interested",
+   "responses": [
+    {
+     "id": "bo-03-1",
+     "voice": "sandler",
+     "text": "That’s fine. Can I ask — is it not interested in us, or not interested in looking at the plant at all right now?"
+    },
+    {
+     "id": "bo-03-2",
+     "voice": "nepq",
+     "text": "No problem at all. Out of curiosity, is that because it’s all working well, or because it’s just not a priority?"
+    }
+   ]
+  },
+  {
+   "id": "bo-04",
+   "objection": "No budget",
+   "responses": [
+    {
+     "id": "bo-04-1",
+     "voice": "sandler",
+     "text": "Understood. When does budget planning start for next year?"
+    },
+    {
+     "id": "bo-04-2",
+     "voice": "nepq",
+     "text": "Is that no budget at all, or no budget for something that isn’t a problem yet?"
+    },
+    {
+     "id": "bo-04-3",
+     "voice": "neutral",
+     "text": "Fair enough. Would it be useful to know what it’d cost to plan for, even if it’s not this year?"
+    }
+   ]
+  },
+  {
+   "id": "bo-05",
+   "objection": "Too busy",
+   "responses": [
+    {
+     "id": "bo-05-1",
+     "voice": "dennehy",
+     "text": "Sounds like it’s full on. Is there a better time, or would you rather I didn’t call back?"
+    },
+    {
+     "id": "bo-05-2",
+     "voice": "sandler",
+     "text": "I get it. Can I try you [day] for two minutes? If it’s still bad, tell me and I’ll go away."
+    }
+   ]
+  },
+  {
+   "id": "bo-06",
+   "objection": "Call me in six months",
+   "responses": [
+    {
+     "id": "bo-06-1",
+     "voice": "nepq",
+     "text": "Happy to. What’s likely to be different in six months?"
+    },
+    {
+     "id": "bo-06-2",
+     "voice": "dennehy",
+     "text": "No problem. Is six months when the plant gets reviewed, or just a polite way of saying no? Either is fine."
+    }
+   ]
+  },
+  {
+   "id": "bo-07",
+   "objection": "Who are you with again?",
+   "responses": [
+    {
+     "id": "bo-07-1",
+     "voice": "neutral",
+     "text": "Fair question. [Rep] — we look after HVAC and cooling plant. It’s a cold call, so tell me if it’s not relevant."
+    }
+   ]
+  },
+  {
+   "id": "bo-08",
+   "objection": "We do it all in-house",
+   "responses": [
+    {
+     "id": "bo-08-1",
+     "voice": "nepq",
+     "text": "That’s great — most good sites do some. Where does the in-house team tend to need support, like specialist kit or peaks of work?"
+    },
+    {
+     "id": "bo-08-2",
+     "voice": "nepq",
+     "text": "Makes sense. What happens when something big fails and the team’s already stretched?"
+    }
+   ]
+  }
+ ],
+ "emails": [
+  {
+   "id": "ce-a",
+   "category": "cold_email",
+   "title": "Honest cold",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "subject": "cold email — sorry",
+   "body": "Hi [Name],\n\nI’ll be upfront — this is a cold email and we’ve never spoken.\n\nWe look after HVAC and process cooling for manufacturing sites. I’ve no idea if that’s relevant to you.\n\nIf ageing plant, energy costs or reliability are on your radar, would it be worth a 15-minute chat? If not, just say so and I won’t chase.\n\n[Rep]"
+  },
+  {
+   "id": "ce-b",
+   "category": "cold_email",
+   "title": "Curiosity question",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities"
+   ],
+   "themes": [
+    "chiller"
+   ],
+   "subject": "quick question about [site]",
+   "body": "Hi [Name],\n\nQuick one — who looks after the chillers and cooling plant at [site] at the moment?\n\nI ask because a lot of the engineering directors I speak to are managing older plant with less budget than they’d like.\n\nIf that’s you, happy to share what others are doing. If not, ignore me.\n\n[Rep]"
+  },
+  {
+   "id": "ce-c",
+   "category": "cold_email",
+   "title": "After a voicemail",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "subject": "just left you a voicemail",
+   "body": "Hi [Name],\n\nJust tried you — no worries you weren’t free.\n\nShort version: we help sites like [site] keep cooling and heating plant reliable and cheaper to run. Is that worth 15 minutes, or is it not a priority right now?\n\n[Rep]"
+  },
+  {
+   "id": "ce-d",
+   "category": "cold_email",
+   "title": "Problem-led",
+   "voice": "nepq",
+   "personas": [
+    "eng_director",
+    "eng_manager",
+    "facilities",
+    "ops_director"
+   ],
+   "themes": [
+    "chiller",
+    "hvac"
+   ],
+   "subject": "summer breakdowns",
+   "body": "Hi [Name],\n\nMost cooling plant failures we see happen on the hottest week of the year, when everyone’s already stretched.\n\nHow confident are you that [site]’s plant gets through next summer?\n\nIf the honest answer is “not very”, worth a chat?\n\n[Rep]"
+  },
+  {
+   "id": "ce-e",
+   "category": "cold_email",
+   "title": "Energy angle",
+   "voice": "neutral",
+   "personas": [
+    "energy",
+    "ops_director",
+    "eng_director",
+    "procurement"
+   ],
+   "themes": [
+    "energy"
+   ],
+   "subject": "plant running costs",
+   "body": "Hi [Name],\n\nPumps, fans and chillers are usually the biggest energy users on a site after process kit — and often the easiest to cut.\n\nHave you looked at what yours cost to run recently?\n\nHappy to share a quick way to estimate it if useful.\n\n[Rep]"
+  },
+  {
+   "id": "ce-f",
+   "category": "cold_email",
+   "title": "Break-up — close the loop (Day 21)",
+   "voice": "dennehy",
+   "personas": [],
+   "themes": [],
+   "subject": "closing the loop",
+   "body": "Hi [Name],\n\nI’ve tried you a few times and haven’t heard back, which usually means one of three things: it’s not a priority, you’ve got it covered, or you’ve been buried.\n\nAny of those is fine — just let me know which and I’ll stop chasing.\n\n[Rep]"
+  },
+  {
+   "id": "ce-g",
+   "category": "cold_email",
+   "title": "Compliance angle",
+   "voice": "neutral",
+   "personas": [
+    "hs",
+    "facilities",
+    "eng_manager"
+   ],
+   "themes": [
+    "compliance",
+    "refrigeration"
+   ],
+   "subject": "F-Gas records at [site]",
+   "body": "Hi [Name],\n\nQuick question — if an auditor asked for your F-Gas leak checks and refrigerant records at [site] tomorrow, how easy would it be to put your hands on them?\n\nI ask because it’s the thing most sites say they’ve “got covered” until someone asks.\n\nIf it’s all in hand, ignore me. If not, worth 15 minutes?\n\n[Rep]"
+  },
+  {
+   "id": "ce-h",
+   "category": "cold_email",
+   "title": "Decarbonisation angle",
+   "voice": "nepq",
+   "personas": [
+    "energy",
+    "project",
+    "ops_director"
+   ],
+   "themes": [
+    "heatpump",
+    "energy"
+   ],
+   "subject": "getting off gas at [site]",
+   "body": "Hi [Name],\n\nA lot of sites have a net zero target from head office and no obvious route to it.\n\nIs getting off gas heating on the agenda at [site], or is it still too early?\n\nIf it’s early, no problem — happy to share what other sites did first.\n\n[Rep]"
+  },
+  {
+   "id": "we-a",
+   "category": "warm_email",
+   "title": "Follow-up after a call",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "subject": "following our call",
+   "body": "Hi [Name],\n\nThanks for the time today. You mentioned [issue] and that it’s been [consequence].\n\nAs promised, here’s [one useful thing]. Shall we pencil in [day] for [meeting/site walk]?\n\n[Rep]"
+  },
+  {
+   "id": "we-b",
+   "category": "warm_email",
+   "title": "Value add (no ask)",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "subject": "thought of you",
+   "body": "Hi [Name],\n\nSaw this and it reminded me of what you said about [issue]: [one-line insight / case study].\n\nNo need to reply.\n\n[Rep]"
+  },
+  {
+   "id": "we-c",
+   "category": "warm_email",
+   "title": "Re-engage (nurture)",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "subject": "still on your list?",
+   "body": "Hi [Name],\n\nWe spoke back in [month] about [issue]. Has that been sorted, or is it still hanging around?\n\n[Rep]"
+  },
+  {
+   "id": "we-d",
+   "category": "warm_email",
+   "title": "Referral / mushroom",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "subject": "[Colleague name] suggested I get in touch",
+   "body": "Hi [Name],\n\nI’ve been speaking with [colleague] about [topic] and they mentioned you look after [area].\n\nWould it be useful to compare notes?\n\n[Rep]"
+  },
+  {
+   "id": "we-e",
+   "category": "warm_email",
+   "title": "After LinkedIn connect",
+   "voice": "nepq",
+   "personas": [],
+   "themes": [],
+   "subject": "good to connect",
+   "body": "Hi [Name],\n\nThanks for connecting on LinkedIn. I tried your line earlier but didn’t catch you.\n\nQuick question: who looks after the plant at [site]? If it’s you, I’d like to ask you two things — no pitch.\n\n[Rep]"
+  },
+  {
+   "id": "we-f",
+   "category": "warm_email",
+   "title": "Meeting confirmation",
+   "voice": "neutral",
+   "personas": [],
+   "themes": [],
+   "subject": "confirming [day]",
+   "body": "Hi [Name],\n\nJust confirming we’re on for [day] at [time] at [site]. I’ll keep it to [duration] and focus on [issue].\n\nIf anything changes, just tell me — no problem at all.\n\n[Rep]"
+  }
+ ],
+ "skills": [
+  {
+   "id": "elephant",
+   "num": 1,
+   "title": "Call out the elephant",
+   "summary": "Say the obvious thing out loud — “This is a cold call”, “We’ve never spoken”. It removes the tension instead of pretending it isn’t there.",
+   "why": "The prospect already knows it’s a sales call. Pretending otherwise makes you sound slippery and sets off their guard. Naming it first feels honest, lowers the pressure and often earns you a few extra seconds.",
+   "examples": [
+    "Hi [Name], it’s [Rep] — I’ll be honest, this is a cold call.",
+    "We’ve never spoken before, so I know this is out of the blue.",
+    "You don’t know me, and I’m interrupting your day.",
+    "I’m guessing you weren’t sitting there hoping a contractor would ring today?",
+    "This is a sales call — I’ll be quick."
+   ],
+   "practice": "Say five different openers out loud, each naming the cold call in a different way. Keep them under 8 seconds. Record yourself and listen back for any “um”, “just” or “sorry to bother you”.",
+   "mistake": "Naming it and then immediately apologising (“Sorry, I know this is a cold call, you’re probably busy…”). Say it once, calmly, then move on."
+  },
+  {
+   "id": "contract",
+   "num": 2,
+   "title": "Micro-contracting",
+   "summary": "Get a small, explicit agreement before moving on. It puts the prospect in control and gives you permission to carry on.",
+   "why": "People resist being sold to but cooperate when they’re asked. A small “yes” (30 seconds, a couple of questions) turns an interruption into an agreement and makes the next step easier to ask for.",
+   "examples": [
+    "Can I take 30 seconds to tell you why I called, and then you decide if it’s worth carrying on?",
+    "I’ll ask a couple of quick questions, and if there’s nothing there, we both get on with our day. OK?",
+    "If at any point this sounds like a waste of time, just say so — deal?",
+    "Would it be OK if I asked a couple of questions to see if there’s any point us talking?",
+    "Give me a minute, and if I haven’t said anything useful, you can hang up. Fair?"
+   ],
+   "practice": "Pair up: one says an opener, the other says “go on”. Immediately follow with a micro-contract. Do it back-to-back five times, then swap.",
+   "mistake": "Asking for time without saying what for. “Have you got a minute?” invites a “no”. Say what you’ll do with the time and what happens if it’s not useful."
+  },
+  {
+   "id": "label",
+   "num": 3,
+   "title": "Name the feeling",
+   "summary": "Notice and say what the other person might be feeling. “Sounds like you get a lot of these calls.” It lowers their guard.",
+   "why": "When someone feels heard, resistance drops. Labelling a feeling (“sounds like…”, “it seems like…”) shows you’re listening and lets them correct you, which gets honest information out.",
+   "examples": [
+    "Sounds like you get a lot of these calls.",
+    "You sound a bit sceptical — that’s fair.",
+    "It sounds like that’s been a real thorn in your side.",
+    "I get the sense you’ve been let down by a contractor before.",
+    "It sounds like now’s not great timing."
+   ],
+   "practice": "Take the brush-offs in the Scripts tab. For each one, reply with a label (“sounds like…”) instead of a counter-argument, then pause for three seconds.",
+   "mistake": "Labelling and then arguing. “Sounds like you’re busy — but this will only take a minute!” undoes the whole thing. Label, then stay quiet."
+  },
+  {
+   "id": "curiosity",
+   "num": 4,
+   "title": "Curiosity over pitching",
+   "summary": "Ask questions that get them talking about their situation instead of explaining what we do.",
+   "why": "Prospects believe their own words more than yours. Questions that move from situation → problem → consequence let them talk themselves into seeing the cost of doing nothing.",
+   "examples": [
+    "Who looks after your chillers and cooling plant at the moment?",
+    "How’s that working out for you?",
+    "When was the last unplanned breakdown, and what happened?",
+    "What did that end up costing you?",
+    "What happens if that doesn’t get sorted?"
+   ],
+   "practice": "Run a 3-minute call where you’re not allowed to make a single statement about what we do — questions only. Observer counts statements.",
+   "mistake": "Interrogating. Asking five questions in a row without acknowledging the answer. Use a short reflection (“OK, so it’s a mix of in-house and contractor”) between questions."
+  },
+  {
+   "id": "permission",
+   "num": 5,
+   "title": "Permission to say no",
+   "summary": "Make “no” a safe answer. It makes “yes” more likely and gets you honest answers.",
+   "why": "If “no” feels hard, people hedge and brush you off. If it’s explicitly OK, they relax and tell you the truth — and the ones who say yes mean it.",
+   "examples": [
+    "If it’s not relevant, just say so and I’ll leave you alone.",
+    "Is that a waste of your time? You can tell me.",
+    "If there’s nothing there, I’ll tell you.",
+    "It’s fine if it’s not for you — no hard feelings.",
+    "Would it be worth 15 minutes, or is it not a priority right now?"
+   ],
+   "practice": "Rewrite your usual close so it includes an easy “no”. Say it to a partner and ask them whether it felt pushy.",
+   "mistake": "Saying it insincerely. If you say “no problem” and then chase, they’ll notice. Mean it — and if they say no, thank them and move on."
+  }
+ ],
+ "voices": [
+  {
+   "id": "dennehy",
+   "name": "Dennehy style",
+   "tag": "Blunt & honest",
+   "summary": "Brutally honest, upfront about the cold call, refuses to chase. The prospect has to qualify themselves. Pattern-interrupt openers that sound nothing like a sales call.",
+   "when": "Best with senior, time-poor people and anyone who’s clearly heard every pitch. Works well for openers and brush-offs.",
+   "watch": "Can come across as cold if your tone is flat. Keep it warm and relaxed, not aggressive."
+  },
+  {
+   "id": "nepq",
+   "name": "NEPQ style",
+   "tag": "Calm & curious",
+   "summary": "Calm, curious, neutral tone. Staged questions — situation, problem awareness, consequence, solution awareness, commitment — so the prospect talks themselves into change.",
+   "when": "Best once someone is on the line and willing to talk. Perfect for engineers and facilities managers who like to explain how things work.",
+   "watch": "Don’t rush through the stages. If you skip to the consequence before they’ve described the problem, it feels like a trap."
+  },
+  {
+   "id": "sandler",
+   "name": "Sandler style",
+   "tag": "Up-front contracts",
+   "summary": "Agree the agenda, time and possible outcomes up front. Use the pain funnel — go from the surface problem to the business and personal impact. “No” is OK.",
+   "when": "Best for structured meetings and procurement or project people who want clarity. Good for micro-contracts and closes.",
+   "watch": "Don’t make the contract too formal on a cold call. Keep it light and conversational."
+  }
+ ],
+ "ladder": [
+  {
+   "rung": 1,
+   "name": "Research",
+   "purpose": "5 minutes on the company and person: sites, recent news, projects, LinkedIn activity.",
+   "detail": "Look for one thing you can reference: a new site, a project, a post, a job change. Write one line in the notes — it’s your door-opener for the call."
+  },
+  {
+   "rung": 2,
+   "name": "LinkedIn connect",
+   "purpose": "Connection request with a short, non-salesy note.",
+   "detail": "Under 200 characters. No pitch. Make it about them or the sector. If they don’t accept, don’t chase — move on."
+  },
+  {
+   "rung": 3,
+   "name": "LinkedIn engage",
+   "purpose": "Like / comment thoughtfully on 2–3 of their posts or company posts.",
+   "detail": "The aim is to be familiar before you call. A genuine comment is worth ten likes."
+  },
+  {
+   "rung": 4,
+   "name": "Cold call",
+   "purpose": "First voice contact using the core skills.",
+   "detail": "Elephant, micro-contract, short reason, curiosity. If no answer, leave a short voicemail and follow with an email."
+  },
+  {
+   "rung": 5,
+   "name": "Cold email",
+   "purpose": "Short, plain-text email — sent same day as the call or as a voicemail follow-up.",
+   "detail": "Under 100 words, one question, no attachments. Subject line short and lower-case."
+  },
+  {
+   "rung": 6,
+   "name": "Mushroom",
+   "purpose": "Find and connect with 2–3 other people in the same organisation (other sites, other functions, other levels).",
+   "detail": "One contact is a single point of failure. Map the org: engineering, maintenance, facilities, procurement, ops, energy."
+  },
+  {
+   "rung": 7,
+   "name": "Warm call",
+   "purpose": "Follow-up call that references a previous touch.",
+   "detail": "Open with the earlier touch: “we connected on LinkedIn”, “I sent you an email on…”. It’s a different call from a cold one."
+  },
+  {
+   "rung": 8,
+   "name": "Warm email",
+   "purpose": "Follow-up email adding value (case study, insight, question).",
+   "detail": "Give before you ask. One useful thing, one soft question."
+  },
+  {
+   "rung": 9,
+   "name": "Meeting booked",
+   "purpose": "Goal of the sequence.",
+   "detail": "Confirm in writing, agree the agenda, and tell them what you’ll bring. Keep the remaining cadence tasks cancelled."
+  },
+  {
+   "rung": 10,
+   "name": "Nurture",
+   "purpose": "Not now ≠ never. Light touch every 4–6 weeks.",
+   "detail": "Value-add emails, LinkedIn likes, an occasional “still on your list?”. Put the next touch in the diary so it doesn’t slip."
+  }
+ ],
+ "cadence": [
+  {
+   "day": 1,
+   "type": "research",
+   "label": "Research the person and company",
+   "templateHint": "research"
+  },
+  {
+   "day": 1,
+   "type": "linkedin_connect",
+   "label": "LinkedIn connect",
+   "templateHint": "li_connect"
+  },
+  {
+   "day": 2,
+   "type": "linkedin_engage",
+   "label": "Engage with a post (like / comment)",
+   "templateHint": "li_engage"
+  },
+  {
+   "day": 3,
+   "type": "call",
+   "label": "Cold call #1",
+   "templateHint": "cold_call"
+  },
+  {
+   "day": 3,
+   "type": "email",
+   "label": "Cold email #1 (if no answer, after voicemail)",
+   "templateHint": "ce-c"
+  },
+  {
+   "day": 5,
+   "type": "call",
+   "label": "Cold call #2",
+   "templateHint": "cold_call"
+  },
+  {
+   "day": 7,
+   "type": "mushroom",
+   "label": "Mushroom: connect with 2 colleagues at the same company",
+   "templateHint": "mushroom"
+  },
+  {
+   "day": 8,
+   "type": "email",
+   "label": "Cold email #2 (different angle)",
+   "templateHint": "ce-b"
+  },
+  {
+   "day": 10,
+   "type": "call",
+   "label": "Call #3 (warm if any reply, otherwise cold)",
+   "templateHint": "warm_or_cold"
+  },
+  {
+   "day": 14,
+   "type": "linkedin_message",
+   "label": "LinkedIn message (value, not pitch)",
+   "templateHint": "li_message"
+  },
+  {
+   "day": 17,
+   "type": "call",
+   "label": "Call #4 (warm / cold)",
+   "templateHint": "warm_or_cold"
+  },
+  {
+   "day": 21,
+   "type": "email",
+   "label": "“Close the loop” email (polite break-up)",
+   "templateHint": "ce-f"
+  }
+ ],
+ "rules": {
+  "email": [
+   "Plain text. No logos, no images, no fancy signature.",
+   "Under 100 words.",
+   "One question only — and make it easy to answer.",
+   "No attachments on the first email.",
+   "Subject line short and lower-case, like an internal email.",
+   "Say it’s a cold email if it is. Honesty beats cleverness.",
+   "Give a clear way to say no."
+  ],
+  "linkedin": [
+   "Connection notes under 200 characters. No pitch.",
+   "Engage before you message: like and comment on a few posts first.",
+   "After connecting, send value or a question — never a sales pitch.",
+   "Comment with substance. “Great post” is invisible.",
+   "Post once a week: a lesson, a tip, a site photo or a question.",
+   "If they don’t reply to two messages, stop and move to another channel."
+  ]
+ },
+ "mushroom": {
+  "intro": "Mushrooming means growing contacts across an account like a mushroom colony — many small threads under the surface, not one big stem. If your only contact leaves or goes quiet, the account dies. If you have three, it doesn’t.",
+  "checklist": [
+   "Map 3+ contacts per account (different level, function or site).",
+   "Add the second and third contact to the app and link them to the same company.",
+   "Connect on LinkedIn with each — different note for each.",
+   "Reference colleagues only where you’ve genuinely spoken to them (don’t name-drop falsely).",
+   "Use referral emails and warm-call openers that reference colleagues."
+  ],
+  "map": [
+   "Engineering Director",
+   "Maintenance Manager",
+   "Facilities Manager",
+   "Procurement",
+   "Site / Ops Director",
+   "Energy / Sustainability"
+  ],
+  "questions": [
+   "Who else gets involved when plant decisions are made?",
+   "Who looks after this at your other sites?",
+   "Who should I speak to so I’m not wasting your time?"
+  ]
+ },
+ "training": [
+  {
+   "time": "0–10 min",
+   "title": "The real problem",
+   "body": "We know who to target. The gap is what “working the client” actually means. Ask the room: “When you say you’re working an account, what have you actually done this week?”"
+  },
+  {
+   "time": "10–20 min",
+   "title": "The Outreach Ladder & Cadence",
+   "body": "Walk through the 10 rungs and the 21-day rhythm. Key message: one call is not a strategy; 8–10 touches across channels is. Introduce mushrooming."
+  },
+  {
+   "time": "20–30 min",
+   "title": "Skill 1: Call out the elephant",
+   "body": "Why pretending it’s not a cold call makes it worse. Example lines. Pairs say three openers out loud."
+  },
+  {
+   "time": "30–40 min",
+   "title": "Skill 2: Micro-contracting",
+   "body": "Small agreements, prospect in control. Example lines. Practice: opener + micro-contract back to back."
+  },
+  {
+   "time": "40–50 min",
+   "title": "Skill 3: Name the feeling",
+   "body": "Label scepticism, busyness, past bad experiences. Practice reacting to brush-offs with a label instead of a counter-argument."
+  },
+  {
+   "time": "50–60 min",
+   "title": "Skills 4 & 5: Curiosity & permission to say no",
+   "body": "Questions over pitching (situation → problem → consequence). Making “no” safe. Show the three voices briefly."
+  },
+  {
+   "time": "60–80 min",
+   "title": "Live practice",
+   "body": "Pairs/threes: caller, prospect, observer. Real persona cards (e.g. Engineering Director at a food factory, ageing chillers). Rotate. Observer ticks off: elephant / contract / label / question / close."
+  },
+  {
+   "time": "80–90 min",
+   "title": "Commit & launch the app",
+   "body": "Everyone installs the app, adds 5 real contacts, sets their call days. Agree team targets for the next two weeks and a review date."
+  }
+ ],
+ "personaCards": [
+  {
+   "id": "pc1",
+   "title": "Engineering Director — food manufacturer",
+   "headline": "15-year-old chillers, “we’ve got a contractor”.",
+   "situation": "Runs a food plant with refrigeration and process chillers that are 15 years old. Has a long-standing contractor and no appetite for change.",
+   "objections": [
+    "We’ve already got someone.",
+    "It all works fine.",
+    "Send me an email."
+   ],
+   "goodOutcome": "Agrees to a 20-minute site walk to look at plant condition — as a second opinion, not a switch."
+  },
+  {
+   "id": "pc2",
+   "title": "Facilities Manager — pharma site",
+   "headline": "Compliance pressure, very busy.",
+   "situation": "Responsible for a regulated site where HVAC and temperature control must be documented. Under constant audit pressure and drowning in calls.",
+   "objections": [
+    "I haven’t got time.",
+    "We’re mid-audit.",
+    "Call me in six months."
+   ],
+   "goodOutcome": "Agrees to a short call next week to talk through compliance records, with a clear “no” offered."
+  },
+  {
+   "id": "pc3",
+   "title": "Procurement Manager — aerospace",
+   "headline": "“Send me an email.”",
+   "situation": "Buys on price and process. Doesn’t own the technical decision but is the gatekeeper to the supplier list. Wants everything in writing.",
+   "objections": [
+    "Send me an email.",
+    "We have a preferred supplier list.",
+    "What’s your price?"
+   ],
+   "goodOutcome": "Tells you who owns the plant decision on site and agrees to introduce you or share the process to get on the list."
+  },
+  {
+   "id": "pc4",
+   "title": "Maintenance Manager — automotive",
+   "headline": "Bad experience with a contractor last year.",
+   "situation": "Hands-on manager who was let down by a contractor who missed a PPM and left him exposed during a breakdown. Wary and a bit bitter.",
+   "objections": [
+    "You’re all the same.",
+    "We’ve been burnt.",
+    "Not interested."
+   ],
+   "goodOutcome": "Talks through what went wrong and agrees to meet to see how you’d handle it differently."
+  },
+  {
+   "id": "pc5",
+   "title": "Operations Director — warehouse",
+   "headline": "Energy bills up, net zero targets from head office.",
+   "situation": "Needs to cut energy cost and has a net zero target imposed from above, but no budget or plan. Cares about cost, risk and not getting blamed.",
+   "objections": [
+    "No budget.",
+    "Head office decides.",
+    "It’s not a priority this year."
+   ],
+   "goodOutcome": "Agrees to a short energy and plant walk-round so there’s something to put in front of head office."
+  }
+ ],
+ "skillOfDay": [
+  {
+   "skill": "elephant",
+   "line": "Hi [Name], it’s [Rep] — I’ll be honest, this is a cold call."
+  },
+  {
+   "skill": "contract",
+   "line": "Can I take 30 seconds to tell you why I called, and then you decide if it’s worth carrying on?"
+  },
+  {
+   "skill": "label",
+   "line": "Sounds like you get a lot of these calls."
+  },
+  {
+   "skill": "curiosity",
+   "line": "Who looks after your chillers and cooling plant at the moment?"
+  },
+  {
+   "skill": "permission",
+   "line": "If it’s not relevant, just say so and I’ll leave you alone."
+  }
+ ]
+}
