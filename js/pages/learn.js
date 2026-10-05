@@ -32,8 +32,10 @@ function index(root) {
 function pipedrive(root) {
   const pd = state.content.pipedrive;
   root.append(back(), h('h1', null, 'Keep Pipedrive up to date'));
-  root.append(h('div', { class: 'card accent' }, h('strong', null, pd.reminder), h('p', null, 'This app tracks your activity: dials, emails, LinkedIn and results. Pipedrive is the record of every prospect, deal and next step. If it isn’t in Pipedrive, it didn’t happen.')));
-  root.append(sectionLabel('After every touch'), h('div', { class: 'card' }, h('ul', { class: 'bullets' }, pd.checklist.map((c) => h('li', null, c)))));
+  root.append(h('div', { class: 'card accent' }, h('strong', null, pd.reminder), h('p', null, 'Pipedrive is the record of every prospect, deal and next step. If it isn’t in Pipedrive, it didn’t happen. The app just makes it painless: you log in seconds while you work, then update Pipedrive in one go.')));
+  root.append(sectionLabel('How it works'), h('div', { class: 'card' }, h('ol', { class: 'recipe' }, pd.workflow.map((w) => h('li', null, w)))));
+  root.append(h('a', { class: 'btn ghost', href: '#/wrapup' }, icon('check', 18), 'Open the wrap-up sheet'));
+  root.append(sectionLabel('For each one in Pipedrive'), h('div', { class: 'card' }, h('ul', { class: 'bullets' }, pd.checklist.map((c) => h('li', null, c)))));
   root.append(h('button', { class: 'btn', onclick: () => import('../activity.js').then((m) => m.openPipedrive()) }, icon('external', 18), 'Open Pipedrive'));
 }
 

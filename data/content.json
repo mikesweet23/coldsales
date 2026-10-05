@@ -289,6 +289,12 @@
  },
  "pipedrive": {
   "reminder": "Ensure you update Pipedrive to keep track.",
+  "workflow": [
+   "Log each touch in the app as you go: one tap, a name and a quick note. No Pipedrive while you’re dialling.",
+   "Finish your block (a power hour works well).",
+   "Open the wrap-up sheet. Copy each line into Pipedrive and tick it off.",
+   "Pipedrive is the record. The app is your scoreboard and your scripts."
+  ],
   "checklist": [
    "Log the call, email or LinkedIn touch against the person.",
    "Move the deal or person to the stage that matches their rung on the ladder.",
