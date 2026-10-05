@@ -9,6 +9,7 @@ const SECTIONS = [
   { id: 'ladder', title: 'The Outreach Ladder', sub: '10 rungs from cold to meeting' },
   { id: 'cadence', title: 'The 21-day Cadence', sub: 'The rhythm for every prospect' },
   { id: 'skills', title: 'The 5 Core Skills', sub: 'Behaviours that run across every touch' },
+  { id: 'hunt', title: 'Hunt for the no', sub: 'Word it so “no” means yes' },
   { id: 'tonality', title: 'Tonality and pacing', sub: 'How to sound calm, curious and certain' },
   { id: 'voices', title: 'Three conversation styles', sub: 'Direct · Curious · Structured' },
   { id: 'linkedin', title: 'LinkedIn playbook', sub: 'Connect, comment, reach out at the right time', href: '#/scripts/linkedin' },
@@ -123,6 +124,20 @@ function tonality(root) {
   root.append(sectionLabel('Common mistakes'), h('div', { class: 'card warn-card' }, h('ul', { class: 'bullets' }, t.mistakes.map((d) => h('li', null, d)))));
 }
 
+function hunt(root) {
+  const t = state.content.huntNo;
+  root.append(back(), h('h1', null, t.title), h('p', { class: 'lead' }, t.summary));
+  root.append(sectionLabel('Why it works'), h('div', { class: 'card' }, h('ul', { class: 'bullets' }, t.why.map((x) => h('li', null, x)))));
+  root.append(sectionLabel('The formula'), h('div', { class: 'card' }, h('ol', { class: 'recipe' }, t.formula.map((x) => h('li', null, x)))));
+  root.append(sectionLabel('Try these'));
+  state.content.byCategory('cold_call', 'hunt').slice(0, 6).forEach((l) => root.append(h('div', { class: 'card quote-card' }, `“${l.text}”`)));
+  root.append(h('a', { class: 'btn ghost', href: '#/scripts/cold' }, 'All the lines are in Scripts → Cold Call', icon('right', 18)));
+  root.append(sectionLabel('What to do with the answer'));
+  t.answers.forEach((a) => root.append(h('div', { class: 'card' }, h('div', { class: 'small muted' }, 'They say'), h('strong', null, a.they), h('div', { class: 'small muted' }, 'You say'), h('div', null, a.you))));
+  root.append(sectionLabel('Common mistakes'), h('div', { class: 'card warn-card' }, h('ul', { class: 'bullets' }, t.mistakes.map((x) => h('li', null, x)))));
+  root.append(h('p', { class: 'muted small' }, t.honesty));
+}
+
 function mushroom(root) {
   const m = state.content.mushroom;
   root.append(back(), h('h1', null, 'Mushrooming'), h('p', { class: 'lead' }, m.intro));
@@ -170,6 +185,7 @@ export async function render(root, { parts }) {
     case 'cadence': return cadence(root);
     case 'skills': return skills(root);
     case 'skill': return skillDetail(root, id);
+    case 'hunt': return hunt(root);
     case 'tonality': return tonality(root);
     case 'voices': return voices(root);
     case 'mushroom': return mushroom(root);

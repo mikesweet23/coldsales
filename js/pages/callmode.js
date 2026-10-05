@@ -7,12 +7,12 @@ import { logWithFeedback } from '../activity.js';
 import { readPower, pausePower, resumePower, resetPower, remainingMs, fmtClock } from '../power.js';
 import { initFilters } from './scripts.js';
 
-const STAGE_LABEL_SHORT = { opener: 'Opener', contract: 'Contract', reason: 'Reason', situation: 'Situation', problem: 'Problem', consequence: 'Impact', solution: 'Vision', qualify: 'Decision', close: 'Close', bridge: 'Bridge' };
+const STAGE_LABEL_SHORT = { opener: 'Opener', contract: 'Contract', reason: 'Reason', situation: 'Situation', problem: 'Problem', consequence: 'Impact', solution: 'Vision', qualify: 'Decision', hunt: 'Hunt', close: 'Close', bridge: 'Bridge' };
 
 function stepsFor(mode) {
   const main = mode === 'warm'
-    ? ['opener', 'bridge', 'situation', 'problem', 'consequence', 'solution', 'qualify', 'close']
-    : ['opener', 'contract', 'reason', 'situation', 'problem', 'consequence', 'solution', 'qualify', 'close'];
+    ? ['opener', 'bridge', 'situation', 'problem', 'consequence', 'solution', 'qualify', 'hunt', 'close']
+    : ['opener', 'contract', 'reason', 'situation', 'problem', 'consequence', 'solution', 'qualify', 'hunt', 'close'];
   return { main, any: ['label', 'brushoffs', 'voicemail'] };
 }
 
