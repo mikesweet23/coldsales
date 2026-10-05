@@ -33,6 +33,7 @@ export async function logActivity({ type, outcome = 'done', who = '', notes = ''
   const activity = {
     id: uid(), type, outcome, who: who.trim(), notes: notes.trim(), scriptIdsUsed: scriptIds, skills,
     variant, timestamp: timestamp || Date.now(),
+    pipedrive: false, // false = still to enter in Pipedrive (older entries without the flag count as entered)
   };
   await db.put('activities', activity);
   return activity;
@@ -40,8 +41,29 @@ export async function logActivity({ type, outcome = 'done', who = '', notes = ''
 
 export async function deleteActivity(id) { await db.del('activities', id); }
 
-// Log and give feedback: target-hit celebration plus the Pipedrive reminder.
-export async function logWithFeedback(opts, { remind = true } = {}) {
+export const needsEntry = (a) => a.pipedrive === false;
+
+export async function setEntered(activity, entered) {
+  activity.pipedrive = !entered ? false : true;
+  await db.put('activities', activity);
+}
+
+export async function countToEnter() { return (await db.all('activities')).filter(needsEntry).length; }
+
+// One line per touch, ready to paste into a Pipedrive note or activity.
+export function entryText(a) {
+  const d = new Date(a.timestamp);
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mm = String(d.getMinutes()).padStart(2, '0');
+  const day = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+  const bits = [`${day} ${hh}:${mm}`, TYPE_LABEL[a.type] || a.type, outcomeLabel(a.outcome)];
+  if (a.who) bits.push(a.who);
+  if (a.notes) bits.push(a.notes.replace(/\s*\n\s*/g, ' '));
+  return bits.join(' | ');
+}
+
+// Log quietly (no reminders while you are dialling) and celebrate target hits.
+export async function logWithFeedback(opts) {
   const before = todayCounts(await db.all('activities'));
   const activity = await logActivity(opts);
   const after = todayCounts(await db.all('activities'));
@@ -50,9 +72,7 @@ export async function logWithFeedback(opts, { remind = true } = {}) {
   const group = (ACTIVITY_TYPES.find((x) => x.id === opts.type) || {}).group;
   const hit = group && t[group] && before[group] < t[group] && after[group] >= t[group];
   const total = Object.keys(t).every((k) => !t[k] || after[k] >= t[k]);
-  const msg = hit ? `Target hit: ${t[group]} ${group}!` : 'Logged';
-  if (remind) toast(`${msg} Now update Pipedrive.`, { action: 'Open Pipedrive', onAction: openPipedrive, duration: 5000 });
-  else toast(msg);
+  toast(hit ? `Target hit: ${t[group]} ${group}!` : 'Logged', { duration: 1800 });
   if (total && hit) setTimeout(() => toast('All daily targets hit. Nice work.', { duration: 4000 }), 600);
   return activity;
 }

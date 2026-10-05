@@ -125,10 +125,10 @@ function skillsChart(acts) {
 const pct = (a, b) => (b ? Math.round((a / b) * 100) + '%' : '—');
 
 function exportCsv(acts) {
-  const head = ['Date', 'Time', 'Who', 'Type', 'Outcome', 'Variant', 'Skills used', 'Notes'];
+  const head = ['Date', 'Time', 'Who', 'Type', 'Outcome', 'Variant', 'Skills used', 'Notes', 'Entered in Pipedrive'];
   const rows = [...acts].sort((a, b) => a.timestamp - b.timestamp).map((a) => [
     tsToYmd(a.timestamp), fmtTime(a.timestamp), a.who || '', TYPE_LABEL[a.type] || a.type, outcomeLabel(a.outcome), a.variant || '',
-    (a.skills || []).join(' '), (a.notes || '').replace(/\n/g, ' '),
+    (a.skills || []).join(' '), (a.notes || '').replace(/\n/g, ' '), a.pipedrive === false ? 'No' : 'Yes',
   ]);
   download(`outbound-activities-${today()}.csv`, [head, ...rows].map((r) => r.map(csvEscape).join(',')).join('\n'), 'text/csv');
 }

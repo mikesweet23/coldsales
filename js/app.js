@@ -7,15 +7,16 @@ import * as callmode from './pages/callmode.js';
 import * as tracker from './pages/tracker.js';
 import * as learn from './pages/learn.js';
 import * as settings from './pages/settings.js';
+import * as wrapup from './pages/wrapup.js';
 
-const PAGES = { today, scripts, call: callmode, tracker, learn, settings };
+const PAGES = { today, scripts, call: callmode, tracker, learn, settings, wrapup };
 const TABS = [
   { id: 'today', label: 'Today', icon: 'today' },
   { id: 'scripts', label: 'Scripts', icon: 'scripts' },
   { id: 'tracker', label: 'Tracker', icon: 'tracker' },
   { id: 'learn', label: 'Learn', icon: 'learn' },
 ];
-const TAB_FOR = { call: 'scripts' };
+const TAB_FOR = { call: 'scripts', wrapup: 'today' };
 
 let cleanup = null;
 let token = 0;

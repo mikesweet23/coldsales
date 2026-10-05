@@ -167,24 +167,31 @@ export function sectionLabel(text, right) {
 }
 
 // Who you're calling right now. Not a CRM — it just fills [Name] and [site]. Pipedrive holds the records.
-export function prospectCard(onChange) {
+// Values save as you type; the page only refreshes once focus leaves the card, so typing is never interrupted.
+export function prospectCard(onChange, { compact = false } = {}) {
   const p = getProspect();
   const name = h('input', { class: 'input', placeholder: 'First name', value: p.name || '', autocomplete: 'off', 'aria-label': 'Prospect name' });
   const site = h('input', { class: 'input', placeholder: 'Company / site', value: p.company || '', autocomplete: 'off', 'aria-label': 'Prospect company or site' });
-  const save = () => { setProspect({ name: name.value.trim(), company: site.value.trim() }); onChange && onChange(); };
-  name.addEventListener('change', save);
-  site.addEventListener('change', save);
-  return h('div', { class: 'prospect' },
-    h('div', { class: 'row between' }, h('span', { class: 'muted small' }, 'Who are you calling? Fills [Name] and [site].'),
-      (p.name || p.company) ? h('button', { class: 'link small plain', onclick: () => { setProspect({}); onChange && onChange(); } }, 'Clear') : null),
-    h('div', { class: 'grid2' }, name, site));
+  const save = () => setProspect({ name: name.value.trim(), company: site.value.trim() });
+  name.addEventListener('input', save);
+  site.addEventListener('input', save);
+  const box = h('div', { class: compact ? 'call-prospect' : 'prospect' });
+  if (!compact) {
+    box.append(h('div', { class: 'row between' }, h('span', { class: 'muted small' }, 'Who are you calling? Fills [Name] and [site].'),
+      (p.name || p.company) ? h('button', { class: 'link small plain', onclick: () => { setProspect({}); onChange && onChange(); } }, 'Clear') : null));
+  }
+  if (compact) box.append(name, site); else box.append(h('div', { class: 'grid2' }, name, site));
+  box.addEventListener('focusout', (e) => { if (!box.contains(e.relatedTarget)) { save(); onChange && onChange(); } });
+  box.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.target.blur && e.target.blur(); } });
+  box.clearFields = () => { name.value = ''; site.value = ''; setProspect({}); };
+  return box;
 }
 
 export function skillsPicker(selected = new Set()) {
   const wrap = h('div', { class: 'skills-pick' });
   for (const sk of state.content.skills) {
     const btn = h('button', {
-      type: 'button', class: 'chip' + (selected.has(sk.id) ? ' on' : ''), 'aria-pressed': String(selected.has(sk.id)),
+      type: 'button', class: 'chip sm' + (selected.has(sk.id) ? ' on' : ''), 'aria-pressed': String(selected.has(sk.id)),
       onclick: () => { if (selected.has(sk.id)) selected.delete(sk.id); else selected.add(sk.id); btn.classList.toggle('on'); btn.setAttribute('aria-pressed', String(selected.has(sk.id))); },
     }, sk.title.replace('Call out the elephant', 'Elephant').replace('Micro-contracting', 'Micro-contract').replace('Name the feeling', 'Label').replace('Curiosity over pitching', 'Curiosity').replace('Permission to say no', 'Safe “no”'));
     wrap.append(btn);

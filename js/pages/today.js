@@ -1,11 +1,12 @@
 import { db } from '../db.js';
 import { state } from '../state.js';
-import { h, today, parseYmd, fmtDate, firstName, fmtTime, tsToYmd, pref } from '../util.js';
-import { icon, toast, selectEl, confirmDialog } from '../ui.js';
+import { h, today, parseYmd, fmtDate, firstName } from '../util.js';
+import { icon, selectEl } from '../ui.js';
 import { todayCounts, computeStreak, CONVERSATION_OUTCOMES } from '../stats.js';
 import { sectionLabel } from '../components.js';
 import { openLogSheet } from '../logsheet.js';
-import { TYPE_LABEL, TYPE_ICON, outcomeLabel, openPipedrive, deleteActivity } from '../activity.js';
+import { openPipedrive, needsEntry } from '../activity.js';
+import { readPower, startPower, pausePower, resumePower, resetPower, endPower, remainingMs, fmtClock, watchPower } from '../power.js';
 
 const refresh = () => window.dispatchEvent(new Event('outbound:refresh'));
 
@@ -27,66 +28,48 @@ function ring(done, target) {
   return h('div', { class: 'ring', html: svg });
 }
 
-function readPower() { try { return JSON.parse(pref('power') || 'null'); } catch (e) { return null; } }
-
 function powerCard(acts, timers) {
-  const p = readPower();
   const card = h('div', { class: 'card power' });
+  let p = readPower();
   if (!p) {
     let minutes = 60;
     card.append(
-      h('div', { class: 'row between' }, h('div', null, h('strong', null, 'Power hour'), h('div', { class: 'muted small' }, 'A focused block. Phone down, dials only.')), icon('clock', 22, 'red')),
+      h('div', { class: 'row between' }, h('div', null, h('strong', null, 'Power hour'), h('div', { class: 'muted small' }, 'A focused block. Phone down, dials only. Log as you go, enter in Pipedrive after.')), icon('clock', 22, 'red')),
       h('div', { class: 'row gap' },
         selectEl([30, 45, 60, 90, 120].map((m) => ({ value: m, label: `${m} min` })), 60, (v) => { minutes = Number(v); }, { 'aria-label': 'Length' }),
-        h('button', { class: 'btn', onclick: () => { pref('power', JSON.stringify({ start: Date.now(), minutes })); refresh(); } }, 'Start')));
+        h('button', { class: 'btn', onclick: () => { startPower(minutes); refresh(); } }, 'Start')));
     return card;
   }
-  const end = p.start + p.minutes * 60000;
-  const dials = () => acts.filter((a) => a.type === 'call' && a.timestamp >= p.start);
   const clock = h('div', { class: 'power-clock', 'aria-live': 'off' });
   const stats = h('div', { class: 'muted small' });
-  const tick = () => {
-    const left = Math.max(0, end - Date.now());
-    const m = Math.floor(left / 60000);
-    const sec = Math.floor((left % 60000) / 1000);
-    clock.textContent = left ? `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}` : 'Time!';
-    const d = dials();
-    stats.textContent = `${d.length} ${d.length === 1 ? 'dial' : 'dials'} · ${d.filter((a) => CONVERSATION_OUTCOMES.includes(a.outcome)).length} conversations · ${d.filter((a) => a.outcome === 'meeting').length} meetings`;
-  };
-  tick();
-  timers.push(setInterval(tick, 1000));
+  const status = h('span', { class: 'tag' });
+  const toggle = h('button', { class: 'btn' });
+  toggle.addEventListener('click', () => {
+    const cur = readPower();
+    if (cur && cur.running) pausePower(); else resumePower();
+    refresh();
+  });
   card.append(
-    h('div', { class: 'row between' }, h('strong', null, 'Power hour'), h('span', { class: 'tag hot' }, 'Live')),
+    h('div', { class: 'row between' }, h('strong', null, 'Power hour'), status),
     clock, stats,
-    h('div', { class: 'row gap' },
-      h('button', { class: 'btn', onclick: () => openLogSheet({ type: 'call', onDone: refresh }) }, icon('phone', 18), 'Log call'),
-      h('button', { class: 'btn ghost', onclick: () => { pref('power', null); refresh(); } }, 'End')));
-  return card;
-}
-
-function recentList(acts) {
-  const t0 = today();
-  const recent = [...acts].filter((a) => a.type !== 'research').sort((a, b) => b.timestamp - a.timestamp).slice(0, 6);
-  const card = h('div', { class: 'card list' });
-  if (!recent.length) {
-    card.append(h('p', { class: 'muted pad' }, 'Nothing logged yet. Tap Call, Email, LinkedIn or Mushroom above as you work.'));
-    return card;
-  }
-  for (const a of recent) {
-    const day = tsToYmd(a.timestamp);
-    card.append(h('div', { class: 'task' },
-      h('div', { class: 'task-main' },
-        h('span', { class: 'task-ic' }, icon(TYPE_ICON[a.type] || 'check', 20)),
-        h('span', { class: 'task-body' },
-          h('span', { class: 'task-title' }, `${TYPE_LABEL[a.type] || a.type} · ${outcomeLabel(a.outcome)}`),
-          h('span', { class: 'muted small' }, `${a.who ? a.who + ' · ' : ''}${day === t0 ? 'Today' : fmtDate(day)} ${fmtTime(a.timestamp)}`))),
-      h('div', { class: 'task-actions' },
-        h('button', {
-          class: 'icon-btn', 'aria-label': 'Delete this entry', onclick: async () => {
-            if (await confirmDialog('Remove this entry from your log?', 'Remove', true)) { await deleteActivity(a.id); toast('Removed'); refresh(); }
-          },
-        }, icon('trash', 18)))));
-  }
+    h('div', { class: 'row gap wrap' },
+      toggle,
+      h('button', { class: 'btn ghost', onclick: () => { resetPower(); refresh(); } }, icon('refresh', 18), 'Reset')),
+    h('div', { class: 'row gap wrap' },
+      h('button', { class: 'btn ghost', onclick: () => openLogSheet({ type: 'call', onDone: refresh }) }, icon('phone', 18), 'Log call'),
+      h('button', { class: 'btn ghost', onclick: () => { endPower(); location.hash = '#/wrapup'; } }, 'End & wrap up')));
+  watchPower((cur, left) => {
+    if (!cur) return;
+    clock.textContent = fmtClock(left);
+    const finished = left === 0;
+    status.textContent = finished ? 'Time' : cur.running ? 'Live' : 'Paused';
+    status.className = 'tag' + (cur.running && !finished ? ' hot' : '');
+    toggle.textContent = cur.running ? 'Pause' : (cur.startedAt ? 'Resume' : 'Start');
+    toggle.className = 'btn' + (finished ? ' hidden' : '');
+    const d = cur.startedAt ? acts.filter((a) => a.type === 'call' && a.timestamp >= cur.startedAt) : [];
+    stats.textContent = `${d.length} ${d.length === 1 ? 'dial' : 'dials'} · ${d.filter((a) => CONVERSATION_OUTCOMES.includes(a.outcome)).length} conversations · ${d.filter((a) => a.outcome === 'meeting').length} meetings`;
+  }, timers);
+  p = null;
   return card;
 }
 
@@ -97,6 +80,7 @@ export async function render(root) {
   const tg = s.targets;
   const t0 = today();
   const timers = [];
+  const toEnter = acts.filter(needsEntry).length;
   const sumTarget = tg.calls + tg.emails + tg.linkedin + tg.mushroom;
   const sumDone = Math.min(counts.calls, tg.calls) + Math.min(counts.emails, tg.emails) + Math.min(counts.linkedin, tg.linkedin) + Math.min(counts.mushroom, tg.mushroom);
   const streak = computeStreak(acts);
@@ -107,10 +91,12 @@ export async function render(root) {
     h('p', { class: 'muted' }, `${fmtDate(t0)} · ${new Date().getFullYear()}`)));
 
   root.append(h('div', { class: 'card pipedrive' },
-    h('div', { class: 'row gap' }, icon('refresh', 22, 'red'), h('div', null, h('strong', null, state.content.pipedrive.reminder), h('div', { class: 'muted small' }, 'This app tracks your activity. Pipedrive is the record of every prospect.'))),
-    h('div', { class: 'row gap' },
-      h('button', { class: 'btn sm', onclick: openPipedrive }, icon('external', 16), 'Open Pipedrive'),
-      h('a', { class: 'btn ghost sm', href: '#/learn/pipedrive' }, 'Checklist'))));
+    h('div', { class: 'row gap' }, icon('refresh', 22, 'red'), h('div', null,
+      h('strong', null, toEnter ? `${toEnter} to enter in Pipedrive` : 'Pipedrive is up to date'),
+      h('div', { class: 'muted small' }, 'Log quickly here as you work. After your block, use the wrap-up sheet to update Pipedrive in one go. ' + state.content.pipedrive.reminder))),
+    h('div', { class: 'row gap wrap' },
+      h('a', { class: 'btn sm', href: '#/wrapup' }, icon('check', 16), toEnter ? 'Open wrap-up sheet' : 'Wrap-up sheet'),
+      h('button', { class: 'btn ghost sm', onclick: openPipedrive }, icon('external', 16), 'Open Pipedrive'))));
 
   const bars = h('div', { class: 'target-bars' });
   for (const [k, label] of [['calls', 'Calls'], ['emails', 'Emails'], ['linkedin', 'LinkedIn'], ['mushroom', 'Mushroom']]) {
@@ -134,9 +120,6 @@ export async function render(root) {
 
   root.append(sectionLabel('Power hour'));
   root.append(powerCard(acts, timers));
-
-  root.append(sectionLabel('Recent activity'));
-  root.append(recentList(acts));
 
   const doy = Math.floor((parseYmd(t0) - new Date(parseYmd(t0).getFullYear(), 0, 0)) / 864e5);
   const skill = state.content.skills[doy % state.content.skills.length];

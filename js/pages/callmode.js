@@ -1,9 +1,10 @@
-import { state, placeholderCtx, getProspect, setProspect } from '../state.js';
+import { state, placeholderCtx, getProspect } from '../state.js';
 import { h } from '../util.js';
-import { icon, sheet } from '../ui.js';
-import { carousel, skillsPicker } from '../components.js';
+import { icon } from '../ui.js';
+import { carousel, skillsPicker, prospectCard } from '../components.js';
 import { filterItems } from '../shuffle.js';
 import { logWithFeedback } from '../activity.js';
+import { readPower, pausePower, resumePower, resetPower, remainingMs, fmtClock } from '../power.js';
 import { initFilters } from './scripts.js';
 
 const STAGE_LABEL_SHORT = { opener: 'Opener', contract: 'Contract', reason: 'Reason', situation: 'Situation', problem: 'Problem', consequence: 'Impact', solution: 'Vision', qualify: 'Decision', close: 'Close', bridge: 'Bridge' };
@@ -21,55 +22,76 @@ export async function render(root, { query }) {
   let step = 'opener';
   let lastMain = 'opener';
   let objIdx = 0;
+  let sessionCount = 0;
+  let noteText = '';
   const used = new Set();
+  const picked = new Set();
   let car = null;
+  let powerTimer = null;
 
   const screen = h('div', { class: 'call' });
   root.append(screen);
+  const headerBox = h('div');
+  const subBox = h('div');
+  const stepsBox = h('div');
+  const bodyBox = h('div', { class: 'call-body' });
+  const footBox = h('div');
+  // the prospect inputs are built once so typing is never interrupted by a redraw
+  const prospectBox = prospectCard(() => { paintHeader(); paintBody(); }, { compact: true });
+  screen.append(headerBox, prospectBox, subBox, stepsBox, bodyBox, footBox);
 
   const close = () => { if (history.length > 1) history.back(); else location.hash = '#/today'; };
   const who = () => { const p = getProspect(); return [p.name, p.company].filter(Boolean).join(', '); };
 
-  async function log(outcome, notes = '', skills = []) {
-    await logWithFeedback({ type: 'call', outcome, who: who(), notes, scriptIds: [...used], skills, variant: mode });
-    location.hash = '#/today';
+  // One tap logs the call, then straight back to a fresh opener for the next dial.
+  async function log(outcome) {
+    await logWithFeedback({ type: 'call', outcome, who: who(), notes: noteText, scriptIds: [...used], skills: [...picked], variant: mode });
+    sessionCount += 1;
+    used.clear();
+    picked.clear();
+    noteText = '';
+    prospectBox.clearFields();
+    step = 'opener';
+    lastMain = 'opener';
+    draw();
   }
 
-  function outcomeSheet(o) {
-    sheet(o.label, (done) => {
-      const notes = h('textarea', { class: 'input', rows: '3', placeholder: o.id === 'wrong_person' ? 'Who’s the right person? (add them to Pipedrive)' : 'Notes (optional)' });
-      const picked = new Set();
-      return h('div', null,
-        notes,
-        h('p', { class: 'muted small' }, 'Which skills did you use? (optional)'),
-        skillsPicker(picked),
-        h('p', { class: 'muted small' }, 'Then update Pipedrive: outcome, next step and date.'),
-        h('button', { class: 'btn' + (o.id === 'meeting' ? ' success' : ''), onclick: async () => { done(); await log(o.id, notes.value, [...picked]); } }, 'Save & finish'));
-    });
+  function powerChip() {
+    if (powerTimer) { clearInterval(powerTimer); powerTimer = null; }
+    if (!readPower()) return null;
+    const clock = h('span', { class: 'power-mini-clock' });
+    const toggle = h('button', { class: 'chip sm', 'aria-label': 'Pause or resume timer' });
+    const paint = () => {
+      const p = readPower();
+      if (!p) { clock.textContent = ''; return; }
+      const left = remainingMs(p);
+      clock.textContent = left === 0 ? 'Time!' : fmtClock(left);
+      toggle.textContent = p.running ? 'Pause' : (p.startedAt ? 'Resume' : 'Start');
+    };
+    toggle.addEventListener('click', () => { const p = readPower(); if (p && p.running) pausePower(); else resumePower(); paint(); });
+    const reset = h('button', { class: 'chip sm', 'aria-label': 'Reset timer', onclick: () => { resetPower(); paint(); } }, 'Reset');
+    paint();
+    powerTimer = setInterval(paint, 500);
+    return h('div', { class: 'power-mini' }, icon('clock', 16, 'red'), clock, toggle, reset);
+  }
+
+  function paintHeader() {
+    headerBox.textContent = '';
+    headerBox.append(h('header', { class: 'call-top' },
+      h('button', { class: 'icon-btn', 'aria-label': 'Close call mode', onclick: close }, icon('x', 24)),
+      h('div', { class: 'who' }, h('strong', null, 'Call Mode'), h('span', { class: 'muted small' }, sessionCount ? `${sessionCount} logged this session` : (who() || 'Add who you’re calling below'))),
+      h('div', { class: 'seg compact' },
+        ['cold', 'warm'].map((m) => h('button', { class: 'seg-btn' + (m === mode ? ' on' : ''), onclick: () => { mode = m; step = 'opener'; lastMain = 'opener'; draw(); } }, m === 'cold' ? 'Cold' : 'Warm')))));
   }
 
   function draw() {
-    screen.textContent = '';
-    const ctx = placeholderCtx();
+    paintHeader();
     const f = initFilters();
     const { main, any } = stepsFor(mode);
-    const prospect = getProspect();
-
-    screen.append(h('header', { class: 'call-top' },
-      h('button', { class: 'icon-btn', 'aria-label': 'Close call mode', onclick: close }, icon('x', 24)),
-      h('div', { class: 'who' }, h('strong', null, 'Call Mode'), h('span', { class: 'muted small' }, who() || 'Add who you’re calling below')),
-      h('div', { class: 'seg compact' },
-        ['cold', 'warm'].map((m) => h('button', { class: 'seg-btn' + (m === mode ? ' on' : ''), onclick: () => { mode = m; step = 'opener'; lastMain = 'opener'; draw(); } }, m === 'cold' ? 'Cold' : 'Warm')))));
-
-    const name = h('input', { class: 'input', placeholder: 'First name', value: prospect.name || '', autocomplete: 'off', 'aria-label': 'Prospect name' });
-    const site = h('input', { class: 'input', placeholder: 'Company / site', value: prospect.company || '', autocomplete: 'off', 'aria-label': 'Prospect company or site' });
-    const save = () => { setProspect({ name: name.value.trim(), company: site.value.trim() }); draw(); };
-    name.addEventListener('change', save);
-    site.addEventListener('change', save);
-    screen.append(h('div', { class: 'call-prospect' }, name, site));
-
-    screen.append(h('div', { class: 'call-sub' },
-      h('div', { class: 'voice-chips' },
+    const pc = powerChip();
+    subBox.textContent = '';
+    subBox.append(h('div', { class: 'call-sub' }, pc,
+      step === 'outcome' ? null : h('div', { class: 'voice-chips' },
         [{ id: '', label: 'All styles' }, ...state.content.meta.voices.filter((v) => v.id !== 'neutral')].map((v) =>
           h('button', { class: 'chip sm' + (f.voice === v.id ? ' on' : ''), onclick: () => { f.voice = v.id; draw(); } }, v.label)))));
 
@@ -79,13 +101,22 @@ export async function render(root, { query }) {
     const anyLabel = { label: 'Label', brushoffs: 'Brush-off', voicemail: 'Voicemail' };
     any.forEach((s) => chips.append(h('button', { class: 'step any' + (s === step ? ' on' : ''), onclick: () => { if (main.includes(step)) lastMain = step; step = s; draw(); } }, anyLabel[s])));
     chips.append(h('button', { class: 'step end' + (step === 'outcome' ? ' on' : ''), onclick: () => { if (main.includes(step)) lastMain = step; step = 'outcome'; draw(); } }, icon('check', 14), 'Outcome'));
-    screen.append(chips);
+    stepsBox.textContent = '';
+    stepsBox.append(chips);
     setTimeout(() => { const on = chips.querySelector('.on'); if (on && on.scrollIntoView) on.scrollIntoView({ inline: 'center', block: 'nearest' }); }, 0);
+    paintBody();
+  }
 
+  function paintBody() {
+    const ctx = placeholderCtx();
+    const f = initFilters();
+    const { main, any } = stepsFor(mode);
     const bodyEl = h('main', { class: 'call-main' });
-    screen.append(bodyEl);
+    bodyBox.textContent = '';
+    bodyBox.append(bodyEl);
     const foot = h('footer', { class: 'call-actions' });
-    screen.append(foot);
+    footBox.textContent = '';
+    footBox.append(foot);
     car = null;
 
     const stageInfo = (mode === 'warm' ? state.content.warmStages : state.content.stages).find((s) => s.id === step);
@@ -99,16 +130,17 @@ export async function render(root, { query }) {
     const nextLabel = any.includes(step) ? 'Back to call' : (main.indexOf(step) === main.length - 1 ? 'Outcome' : 'Next stage');
 
     if (step === 'outcome') {
-      bodyEl.append(h('h2', { class: 'stage-title' }, 'How did it go?'));
+      const notes = h('input', { class: 'input', type: 'text', placeholder: 'Quick note for Pipedrive (optional)', value: noteText, autocomplete: 'off' });
+      notes.addEventListener('input', () => { noteText = notes.value; });
+      bodyEl.append(h('h2', { class: 'stage-title' }, 'How did it go?'), notes, h('p', { class: 'muted small tight' }, 'Skills you used (optional)'), skillsPicker(picked));
       const grid = h('div', { class: 'outcome-grid big' });
       for (const o of state.content.meta.outcomes) {
-        grid.append(h('button', {
-          class: 'btn outcome ' + (o.id === 'meeting' ? 'success' : 'ghost'),
-          onclick: () => { if (['no_answer', 'voicemail'].includes(o.id)) log(o.id); else outcomeSheet(o); },
-        }, o.label));
+        grid.append(h('button', { class: 'btn outcome ' + (o.id === 'meeting' ? 'success' : 'ghost'), onclick: () => log(o.id) }, o.label));
       }
-      bodyEl.append(grid, h('p', { class: 'muted small center' }, 'Logging counts towards your targets. Then update Pipedrive.'));
-      foot.append(h('button', { class: 'btn ghost', onclick: () => { step = lastMain; draw(); } }, icon('arrowLeft', 18), 'Back to call'));
+      bodyEl.append(grid, h('p', { class: 'muted small center' }, 'Tap an outcome. It logs and gets you ready for the next call.'));
+      foot.append(
+        h('button', { class: 'btn ghost', onclick: () => { step = lastMain; draw(); } }, icon('arrowLeft', 18), 'Back'),
+        h('a', { class: 'btn', href: '#/wrapup' }, icon('check', 18), 'Finish & wrap-up'));
       return;
     }
 
@@ -141,5 +173,5 @@ export async function render(root, { query }) {
   }
 
   draw();
-  return () => document.body.classList.remove('call-mode');
+  return () => { document.body.classList.remove('call-mode'); if (powerTimer) clearInterval(powerTimer); };
 }
