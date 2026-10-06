@@ -6,6 +6,7 @@ import { filterItems, buildCall, rerollIn, markUsed, toggleFavourite, isFavourit
 import { logWithFeedback } from '../activity.js';
 
 const TABS = [
+  { id: 'favourites', label: '★ Favourites' },
   { id: 'cold', label: 'Cold Call' },
   { id: 'warm', label: 'Warm Call' },
   { id: 'gatekeeper', label: 'Gatekeeper' },
@@ -178,6 +179,17 @@ function brushoffPage(root, ctx) {
   simpleSection(root, ctx, { title: 'Recover the call', hint: 'When it’s going wrong, say so and reset.', cat: 'recovery', stage: 'recovery', key: 'rc' });
 }
 
+function favouritesPage(root, ctx) {
+  const favs = [...state.usage.values()].filter((u) => u.favourite).map((u) => state.content.scriptById.get(u.scriptId)).filter(Boolean);
+  if (!favs.length) {
+    root.append(h('div', { class: 'card' }, h('strong', null, 'No favourites yet'),
+      h('p', { class: 'muted small' }, 'Tap the ☆ star on any script and it will be saved here for quick access.')));
+    return;
+  }
+  root.append(h('p', { class: 'muted small' }, `${favs.length} saved. Tap the star again to remove one.`));
+  for (const s of favs) root.append(s.subject ? emailCard(s, ctx) : lineCard(s, ctx, { copy: true, onUsed: (id) => sessionUsed.add(id) }));
+}
+
 function buildPage(root, ctx) {
   const f = initFilters();
   if (!buildPlan) buildPlan = buildCall(f);
@@ -221,6 +233,7 @@ export async function render(root, { parts, query }) {
   const body = h('div', { class: 'script-body' });
   root.append(body);
   switch (tab) {
+    case 'favourites': favouritesPage(body, ctx); break;
     case 'cold': callPage(body, ctx, false); break;
     case 'warm': callPage(body, ctx, true); break;
     case 'gatekeeper':
