@@ -5,6 +5,7 @@ import { TYPE_ICON } from '../activity.js';
 import { sectionLabel } from '../components.js';
 
 const SECTIONS = [
+  { id: 'howto', title: 'How to use this app', sub: 'Start here: 5 simple steps' },
   { id: 'pipedrive', title: 'Keep Pipedrive up to date', sub: 'The record that keeps you on track' },
   { id: 'ladder', title: 'The Outreach Ladder', sub: '10 rungs from cold to meeting' },
   { id: 'cadence', title: 'The 21-day Cadence', sub: 'The rhythm for every prospect' },
@@ -28,6 +29,21 @@ function index(root) {
     root.append(h('a', { class: 'card nav-card', href: s.href || `#/learn/${s.id}` },
       h('div', null, h('strong', null, s.title), h('div', { class: 'muted small' }, s.sub)), icon('right', 18)));
   }
+}
+
+function howto(root) {
+  root.append(back(), h('h1', null, 'How to use this app'));
+  const steps = [
+    ['Set up (1 minute)', 'Tap the cog, top right. Add your name and phone so scripts fill in for you.'],
+    ['Who are you calling?', 'On Scripts, type their first name and company. It fills [Name] and [site] in every line.'],
+    ['Pick a script', 'Choose a tab: Cold Call, Warm Call, Email, LinkedIn and so on. Swipe or tap Shuffle for another line.'],
+    ['Say it, then tick it', 'Tap a line (or “Mark used”) so you don’t repeat yourself. Use Copy for emails and messages.'],
+    ['Star the ones you like', 'Tap ☆ on any script to save it. Find them all under Scripts → ★ Favourites.'],
+    ['Log it', 'Tap “Log it” after a call, email or LinkedIn touch. Check progress on Today and Tracker.'],
+    ['Update Pipedrive', 'At the end of the day open the wrap-up sheet and update Pipedrive in one go.'],
+  ];
+  root.append(h('div', { class: 'card' }, h('ol', { class: 'recipe' }, steps.map(([t, b]) => h('li', null, h('strong', null, t), h('div', { class: 'muted small' }, b))))));
+  root.append(h('a', { class: 'btn', href: '#/scripts/cold' }, icon('play', 18), 'Go to Scripts'));
 }
 
 function pipedrive(root) {
@@ -180,6 +196,7 @@ export async function render(root, { parts }) {
   const [, sec, id] = parts;
   if (!sec) return index(root);
   switch (sec) {
+    case 'howto': return howto(root);
     case 'pipedrive': return pipedrive(root);
     case 'ladder': return ladder(root);
     case 'cadence': return cadence(root);
