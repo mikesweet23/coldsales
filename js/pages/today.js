@@ -118,6 +118,8 @@ export async function render(root) {
     h('a', { class: 'btn', href: '#/call' }, icon('play', 18), 'Call Mode'),
     h('a', { class: 'btn ghost', href: '#/scripts/build' }, icon('shuffle', 18), 'Build me a call')));
 
+  root.append(h('a', { class: 'card nav-card', href: '#/learn/howto' }, h('div', null, h('strong', null, 'New here? How to use this app'), h('div', { class: 'muted small' }, '5 simple steps')), icon('right', 18)));
+
   root.append(sectionLabel('Power hour'));
   root.append(powerCard(acts, timers));
 
